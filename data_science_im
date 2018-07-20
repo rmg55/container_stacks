@@ -1,0 +1,28 @@
+FROM jupyter/scipy-notebook
+
+
+
+
+USER root
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass
+
+
+USER $NB_UID
+
+LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
+
+
+# Install Python 3 packages
+# Remove pyqt and qt pulled in for matplotlib since we're only ever going to
+# use notebook-friendly backends in these images
+RUN conda install --quiet --yes \
+	'dask' \
+	'mpi4py' \
+	'gdal' \
+	'git' \
+	'pip'
+#	fix-permissions /home/$NB_USER/.local
+
+RUN pip install --quiet git+https:////github.com/rmg55/dask-jobqueue
