@@ -12,14 +12,21 @@ USER root
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass graphviz libhdf5-mpi-dev
+    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass graphviz libhdf5-mpi-dev munge
 
 #RUN pip install --quiet dask dask-ml bokeh mpi4py gdal tqdm bottleneck zarr numcodecs xarray ipywidgets
 #RUN jupyter nbextension enable --py widgetsnbextension
 #RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 #RUN jupyter labextension install dask-labextension
 
-#RUN pip install --quiet netcdf4 
+#RUN pip install --quiet netcdf4
+
+RUN export TMPDIR=/local/scratch/$USER
+
+RUN groupadd -g 1000 slurm
+RUN useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm
+RUN groupadd -g 398 munge
+RUN useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge
 
 USER $NB_UID
 
@@ -74,5 +81,4 @@ RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
 
-RUN pip install --quiet git+https:////github.com/rmg55/dask-jobqueue
-RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine
+RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue
