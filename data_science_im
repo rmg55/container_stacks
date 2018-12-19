@@ -25,7 +25,7 @@ RUN export TMPDIR=/local/scratch/$USER
 
 RUN groupadd -g 1000 slurm
 RUN useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm
-RUN groupadd -g 398 munge
+##RUN groupadd -g 398 munge
 RUN useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge
 
 USER $NB_UID
