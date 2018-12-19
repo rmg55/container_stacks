@@ -1,0 +1,78 @@
+FROM jupyter/scipy-notebook
+
+#USER $NB_UID
+
+#RUN conda uninstall --quiet --yes hdf5 netcdf4
+
+USER root
+
+#RUN apt-get remove -y libhdf5-dev
+
+#RUN apt-get install -y libmpich-dev
+
+RUN apt-get update -y && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass graphviz libhdf5-mpi-dev
+
+#RUN pip install --quiet dask dask-ml bokeh mpi4py gdal tqdm bottleneck zarr numcodecs xarray ipywidgets
+#RUN jupyter nbextension enable --py widgetsnbextension
+#RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+#RUN jupyter labextension install dask-labextension
+
+#RUN pip install --quiet netcdf4 
+
+USER $NB_UID
+
+LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
+
+
+# Install Python 3 packages
+# Remove pyqt and qt pulled in for matplotlib since we're only ever going to
+# use notebook-friendly backends in these images
+
+RUN conda install --quiet --yes \
+	'dask' \
+	'dask-ml' \
+	'bokeh' \
+	'conda' \
+	'mpi4py' \
+	'gdal' \
+	'git' \
+	'pip' \
+	'ncurses' \
+	'netCDF4' \
+	'tqdm' \
+	'bottleneck' \
+	'zarr' \
+	'numcodecs' \
+	'xarray'
+#	fix-permissions /home/$NB_USER
+
+RUN conda install -c conda-forge ipywidgets
+
+RUN conda update --all --quiet --yes
+RUN jupyter labextension install dask-labextension
+RUN jupyter labextension update --all
+
+#Run conda install --quiet --yes -c anaconda \
+#	'netcdf4'
+
+##Run conda install -c conda-forge --quiet --yes \
+##	'dask=0.19.2' \
+##	'dask-ml'
+
+
+#RUN pip install --quiet dask[complete]
+#RUN pip install --quiet dask-ml
+
+RUN conda create --quiet --yes -n py6s-env -c conda-forge py6s
+
+RUN pip install ipyleaflet \
+  && jupyter nbextension enable --py --sys-prefix ipyleaflet
+
+RUN jupyter labextension install jupyter-leaflet
+
+RUN pip install --quiet earthengine-api
+
+RUN pip install --quiet git+https:////github.com/rmg55/dask-jobqueue
+RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine
