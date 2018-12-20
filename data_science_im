@@ -53,8 +53,8 @@ RUN conda install --quiet --yes \
 	'bottleneck' \
 	'zarr' \
 	'numcodecs' \
-	'xarray'
-#	fix-permissions /home/$NB_USER
+	'xarray' \
+	fix-permissions /home/$NB_USER
 
 RUN conda install -c conda-forge ipywidgets
 
