@@ -6,6 +6,8 @@ FROM jupyter/scipy-notebook
 
 USER root
 
+RUN chmod -R 777 /home/jovyan
+
 #RUN apt-get remove -y libhdf5-dev
 
 #RUN apt-get install -y libmpich-dev
@@ -22,7 +24,6 @@ RUN apt-get update -y && \
 #RUN pip install --quiet netcdf4
 
 RUN export TMPDIR=/local/scratch/$USER
-RUN mkdir /var/run/munge
 
 RUN groupadd -g 1000 slurm
 RUN useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm
@@ -53,8 +54,8 @@ RUN conda install --quiet --yes \
 	'bottleneck' \
 	'zarr' \
 	'numcodecs' \
-	'xarray' \
-	fix-permissions /home/$NB_USER
+	'xarray'
+RUN fix-permissions /home/$NB_USER
 
 RUN conda install -c conda-forge ipywidgets
 
