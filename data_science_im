@@ -7,6 +7,9 @@ FROM jupyter/scipy-notebook
 USER root
 
 RUN chmod -R 777 /home/jovyan
+RUN mkdir /usr/share/jupyter
+RUN mkdir /usr/share/jupyter/kernels
+RUN mkdir /usr/share/jupyter/kernels/IDL
 
 #RUN apt-get remove -y libhdf5-dev
 
