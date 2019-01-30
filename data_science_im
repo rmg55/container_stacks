@@ -13,6 +13,7 @@ RUN mkdir /usr/share/jupyter/kernels/IDL
 RUN chmod -R 777 /usr/share/jupyter
 RUN chmod -R 777 /usr/share/jupyter/kernels
 RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
+RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
 
 #RUN apt-get remove -y libhdf5-dev
 
