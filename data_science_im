@@ -14,8 +14,6 @@ RUN chmod -R 777 /usr/share/jupyter
 RUN chmod -R 777 /usr/share/jupyter/kernels
 RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
 RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
-RUN mkdir /lib/x86_64-linux-gnu/
-RUN ln -s /usr/lib64/libreadline.so.6 /lib/x86_64-linux-gnu/libreadline.so.6
 
 #RUN apt-get remove -y libhdf5-dev
 
