@@ -61,13 +61,19 @@ RUN conda install --quiet --yes \
 	'bottleneck' \
 	'zarr' \
 	'numcodecs' \
-	'xarray'
+	'xarray' \
+	'pyviz' \
+	'holoviews' \
+	'geoviews' \
+	'intake'
+
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
 
 RUN conda update --all --quiet --yes
 RUN jupyter labextension install dask-labextension
+RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
 
 #Run conda install --quiet --yes -c anaconda \
