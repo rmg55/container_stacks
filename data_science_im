@@ -62,10 +62,9 @@ RUN conda install --quiet --yes \
 	'zarr' \
 	'numcodecs' \
 	'xarray' \
-	'pyviz' \
-	'holoviews' \
-	'geoviews' \
 	'intake'
+
+RUN conda install --quiet --yes -c pyviz holoviews bokeh
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
