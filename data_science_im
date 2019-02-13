@@ -64,13 +64,14 @@ RUN conda install --quiet --yes \
 	'xarray' \
 	'intake'
 
-RUN conda install --quiet --yes -c pyviz holoviews bokeh
+RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
+RUN conda update --all --quiet --yes
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
 
-RUN conda update --all --quiet --yes
+
 RUN jupyter labextension install dask-labextension
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
