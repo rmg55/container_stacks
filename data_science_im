@@ -67,9 +67,13 @@ RUN conda install --quiet --yes \
 RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
 RUN conda update --all --quiet --yes
 
+RUN conda install --quiet --yes -c r rpy2
+
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
+
+RUN Rscript -e "install.packages(neonUtilities')"
 
 
 RUN jupyter labextension install dask-labextension
@@ -97,3 +101,5 @@ RUN jupyter labextension install jupyter-leaflet
 RUN pip install --quiet earthengine-api
 
 RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue
+
+
