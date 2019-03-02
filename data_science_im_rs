@@ -73,7 +73,7 @@ RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
 
-RUN Rscript -e "install.packages('neonUtilities')"
+RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
 
 
 RUN jupyter labextension install dask-labextension
