@@ -1,9 +1,5 @@
 FROM jupyter/scipy-notebook
 
-#USER $NB_UID
-
-#RUN conda uninstall --quiet --yes hdf5 netcdf4
-
 USER root
 
 RUN chmod -R 777 /home/jovyan
@@ -15,20 +11,23 @@ RUN chmod -R 777 /usr/share/jupyter/kernels
 RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
 RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
 
-#RUN apt-get remove -y libhdf5-dev
-
-#RUN apt-get install -y libmpich-dev
-
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass graphviz libhdf5-mpi-dev
 
-#RUN pip install --quiet dask dask-ml bokeh mpi4py gdal tqdm bottleneck zarr numcodecs xarray ipywidgets
-#RUN jupyter nbextension enable --py widgetsnbextension
-#RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
-#RUN jupyter labextension install dask-labextension
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    tzdata \
+    unixodbc \
+    unixodbc-dev \
+    r-cran-rodbc \
+    gfortran \
+    gcc && \
+    rm -rf /var/lib/apt/lists/*
 
-#RUN pip install --quiet netcdf4
+# Fix for devtools https://github.com/conda-forge/r-devtools-feedstock/issues/4
+RUN ln -s /bin/tar /bin/gtar
 
 RUN export TMPDIR=/local/scratch/$USER
 
@@ -45,6 +44,8 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 # Install Python 3 packages
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
 # use notebook-friendly backends in these images
+
+RUN conda install -c conda-forge python-graphviz
 
 RUN conda install --quiet --yes \
 	'dask' \
@@ -64,6 +65,44 @@ RUN conda install --quiet --yes \
 	'xarray' \
 	'intake'
 
+# R packages
+RUN conda install --quiet --yes \
+    'r-base=3.5.1' \
+    'r-rodbc=1.3*' \
+    'unixodbc=2.3.*' \
+    'r-irkernel=0.8*' \
+    'r-plyr=1.8*' \
+    'r-devtools=2.0*' \
+    'r-tidyverse=1.2*' \
+    'r-shiny=1.2*' \
+    'r-rmarkdown=1.11*' \
+    'r-forecast=8.2*' \
+    'r-rsqlite=2.1*' \
+    'r-reshape2=1.4*' \
+    'r-nycflights13=1.0*' \
+    'r-caret=6.0*' \
+    'r-rcurl=1.95*' \
+    'r-crayon=1.3*' \
+    'r-randomforest=4.6*' \
+    'r-htmltools=0.3*' \
+    'r-sparklyr=0.9*' \
+    'r-htmlwidgets=1.2*' \
+    'r-hexbin=1.27*' && \
+    'r-maptools' && \
+    'r-sp' && \
+    'r-raster' && \
+    '' && \
+    '' && \
+    '' && \
+    conda clean -tipsy && \
+    fix-permissions $CONDA_DIR
+
+RUN conda install -c conda-forge r-rgdal
+RUN conda install -c conda-forge r-rgeos
+RUN conda install -c conda-forge r-gstat
+
+
+
 RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
 RUN conda update --all --quiet --yes
 
@@ -80,17 +119,6 @@ RUN jupyter labextension install dask-labextension
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
 
-#Run conda install --quiet --yes -c anaconda \
-#	'netcdf4'
-
-##Run conda install -c conda-forge --quiet --yes \
-##	'dask=0.19.2' \
-##	'dask-ml'
-
-
-#RUN pip install --quiet dask[complete]
-#RUN pip install --quiet dask-ml
-
 RUN conda create --quiet --yes -n py6s-env -c conda-forge py6s
 
 RUN pip install ipyleaflet \
@@ -100,6 +128,6 @@ RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
 
-RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue
+RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
 
 
