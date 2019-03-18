@@ -115,7 +115,7 @@ RUN conda install -c conda-forge --quiet --yes \
     'r-hexbin=1.27*' \
     'r-maptools' \
     'r-sp' \
-    'r-raster'
+    'r-raster' \
     'r-rgdal' \
     'r-rgeos' \
     'r-gstat' && \
