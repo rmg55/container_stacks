@@ -104,7 +104,7 @@ RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
 RUN conda update --all --quiet --yes
 
 RUN conda install --quiet --yes -c r rpy2
-
+RUN conda install -c anaconda simplegeneric
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
