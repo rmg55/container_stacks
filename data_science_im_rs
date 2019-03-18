@@ -13,7 +13,7 @@ RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc libgdal-dev openssh-client sshpass graphviz libhdf5-mpi-dev
+    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc openssh-client sshpass graphviz libhdf5-mpi-dev
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -45,9 +45,9 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 # Remove pyqt and qt pulled in for matplotlib since we're only ever going to
 # use notebook-friendly backends in these images
 
-RUN conda install -c conda-forge python-graphviz
+#RUN conda install -c conda-forge python-graphviz
 
-RUN conda install --quiet --yes \
+RUN conda install -c conda-forge --quiet --yes \
 	'dask' \
 	'dask-ml' \
 	'bokeh' \
@@ -64,10 +64,34 @@ RUN conda install --quiet --yes \
 	'numcodecs' \
 	'xarray' \
 	'h5py' \
+	'python-graphviz' \
+	'pyviz' \
+	'holoviews' \
+	'bokeh' \
+	'geopandas' \
+	'simplegeneric' \
+	'rasterio' \
+	'fiona' \
+	'spectral' \
+	'shapely' \
+	'pyshp' \
+	'joblib' \
+	'psycopg2' \
+	'openpyxl' \
+	'oauth2client' \
+	'PyDrive' \
+	'pyModis' \
+	'ulmo' \
+	'envipyengine' \
+	'dask-jobqueue' \
+	'xgboost' \
+	'earthengine-api' \
+	'r' \
+	'rpy2' \
 	'intake'
 
 # R packages
-RUN conda install --quiet --yes \
+RUN conda install -c conda-forge --quiet --yes \
     'r-base=3.5.1' \
     'r-rodbc=1.3*' \
     'unixodbc=2.3.*' \
@@ -91,21 +115,24 @@ RUN conda install --quiet --yes \
     'r-hexbin=1.27*' \
     'r-maptools' \
     'r-sp' \
-    'r-raster' && \
+    'r-raster'
+    'r-rgdal' \
+    'r-rgeos' \
+    'r-gstat' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-RUN conda install -c conda-forge r-rgdal
-RUN conda install -c conda-forge r-rgeos
-RUN conda install -c conda-forge r-gstat
+#RUN conda install -c conda-forge r-rgdal
+#RUN conda install -c conda-forge r-rgeos
+#RUN conda install -c conda-forge r-gstat
 
 
 
-RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
+#RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
 RUN conda update --all --quiet --yes
 
-RUN conda install --quiet --yes -c r rpy2
-RUN conda install -c anaconda simplegeneric
+#RUN conda install --quiet --yes -c r rpy2
+#RUN conda install -c anaconda simplegeneric
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
@@ -117,7 +144,7 @@ RUN jupyter labextension install dask-labextension
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
 
-RUN conda create --quiet --yes -n py6s-env -c conda-forge py6s
+#RUN conda create --quiet --yes -n py6s-env -c conda-forge py6s
 
 RUN pip install ipyleaflet \
   && jupyter nbextension enable --py --sys-prefix ipyleaflet
@@ -126,7 +153,7 @@ RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
 
-RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
+#RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
 RUN conda install --quiet --yes \
     'poppler=0.65.0'
 
