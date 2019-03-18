@@ -64,7 +64,6 @@ RUN conda install --quiet --yes \
 	'numcodecs' \
 	'xarray' \
 	'h5py' \
-	'poppler=0.65.0' \
 	'intake'
 
 # R packages
@@ -128,5 +127,6 @@ RUN jupyter labextension install jupyter-leaflet
 RUN pip install --quiet earthengine-api
 
 RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
-
+RUN conda install --quiet --yes \
+    'poppler=0.65.0'
 
