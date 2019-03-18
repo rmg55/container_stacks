@@ -63,6 +63,7 @@ RUN conda install --quiet --yes \
 	'zarr' \
 	'numcodecs' \
 	'xarray' \
+	'h5py' \
 	'intake'
 
 # R packages
