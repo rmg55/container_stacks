@@ -85,6 +85,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'earthengine-api' \
 	'r' \
 	'rpy2' \
+	'poppler' \
 	'intake'
 
 # R packages
