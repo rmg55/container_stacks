@@ -119,7 +119,8 @@ RUN conda install -c conda-forge --quiet --yes \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-RUN conda install --quiet --yes -c envipyengine pymodis pyviz
+RUN conda install --quiet --yes -c pyviz/label/dev pyviz
+RUN pip install --quiet envipyengine pymodis
 
 #RUN conda install -c conda-forge r-rgdal
 #RUN conda install -c conda-forge r-rgeos
@@ -153,6 +154,6 @@ RUN jupyter labextension install jupyter-leaflet
 RUN pip install --quiet earthengine-api
 
 #RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
-RUN conda install --quiet --yes \
-    'poppler=0.65.0'
+#RUN conda install --quiet --yes \
+#    'poppler=0.65.0'
 
