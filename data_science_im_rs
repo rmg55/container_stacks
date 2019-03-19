@@ -47,6 +47,8 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 #RUN conda install -c conda-forge python-graphviz
 
+RUN conda update -c conda-forge --all
+
 RUN conda install -c conda-forge --quiet --yes \
 	'dask' \
 	'dask-ml' \
@@ -104,7 +106,38 @@ RUN conda install -c conda-forge --quiet --yes \
     'r-reshape2=1.4*' \
     'r-nycflights13=1.0*' \
     'r-caret=6.0*' \
-    'r-rcurl=1.95*' \
+    'r-rcurl=1.95*' \Created
+    March 18, 2019 05:56 PM
+Finished
+    March 18, 2019 06:25 PM
+Tag
+    latest
+Source Code
+    rmg55/data_science_im_rs
+Commit
+    06be764
+User
+    rowangaffney
+Duration
+    29 minutes
+IP
+    192.30.252.40
+User Agent
+    GitHub-Hookshot/6beb166
+
+FROM jupyter/scipy-notebook
+USER root
+RUN chmod -R 777 /home/jovyan
+RUN mkdir /usr/share/jupyter
+RUN mkdir /usr/share/jupyter/kernels
+RUN mkdir /usr/share/jupyter/kernels/IDL
+RUN chmod -R 777 /usr/share/jupyter
+RUN chmod -R 777 /usr/share/jupyter/kernels
+RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
+RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
+RUN apt-get update -y && \
+apt-get upgrade -y && \
+apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc openssh-client sshpass graphviz 
     'r-crayon=1.3*' \
     'r-randomforest=4.6*' \
     'r-htmltools=0.3*' \
