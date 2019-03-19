@@ -106,38 +106,7 @@ RUN conda install -c conda-forge --quiet --yes \
     'r-reshape2=1.4*' \
     'r-nycflights13=1.0*' \
     'r-caret=6.0*' \
-    'r-rcurl=1.95*' \Created
-    March 18, 2019 05:56 PM
-Finished
-    March 18, 2019 06:25 PM
-Tag
-    latest
-Source Code
-    rmg55/data_science_im_rs
-Commit
-    06be764
-User
-    rowangaffney
-Duration
-    29 minutes
-IP
-    192.30.252.40
-User Agent
-    GitHub-Hookshot/6beb166
-
-FROM jupyter/scipy-notebook
-USER root
-RUN chmod -R 777 /home/jovyan
-RUN mkdir /usr/share/jupyter
-RUN mkdir /usr/share/jupyter/kernels
-RUN mkdir /usr/share/jupyter/kernels/IDL
-RUN chmod -R 777 /usr/share/jupyter
-RUN chmod -R 777 /usr/share/jupyter/kernels
-RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
-RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
-RUN apt-get update -y && \
-apt-get upgrade -y && \
-apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc openssh-client sshpass graphviz 
+    'r-rcurl=1.95*' \
     'r-crayon=1.3*' \
     'r-randomforest=4.6*' \
     'r-htmltools=0.3*' \
@@ -156,17 +125,6 @@ apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-
 RUN conda install --quiet --yes -c pyviz/label/dev pyviz
 RUN pip install --quiet envipyengine pymodis
 
-#RUN conda install -c conda-forge r-rgdal
-#RUN conda install -c conda-forge r-rgeos
-#RUN conda install -c conda-forge r-gstat
-
-
-
-#RUN conda install --quiet --yes -c pyviz holoviews bokeh geopandas
-#RUN conda update --all --quiet --yes
-
-#RUN conda install --quiet --yes -c r rpy2
-#RUN conda install -c anaconda simplegeneric
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
@@ -178,16 +136,9 @@ RUN jupyter labextension install dask-labextension
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
 
-#RUN conda create --quiet --yes -n py6s-env -c conda-forge py6s
-
 RUN pip install ipyleaflet \
   && jupyter nbextension enable --py --sys-prefix ipyleaflet
 
 RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
-
-#RUN pip install --quiet rasterio fiona spectral shapely pyshp shapely[vectorized] pyshp ipyparallel joblib psycopg2 openpyxl oauth2client PyDrive pyModis ulmo envipyengine dask-jobqueue xgboost
-#RUN conda install --quiet --yes \
-#    'poppler=0.65.0'
-
