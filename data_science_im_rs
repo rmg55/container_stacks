@@ -9,7 +9,7 @@ RUN mkdir /usr/share/jupyter/kernels/IDL
 RUN chmod -R 777 /usr/share/jupyter
 RUN chmod -R 777 /usr/share/jupyter/kernels
 RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
-RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
+RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
@@ -146,5 +146,5 @@ RUN pip install ipyleaflet \
 RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
-
+RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
 RUN conda init
