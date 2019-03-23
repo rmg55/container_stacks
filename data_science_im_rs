@@ -120,7 +120,9 @@ RUN conda create -n R_geo -c conda-forge --quiet --yes \
     'r-raster' \
     'r-rgdal' \
     'r-rgeos' \
-    'r-gstat' && \
+    'r-gstat' \
+    'gdal' \
+    'poppler' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
@@ -144,3 +146,5 @@ RUN pip install ipyleaflet \
 RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
+
+RUN conda init
