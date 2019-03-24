@@ -118,13 +118,11 @@ RUN conda create -n R_geo -c conda-forge --quiet --yes \
     'r-maptools' \
     'r-sp' \
     'r-raster' \
-    'r-rgdal' \
     'r-rgeos' \
-    'r-gstat' \
-    'gdal' \
-    'poppler=0.65.*' && \
+    'r-gstat' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
+RUN conda install -c conda-forge/label/cf201901 --quiet --yes r-rgdal && fix-permissions $CONDA_DIR
 
 RUN conda install --quiet --yes -c pyviz/label/dev pyviz
 RUN pip install --quiet envipyengine pymodis
