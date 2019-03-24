@@ -122,7 +122,7 @@ RUN conda create -n R_geo -c conda-forge --quiet --yes \
     'r-rgeos' \
     'r-gstat' \
     'gdal' \
-    'poppler' && \
+    'poppler=0.65.*' && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
