@@ -112,7 +112,7 @@ RUN conda install -c conda-forge --quiet --yes \
 
 
 # R packages
-RUN conda create -n R_geo -c conda-forgee/label/cf201901 --quiet --yes \
+RUN conda create -n R_geo -c conda-forge/label/cf201901 --quiet --yes \
     'r-base' \
     'r-rodbc' \
     'unixodbc' \
