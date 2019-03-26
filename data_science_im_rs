@@ -142,8 +142,6 @@ RUN conda create -n R_geo -c conda-forge --quiet --yes \
 	'r-rgeos' \
 	'r-sf' \
 	'r-snow' \
-	'r-rgdal' \
-	'r-gdalutils' \
 	'r-gstat' && \
 	conda clean -tipsy && \
 	fix-permissions $CONDA_DIR
