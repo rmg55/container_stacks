@@ -6,8 +6,10 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 # R packages
 
+RUN conda create -n R_geo
 
-RUN conda create -n R_geo -c conda-forge --quiet --yes \
+
+RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-base' \
   'r-rodbc' \
   'unixodbc' \
@@ -39,7 +41,6 @@ RUN conda create -n R_geo -c conda-forge --quiet --yes \
   conda clean -tipsy && \
   fix-permissions $CONDA_DIR
 
-RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
 RUN conda config --add channels "conda-forge/label/cf201901"
 RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
@@ -47,3 +48,6 @@ RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
 RUN conda init
+
+RUN conda activate R_geo
+RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
