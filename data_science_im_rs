@@ -112,6 +112,8 @@ RUN conda install -c conda-forge --quiet --yes \
 
 
 # R packages
+
+conda config --add channels "conda-forge/label/cf201901"
 RUN conda create -n R_geo --channel "conda-forge/label/cf201901" --quiet --yes \
 	'r-base' \
 	'r-rodbc' \
