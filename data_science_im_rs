@@ -62,5 +62,5 @@ RUN fix-permissions $CONDA_DIR
 
 RUN conda init
 
-RUN conda activate R_geo
-RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
+#RUN conda activate R_geo
+#RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
