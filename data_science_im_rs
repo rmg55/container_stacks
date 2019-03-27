@@ -6,7 +6,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 # R packages
 
-RUN conda create -n R_geo
+RUN conda create -n R_geo --yes
 
 RUN conda config --add channels "conda-forge/label/cf201901"
 
