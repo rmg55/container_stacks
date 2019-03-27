@@ -21,8 +21,7 @@ RUN conda install -n R_geo -c "conda-forge/label/cf201901" --quiet --yes \
   'r-rgeos' \
   'r-irkernel' \
   'r-sp'
-
-
+RUN conda install -n R_geo -c r r-irkernel
 #RUN conda install -n R_geo -c conda-forge --quiet --yes \
 #  'r-base' \
 #  'r-rodbc' \
