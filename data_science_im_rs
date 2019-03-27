@@ -8,41 +8,54 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 RUN conda create -n R_geo
 
-
-RUN conda install -n R_geo -c conda-forge --quiet --yes \
-  'r-base' \
-  'r-rodbc' \
-  'unixodbc' \
-  'r-irkernel' \
-  'r-plyr' \
-  'r-devtools' \
-  'r-tidyverse' \
-  'r-shiny' \
-  'r-rmarkdown' \
-  'r-forecast' \
-  'r-rsqlite' \
-  'r-reshape2' \
-  'r-nycflights13' \
-  'r-caret' \
-  'r-rcurl' \
-  'r-crayon' \
-  'r-randomforest' \
-  'r-htmltools' \
-  'r-sparklyr' \
-  'r-htmlwidgets' \
-  'r-hexbin' \
-  'r-maptools' \
-  'r-sp' \
-  'r-raster' \
-  'r-rgeos' \
-  'r-sf' \
-  'r-snow' \
-  'r-gstat' && \
-  conda clean -tipsy && \
-  fix-permissions $CONDA_DIR
-
 RUN conda config --add channels "conda-forge/label/cf201901"
-RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
+
+RUN conda install -n R_geo -c "conda-forge/label/cf201901" --quiet --yes \
+  'r-rgdal' \
+  'r-gdalutils' \
+  'r-raster' \
+  'r-snow' \
+  'r-sf' \
+  'r-gstat' \
+  'r-maptools' \
+  'r-rgeos' \
+  'r-sp'
+
+
+#RUN conda install -n R_geo -c conda-forge --quiet --yes \
+#  'r-base' \
+#  'r-rodbc' \
+#  'unixodbc' \
+#  'r-irkernel' \
+#  'r-plyr' \
+#  'r-devtools' \
+#  'r-tidyverse' \
+#  'r-shiny' \
+#  'r-rmarkdown' \
+#  'r-forecast' \
+#  'r-rsqlite' \
+#  'r-reshape2' \
+#  'r-nycflights13' \
+#  'r-caret' \
+#  'r-rcurl' \
+#  'r-crayon' \
+#  'r-randomforest' \
+#  'r-htmltools' \
+#  'r-sparklyr' \
+#  'r-htmlwidgets' \
+#  'r-hexbin' \
+#  'r-maptools' \
+#  'r-sp' \
+#  'r-raster' \
+#  'r-rgeos' \
+#  'r-sf' \
+#  'r-snow' \
+#  'r-gstat' && \
+#  conda clean -tipsy && \
+#  fix-permissions $CONDA_DIR
+
+#RUN conda config --add channels "conda-forge/label/cf201901"
+#RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
