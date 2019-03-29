@@ -22,6 +22,11 @@ RUN apt-get update -y && \
     libcr-dev \
     graphviz \
     libhdf5-mpi-dev \
+    libmpich12 \
+    libmpich-dev \
+    libopenmpi-dev \
+    openmpi-bin \
+    openmpi-common \
     libgdal-dev \
     fonts-dejavu \
     tzdata \
