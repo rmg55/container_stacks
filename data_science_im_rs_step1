@@ -114,6 +114,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'rpy2' \
 	'poppler' \
 	'intake' \
+	'pydap' \
 	'nb_conda_kernels'
 
 
