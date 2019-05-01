@@ -17,7 +17,7 @@ RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 
 
 RUN apt-get update -y && \
-    apt-get upgrade -y #&& \
+    apt-get upgrade -y
 #    apt-get install -y --no-install-recommends libcr0 \
 #    libcr-dev \
 #    graphviz \
