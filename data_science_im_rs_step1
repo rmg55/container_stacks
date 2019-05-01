@@ -107,7 +107,6 @@ RUN conda install -c conda-forge --quiet --yes \
 	'openpyxl' \
 	'oauth2client' \
 	'PyDrive' \
-	'ulmo' \
 	'dask-jobqueue' \
 	'xgboost' \
 	'earthengine-api' \
