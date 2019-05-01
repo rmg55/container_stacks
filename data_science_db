@@ -4,12 +4,9 @@ USER $NB_UID
 
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
-RUN conda install -c conda-forge postgis
+RUN conda install -c conda-forge --quiet --yes postgis
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
 RUN conda init
-
-#RUN conda activate R_geo
-#RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
