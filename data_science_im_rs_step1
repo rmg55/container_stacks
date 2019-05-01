@@ -17,25 +17,25 @@ RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 
 
 RUN apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends libcr0 \
-    libcr-dev \
-    graphviz \
-    libhdf5-mpi-dev \
-    libmpich12 \
-    libmpich-dev \
-    libopenmpi-dev \
-    openmpi-bin \
-    openmpi-common \
-    libgdal-dev \
-    fonts-dejavu \
-    tzdata \
-    unixodbc \
-    unixodbc-dev \
-    r-cran-rodbc \
-    gfortran \
-    gcc && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get upgrade -y #&& \
+#    apt-get install -y --no-install-recommends libcr0 \
+#    libcr-dev \
+#    graphviz \
+#    libhdf5-mpi-dev \
+#    libmpich12 \
+#    libmpich-dev \
+#    libopenmpi-dev \
+#    openmpi-bin \
+#    openmpi-common \
+#    libgdal-dev \
+#    fonts-dejavu \
+#    tzdata \
+#    unixodbc \
+#    unixodbc-dev \
+#    r-cran-rodbc \
+#    gfortran \
+#    gcc && \
+#    rm -rf /var/lib/apt/lists/*
 
     
 
@@ -74,6 +74,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 #RUN conda update -c conda-forge --all
 #RUN conda install -c ehsantn hdf5-parallel
 
+RUN conda update conda
 RUN conda install -c conda-forge --quiet --yes \
 	'dask' \
 	'openmpi'\
@@ -115,6 +116,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'poppler' \
 	'intake' \
 	'pydap' \
+	'python-graphviz' \
 	'nb_conda_kernels'
 
 
