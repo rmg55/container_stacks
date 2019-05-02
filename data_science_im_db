@@ -6,9 +6,9 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 USER root
 
-#RUN apt-get update -y && \
-#    apt-get upgrade -y &&\
-RUN  apt-get install -y \
+RUN apt-get update -y && \
+    apt-get upgrade -y &&\
+    apt-get install -y \
     postgresql \
     postgis 
 
@@ -34,6 +34,6 @@ VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 # Set the default command to run when starting the container
 CMD ["/usr/lib/postgresql/10/bin/postgres", "-D", "/mnt/ssd/postgresql/docker_postgres/main", "-c", "config_file=/etc/postgresql/10/main/postgresql.conf"]
 
-
+USER $NB_UID
 
 RUN conda init
