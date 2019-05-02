@@ -5,11 +5,10 @@ USER $NB_UID
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 RUN apt-get update -y && \
-    apt-get upgrade -y
+    apt-get upgrade -y &&\
     apt-get install -y \
     postgresql \
-    postgis && \
-    rm -rf /var/lib/apt/lists/* 
+    postgis 
 
 USER postgres
 
