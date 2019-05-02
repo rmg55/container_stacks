@@ -75,7 +75,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 #RUN conda install -c ehsantn hdf5-parallel
 
 RUN conda update conda
-RUN conda update --all
+
 RUN conda install -c conda-forge --quiet --yes -v \
 	'dask' \
 	'openmpi'\
@@ -120,7 +120,7 @@ RUN conda install -c conda-forge --quiet --yes -v \
 	'python-graphviz' \
 	'nb_conda_kernels'
 
-
+RUN conda update --all
 # R packages
 
 
