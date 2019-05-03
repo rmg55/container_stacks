@@ -1,4 +1,4 @@
-# Container Scripts of Remote Sensing and a Spatial RDMS
+# Containers for: Remote Sensing and Spatial RDMS
 
 The docker files in this repo include:
 
