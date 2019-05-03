@@ -1,4 +1,4 @@
-# data_science_im_rs Image
+# Container Scripts of Remote Sensing and a Spatial RDMS
 
 The docker files in this repo include:
 
