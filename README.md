@@ -13,7 +13,8 @@ The docker files in this repo include:
 2. data_science_im_rs
     - Includes the R environment
     - Built from data_science_im_rs_step1
-    - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)- To build with singularity:
+    - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
+    - To build with singularity:
     ```shell
     singularity pull docker://rowangaffney/data_science_im_rs
     ```
