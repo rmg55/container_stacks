@@ -15,6 +15,8 @@ RUN apt-get update -y && \
     postgresql-10-ogr-fdw
     
 USER postgres
+RUN mkdir /mnt/ssd
+RUN mkdir /mnt/ssd/postgresql
 RUN mkdir /mnt/ssd/postgresql/docker_postgres
 
 USER root
@@ -27,14 +29,14 @@ RUN $cmd $pg_bin_dir/pg_ctl initdb -D /mnt/ssd/postgresql/docker_postgres/
 
 RUN $cmd $pg_bin_dir/pg_ct -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
 
-RUN psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';"
+RUN /usr/bin/psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';"
 RUN /usr/bin/createdb -p 5444 -O rrsru_admin cper
 
 
 EXPOSE -p 5444
 RUN echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
 #CMD ["/usr/lib/postgresql/10/bin/postgres", "-D", "/mnt/ssd/postgresql/docker_postgres/main", "-c", "config_file=/etc/postgresql/10/main/postgresql.conf"]
-
+ 
 
 
 #RUN /etc/init.d/postgresql start &&\
