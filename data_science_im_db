@@ -24,10 +24,10 @@ RUN chown -R postgres:postgres /mnt/ssd/postgresql/docker_postgres
 RUN chown -R postgres:postgres /var/run/postgresql
 
 USER postgres
-RUN pg_bin_dir=$(/usr/bin/pg_config --bindir)
-RUN $cmd $pg_bin_dir/pg_ctl initdb -D /mnt/ssd/postgresql/docker_postgres/
+ARG pg_bin_dir=$(/usr/bin/pg_config --bindir)
+RUN $CMD $pg_bin_dir/pg_ctl initdb -D /mnt/ssd/postgresql/docker_postgres/
 
-RUN $cmd $pg_bin_dir/pg_ct -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
+RUN $CMD $pg_bin_dir/pg_ctl -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
 
 RUN /usr/bin/psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';"
 RUN /usr/bin/createdb -p 5444 -O rrsru_admin cper
