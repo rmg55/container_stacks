@@ -14,7 +14,7 @@ RUN apt-get update -y && \
     postgis \
     postgresql-10-ogr-fdw
     
-USER postgres
+
 RUN mkdir /mnt/ssd
 RUN mkdir /mnt/ssd/postgresql
 RUN mkdir /mnt/ssd/postgresql/docker_postgres
