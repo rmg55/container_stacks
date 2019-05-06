@@ -20,7 +20,7 @@ RUN mkdir /mnt/ssd/postgresql
 RUN mkdir /mnt/ssd/postgresql/docker_postgres
 
 USER root
-RUN chown -R postgres:postgres "/mnt/ssd/postgresql/docker_postgres
+RUN chown -R postgres:postgres /mnt/ssd/postgresql/docker_postgres
 RUN chown -R postgres:postgres /var/run/postgresql
 
 USER postgres
