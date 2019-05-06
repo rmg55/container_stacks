@@ -24,7 +24,7 @@ RUN chown -R postgres:postgres /mnt/ssd/postgresql/docker_postgres
 RUN chown -R postgres:postgres /var/run/postgresql
 
 USER postgres
-ARG pg_bin_dir=$(/usr/bin/pg_config --bindir)
+ENV pg_bin_dir=$(/usr/bin/pg_config --bindir)
 RUN $CMD $pg_bin_dir/pg_ctl initdb -D /mnt/ssd/postgresql/docker_postgres/
 
 RUN $CMD $pg_bin_dir/pg_ctl -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
