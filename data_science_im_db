@@ -30,13 +30,15 @@ USER postgres
 RUN pg_bin_dir=$(/usr/bin/pg_config --bindir) && \
     $CMD $pg_bin_dir/pg_ctl initdb -D /mnt/ssd/postgresql/docker_postgres/ && \
     $CMD $pg_bin_dir/pg_ctl -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog && \
-    /usr/bin/psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';"
+    /usr/bin/psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';" && \
+    /usr/bin/createdb -p 5444 -O rrsru_admin cper && \
+    echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
     
 
 #RUN pg_bin_dir=$(/usr/bin/pg_config --bindir) && $CMD $pg_bin_dir/pg_ctl -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
-RUN /usr/bin/createdb -p 5444 -O rrsru_admin cper
+#RUN /usr/bin/createdb -p 5444 -O rrsru_admin cper
 
-RUN echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
+#RUN echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
 
 USER root
 EXPOSE -p 5444
