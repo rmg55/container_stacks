@@ -34,13 +34,13 @@ RUN pg_bin_dir=$(/usr/bin/pg_config --bindir) && \
     
 
 #RUN pg_bin_dir=$(/usr/bin/pg_config --bindir) && $CMD $pg_bin_dir/pg_ctl -o "-p 5444" start -D /mnt/ssd/postgresql/docker_postgres/ -l /mnt/ssd/postgresql/docker_postgres/serverlog
-
-RUN /usr/bin/psql -p 5444 --command "CREATE USER rrsru_admin WITH SUPERUSER PASSWORD 'grass4beef';"
 RUN /usr/bin/createdb -p 5444 -O rrsru_admin cper
 
-
-EXPOSE -p 5444
 RUN echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
+
+USER root
+EXPOSE -p 5444
+
 #CMD ["/usr/lib/postgresql/10/bin/postgres", "-D", "/mnt/ssd/postgresql/docker_postgres/main", "-c", "config_file=/etc/postgresql/10/main/postgresql.conf"]
  
 
@@ -63,6 +63,7 @@ RUN echo "listen_addresses='*'" >> /etc/postgresql/10/main/postgresql.conf
 #VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
 
 ## Set the default command to run when starting the container
-#CMD ["/usr/lib/postgresql/10/bin/postgres", "-D", "/mnt/ssd/postgresql/docker_postgres/main", "-c", "config_file=/etc/postgresql/10/main/postgresql.conf"]
+USER postgres
+CMD ["/usr/lib/postgresql/10/bin/pg_ctl", "-D", "/mnt/ssd/postgresql/docker_postgres", "-l", "/mnt/ssd/postgresql/docker_postgres/serverlog"]
 
 USER $NB_UID
