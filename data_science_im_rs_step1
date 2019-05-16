@@ -94,9 +94,9 @@ RUN conda install -c conda-forge --quiet --yes \
 	'numcodecs' \
 	'xarray' \
 	'h5py>=2.9=mpi*' \
-	'python-graphviz' \conda install -c pyviz pyviz
+	'python-graphviz' \
 	'holoviews' \
-	'bokeh' \
+	'geoviews' \
 	'geopandas' \
 	'simplegeneric' \
 	'rasterio' \
@@ -159,8 +159,8 @@ RUN conda update --all
 #RUN conda config --add channels "conda-forge/label/cf201901"
 #RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
-RUN conda install --quiet --yes -c pyviz pyviz
-#RUN conda install --quiet --yes -c pyviz/label/dev pyviz
+#RUN conda install --quiet --yes -c pyviz pyviz
+RUN conda install -c pyviz/label/dev --quiet --yes pyviz
 RUN pip install --quiet envipyengine pymodis
 
 RUN fix-permissions /home/$NB_USER
