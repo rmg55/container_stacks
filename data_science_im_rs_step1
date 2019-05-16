@@ -120,7 +120,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'python-graphviz' \
 	'nb_conda_kernels'
 
-RUN conda update --all
+# RUN conda update --all
 # R packages
 
 
