@@ -180,5 +180,5 @@ RUN pip install ipyleaflet \
 RUN jupyter labextension install jupyter-leaflet
 
 RUN pip install --quiet earthengine-api
-RUN chmod -R 777 /opt/conda/lib/python3.6/site-packages
+RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 RUN conda init
