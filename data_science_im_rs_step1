@@ -118,7 +118,6 @@ RUN conda install -c conda-forge --quiet --yes \
 	'poppler' \
 	'intake' \
 	'pydap' \
-	'xesmf' \
 	'holoviews' \
 	'geoviews' \
 	'panel' \
