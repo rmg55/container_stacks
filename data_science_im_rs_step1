@@ -76,7 +76,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 RUN conda update conda
 
-RUN conda install --quiet --yes -c pyviz pyviz
+#RUN conda install --quiet --yes -c pyviz pyviz
 #RUN conda install -c pyviz/label/dev --quiet --yes pyviz
 
 RUN conda install -c conda-forge --quiet --yes \
@@ -98,8 +98,6 @@ RUN conda install -c conda-forge --quiet --yes \
 	'xarray' \
 	'h5py>=2.9=mpi*' \
 	'python-graphviz' \
-	'holoviews' \
-	'geoviews' \
 	'geopandas' \
 	'simplegeneric' \
 	'rasterio' \
@@ -120,7 +118,12 @@ RUN conda install -c conda-forge --quiet --yes \
 	'poppler' \
 	'intake' \
 	'pydap' \
-	'python-graphviz' \
+	'xesmf' \
+	'holoviews' \
+	'geoviews' \
+	'panel' \
+	'datashader' \
+	'streamz' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
@@ -180,6 +183,6 @@ RUN pip install ipyleaflet \
 
 RUN jupyter labextension install jupyter-leaflet
 
-RUN pip install --quiet earthengine-api
+#RUN pip install --quiet earthengine-api
 RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 RUN conda init
