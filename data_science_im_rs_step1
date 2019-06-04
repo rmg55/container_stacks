@@ -123,6 +123,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'panel' \
 	'datashader' \
 	'streamz' \
+	'rasterstats' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
