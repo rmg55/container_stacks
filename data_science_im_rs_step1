@@ -124,6 +124,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'datashader' \
 	'streamz' \
 	'rasterstats' \
+	'pyarrow' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
