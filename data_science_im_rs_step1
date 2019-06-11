@@ -125,6 +125,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'streamz' \
 	'rasterstats' \
 	'pyarrow' \
+	's3fs' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
