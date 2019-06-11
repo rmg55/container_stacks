@@ -128,6 +128,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	's3fs' \
 	'gcsfs' \
 	'intake-xarray' \
+	'intake-esm' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
