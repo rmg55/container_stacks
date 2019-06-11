@@ -127,6 +127,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'pyarrow' \
 	's3fs' \
 	'gcsfs' \
+	'intake-xarray' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
