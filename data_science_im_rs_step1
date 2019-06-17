@@ -129,6 +129,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'gcsfs' \
 	'intake-xarray' \
 	'intake-esm' \
+	'streamz' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
