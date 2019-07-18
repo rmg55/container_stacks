@@ -12,7 +12,8 @@ RUN apt-get update -y && \
     postgresql \
     postgresql-contrib \
     postgis \
-    postgresql-10-ogr-fdw
+    postgresql-10-ogr-fdw \
+    libpq-dev
     
 
 RUN mkdir /mnt/ssd
