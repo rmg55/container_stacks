@@ -5,12 +5,13 @@ USER $NB_UID
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 # R packages
-
+conda update -n base conda --yes
 RUN conda create -n R_geo --yes
 RUN conda install -n R_geo -c r r-irkernel
 
-RUN conda config --add channels "conda-forge/label/cf201901"
-RUN conda install -n R_geo -c "conda-forge/label/cf201901" --quiet --yes \
+#RUN conda config --add channels "conda-forge/label/cf201901"
+#RUN conda install -n R_geo -c "conda-forge/label/cf201901" --quiet --yes \
+RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgdal' \
   'r-gdalutils' \
   'r-raster' \
