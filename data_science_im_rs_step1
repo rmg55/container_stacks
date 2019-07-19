@@ -130,6 +130,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'intake-xarray' \
 	'intake-esm' \
 	'streamz' \
+	'hvplot' \
 	'nb_conda_kernels'
 
 # RUN conda update --all
