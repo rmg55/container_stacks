@@ -67,6 +67,6 @@ EXPOSE 5444
 
 ## Set the default command to run when starting the container
 USER postgres
-CMD ["/usr/lib/postgresql/10/bin/pg_ctl", "-D", "/mnt/ssd/postgresql/docker_postgres", "-l", "/mnt/ssd/postgresql/docker_postgres/serverlog"]
+CMD ["/usr/lib/postgresql/10/bin/pg_ctl","start", "-D", "/mnt/ssd/postgresql/docker_postgres", "-l", "/mnt/ssd/postgresql/docker_postgres/serverlog"]
 
 USER $NB_UID
