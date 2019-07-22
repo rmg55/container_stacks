@@ -129,9 +129,17 @@ RUN conda install -c conda-forge --quiet --yes \
 	'gcsfs' \
 	'intake-xarray' \
 	'intake-esm' \
+	'intake-parquet' \
 	'streamz' \
 	'hvplot' \
 	'nb_conda_kernels'
+
+RUN conda install -c intake --quiet --yes \
+	'intake-postgres' \
+	'intake-odbc'
+
+RUN conda install -c informaticslab --quiet --yes \
+	'intake_geopandas'
 
 # RUN conda update --all
 # R packages
