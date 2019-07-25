@@ -130,13 +130,10 @@ RUN conda install -c conda-forge --quiet --yes \
 	'intake-xarray' \
 	'intake-esm' \
 	'intake-parquet' \
+	'intake-sql' \
 	'streamz' \
 	'hvplot' \
 	'nb_conda_kernels'
-
-RUN conda install -c intake --quiet --yes \
-	'intake-sql' \
-	'intake-odbc
 
 RUN conda install -c informaticslab --quiet --yes \
 	'intake_geopandas'
