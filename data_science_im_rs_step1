@@ -134,8 +134,9 @@ RUN conda install -c conda-forge --quiet --yes \
 	'hvplot' \
 	'nb_conda_kernels'
 
-RUN conda install -c intake -f --quiet --yes \
-	'intake-postgres'
+RUN conda install -c intake --quiet --yes \
+	'intake-sql' \
+	'intake-odbc
 
 RUN conda install -c informaticslab --quiet --yes \
 	'intake_geopandas'
