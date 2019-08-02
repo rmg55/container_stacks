@@ -55,6 +55,8 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
 #  conda clean -tipsy && \
 #  fix-permissions $CONDA_DIR
 
+RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
+
 #RUN conda config --add channels "conda-forge/label/cf201901"
 #RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
