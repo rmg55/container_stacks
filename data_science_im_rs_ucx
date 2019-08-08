@@ -7,7 +7,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 USER root
 
 RUN mkdir UCX_install
-RUN cd UCX_intall
+RUN cd UCX_install
 RUN wget https://github.com/openucx/ucx/releases/download/v1.6.0/ucx-1.6.0.tar.gz
 RUN tar xzf ucx-1.6.0.tar.gz
 RUN cd ucx-1.6.0
