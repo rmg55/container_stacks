@@ -11,31 +11,8 @@ RUN chmod -R 777 /usr/share/jupyter/kernels
 RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
 RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 
-#RUN apt-get update -y && \
-#    apt-get upgrade -y && \
-#    apt-get install -y --no-install-recommends libcr0 libcr-dev libmpich12 libmpich-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc openssh-client sshpass graphviz libhdf5-mpi-dev libgdal-dev
-
-
 RUN apt-get update -y && \
     apt-get upgrade -y
-#    apt-get install -y --no-install-recommends libcr0 \
-#    libcr-dev \
-#    graphviz \
-#    libhdf5-mpi-dev \
-#    libmpich12 \
-#    libmpich-dev \
-#    libopenmpi-dev \
-#    openmpi-bin \
-#    openmpi-common \
-#    libgdal-dev \
-#    fonts-dejavu \
-#    tzdata \
-#    unixodbc \
-#    unixodbc-dev \
-#    r-cran-rodbc \
-#    gfortran \
-#    gcc && \
-#    rm -rf /var/lib/apt/lists/*
 
     
 
@@ -64,20 +41,7 @@ USER $NB_UID
 
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
-
-# Install Python 3 packages
-# Remove pyqt and qt pulled in for matplotlib since we're only ever going to
-# use notebook-friendly backends in these images
-
-#RUN conda install -c conda-forge python-graphviz
-
-#RUN conda update -c conda-forge --all
-#RUN conda install -c ehsantn hdf5-parallel
-
 RUN conda update conda
-
-#RUN conda install --quiet --yes -c pyviz pyviz
-#RUN conda install -c pyviz/label/dev --quiet --yes pyviz
 
 RUN conda install -c conda-forge --quiet --yes \
 	'dask' \
@@ -134,57 +98,19 @@ RUN conda install -c conda-forge --quiet --yes \
 	'intake-sql' \
 	'streamz' \
 	'hvplot' \
+	'selenium ' \
 	'nb_conda_kernels'
 
 RUN conda install -c informaticslab --quiet --yes \
 	'intake_geopandas'
 
-# RUN conda update --all
-# R packages
 
-
-#RUN conda create -n R_geo -c conda-forge --quiet --yes \
-#	'r-base' \
-#	'r-rodbc' \
-#	'unixodbc' \
-#	'r-irkernel' \
-#	'r-plyr' \
-#	'r-devtools' \
-#	'r-tidyverse' \
-#	'r-shiny' \
-#	'r-rmarkdown' \
-#	'r-forecast' \
-#	'r-rsqlite' \
-#	'r-reshape2' \
-#	'r-nycflights13' \
-#	'r-caret' \
-#    	'r-rcurl' \
-#    	'r-crayon' \
-#    	'r-randomforest' \
-#	'r-htmltools' \
-#	'r-sparklyr' \
-#	'r-htmlwidgets' \
-#	'r-hexbin' \
-#	'r-maptools' \
-#	'r-sp' \
-#	'r-raster' \
-#	'r-rgeos' \
-#	'r-sf' \
-#	'r-snow' \
-#	'r-gstat' && \
-#	conda clean -tipsy && \
-#	fix-permissions $CONDA_DIR
-
-#RUN conda config --add channels "conda-forge/label/cf201901"
-#RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
 RUN pip install --quiet envipyengine pymodis
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 RUN conda install -c conda-forge ipywidgets
-
-#RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
 
 
 RUN jupyter labextension install dask-labextension
@@ -195,7 +121,7 @@ RUN pip install ipyleaflet \
   && jupyter nbextension enable --py --sys-prefix ipyleaflet
 
 RUN jupyter labextension install jupyter-leaflet
+RUN pip install git+https://github.com/pangeo-data/intake-stac
 
-#RUN pip install --quiet earthengine-api
 RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 RUN conda init
