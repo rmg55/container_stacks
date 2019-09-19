@@ -7,10 +7,8 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 # R packages
 RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
-RUN conda install -n R_geo -c r r-irkernel
+RUN conda install -n R_geo -c r r-irkernel rstudio
 
-#RUN conda config --add channels "conda-forge/label/cf201901"
-#RUN conda install -n R_geo -c "conda-forge/label/cf201901" --quiet --yes \
 RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgdal' \
   'r-gdalutils' \
@@ -23,38 +21,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-irkernel' \
   'r-sp'
 
-#RUN conda install -n R_geo -c conda-forge --quiet --yes \
-#  'r-base' \
-#  'r-rodbc' \
-#  'unixodbc' \
-#  'r-irkernel' \
-#  'r-plyr' \
-#  'r-devtools' \
-#  'r-tidyverse' \
-#  'r-shiny' \
-#  'r-rmarkdown' \
-#  'r-forecast' \
-#  'r-rsqlite' \
-#  'r-reshape2' \
-#  'r-nycflights13' \
-#  'r-caret' \
-#  'r-rcurl' \
-#  'r-crayon' \
-#  'r-randomforest' \
-#  'r-htmltools' \
-#  'r-sparklyr' \
-#  'r-htmlwidgets' \
-#  'r-hexbin' \
-#  'r-maptools' \
-#  'r-sp' \
-#  'r-raster' \
-#  'r-rgeos' \
-#  'r-sf' \
-#  'r-snow' \
-#  'r-gstat' && \
-#  conda clean -tipsy && \
-#  fix-permissions $CONDA_DIR
-
+RUN conda install -c conda-forge jupyter-rsession-proxy
 RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
 
 #RUN conda config --add channels "conda-forge/label/cf201901"
