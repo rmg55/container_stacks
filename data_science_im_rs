@@ -2,7 +2,7 @@ FROM rowangaffney/data_science_im_rs_step1
 
 
 USER root
-RUN RSTUDIO_PKG=$rstudio-server-1.2.5001-amd64.deb && \
+RUN RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
   wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
   dpkg -i ${RSTUDIO_PKG} && \
   rm ${RSTUDIO_PKG} && \
