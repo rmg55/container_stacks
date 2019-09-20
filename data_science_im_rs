@@ -22,11 +22,11 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-sp'
 
 USER root
-RUN ENV RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
-  RUN wget -q http://download2.rstudio.org/${RSTUDIO_PKG} && \
-  RUN dpkg -i ${RSTUDIO_PKG} && \
-  RUN rm ${RSTUDIO_PKG} && \
-  RUN apt-get clean && \
+RUN RSTUDIO_PKG=$rstudio-server-1.2.5001-amd64.deb && \
+  wget -q http://download2.rstudio.org/${RSTUDIO_PKG} && \
+  dpkg -i ${RSTUDIO_PKG} && \
+  rm ${RSTUDIO_PKG} && \
+  apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
