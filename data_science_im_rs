@@ -17,7 +17,7 @@ RUN RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
   rm ${RSTUDIO_PKG} && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
   
 USER $NB_UID
 
