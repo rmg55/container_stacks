@@ -1,8 +1,16 @@
 FROM rowangaffney/data_science_im_rs_step1
 
-USER $NB_UID
 
-LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
+USER root
+RUN RSTUDIO_PKG=$rstudio-server-1.2.5001-amd64.deb && \
+  wget -q http://download2.rstudio.org/${RSTUDIO_PKG} && \
+  dpkg -i ${RSTUDIO_PKG} && \
+  rm ${RSTUDIO_PKG} && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* && \
+  pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+  
+USER $NB_UID
 
 # R packages
 RUN conda update -n base conda --yes
@@ -20,17 +28,6 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgeos' \
   'r-irkernel' \
   'r-sp'
-
-USER root
-RUN RSTUDIO_PKG=$rstudio-server-1.2.5001-amd64.deb && \
-  wget -q http://download2.rstudio.org/${RSTUDIO_PKG} && \
-  dpkg -i ${RSTUDIO_PKG} && \
-  rm ${RSTUDIO_PKG} && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* && \
-  pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
-
-USER $NB_UID
   
 RUN conda install -c conda-forge jupyter-rsession-proxy
 RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
