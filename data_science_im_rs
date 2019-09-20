@@ -38,7 +38,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-irkernel' \
   'r-sp'
   
-RUN conda install -c conda-forge jupyter-rsession-proxy
+#RUN conda install -c conda-forge jupyter-rsession-proxy
 RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
 
 #RUN conda config --add channels "conda-forge/label/cf201901"
