@@ -49,5 +49,9 @@ RUN fix-permissions $CONDA_DIR
 
 RUN conda init bash
 
+ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/opt/conda/lib/R/lib"
+
+
 #RUN conda activate R_geo
 #RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
