@@ -65,7 +65,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'python-graphviz' \
 	'geopandas' \
 	'simplegeneric' \
-	'rasterio' \
+	'rasterio[s3]' \
 	'fiona' \
 	'spectral' \
 	'shapely' \
