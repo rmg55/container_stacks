@@ -1,23 +1,23 @@
 FROM rowangaffney/data_science_im_rs_step1
 
 
-USER root
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-		libapparmor1 \
-		libedit2 \
-		lsb-release \
-		psmisc \
-    libclang-dev \
-		libssl1.0.0
+#USER root
+#RUN apt-get update && \
+#	apt-get install -y --no-install-recommends \
+#		libapparmor1 \
+#		libedit2 \
+#		lsb-release \
+#		psmisc \
+#		libclang-dev \
+#		libssl1.0.0
 
-RUN RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
-  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
-  dpkg -i ${RSTUDIO_PKG} && \
-  rm ${RSTUDIO_PKG} && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* && \
-  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+#RUN RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
+#  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
+#  dpkg -i ${RSTUDIO_PKG} && \
+#  rm ${RSTUDIO_PKG} && \
+#  apt-get clean && \
+#  rm -rf /var/lib/apt/lists/* && \
+#  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
   
 USER $NB_UID
 
@@ -37,6 +37,8 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgeos' \
   'r-irkernel' \
   'r-sp'
+
+RUN conda install -c conda-forge --quiet --yes pyhdf
   
 #RUN conda install -c conda-forge jupyter-rsession-proxy
 #RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
@@ -49,8 +51,8 @@ RUN fix-permissions $CONDA_DIR
 
 RUN conda init bash
 
-ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/opt/conda/lib/R/lib"
+#ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+#ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/opt/conda/lib/R/lib"
 
 
 #RUN conda activate R_geo
