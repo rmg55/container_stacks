@@ -39,7 +39,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-sp'
 
 RUN conda install -c conda-forge --quiet --yes h5netcdf
-RUN --quiet pip install h5pyd
+RUN pip install --quiet h5pyd
   
 #RUN conda install -c conda-forge jupyter-rsession-proxy
 #RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
