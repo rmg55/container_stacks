@@ -6,7 +6,8 @@ RUN conda install -c conda-forge --quiet --yes ucx
 RUN conda install -c tomaugspurger --quiet --yes ucx-py
 
 
-#USER root
+USER root
+RUN sudo apt install -y -libibverbs1
 
 #RUN mkdir UCX_install
 #RUN cd UCX_install
