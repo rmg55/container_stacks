@@ -99,6 +99,9 @@ RUN conda install -c conda-forge --quiet --yes \
 	'streamz' \
 	'hvplot' \
 	'selenium ' \
+	'h5netcdf' \
+	'rioxarray' \
+	'xgeo' \
 	'nb_conda_kernels'
 
 RUN conda install -c informaticslab --quiet --yes \
