@@ -102,6 +102,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'h5netcdf' \
 	'rioxarray' \
 	'xgeo' \
+	'xrviz' \
 	'nb_conda_kernels'
 
 RUN conda install -c informaticslab --quiet --yes \
