@@ -106,6 +106,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'pysal' \
 	'pyhdf' \
 	'rioxarray' \
+	'intake-stac' \
 	'nb_conda_kernels'
 
 #RUN conda install -c informaticslab --quiet --yes \
@@ -117,7 +118,7 @@ RUN pip install --quiet envipyengine pymodis
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
-RUN conda install -c conda-forge ipywidgets
+#RUN conda install -c conda-forge ipywidgets
 
 
 RUN jupyter labextension install dask-labextension
@@ -128,7 +129,7 @@ RUN pip install ipyleaflet \
   && jupyter nbextension enable --py --sys-prefix ipyleaflet
 
 RUN jupyter labextension install jupyter-leaflet
-RUN pip install git+https://github.com/pangeo-data/intake-stac
+#RUN pip install git+https://github.com/pangeo-data/intake-stac
 
 RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
 RUN conda init
