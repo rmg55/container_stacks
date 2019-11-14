@@ -36,7 +36,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-maptools' \
   'r-rgeos' \
   'r-irkernel' \
-  'jupyter-rsession-proxy'
+  'jupyter-rsession-proxy' \
   'r-sp'
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
