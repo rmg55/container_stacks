@@ -22,7 +22,7 @@ FROM rowangaffney/data_science_im_rs_step1
 USER $NB_UID
 
 # R packages
-RUN conda update -n base conda --yes
+# RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
 RUN conda install -n R_geo -c r r-irkernel rstudio
 
@@ -38,6 +38,8 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-irkernel' \
   'jupyter-rsession-proxy' \
   'r-sp'
+
+RUN jupyter-labextention install jupyterlab_toastify jupyterlab_conda jupyterlab-slurm jupyterlab/server-proxy
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
 #RUN pip install --quiet h5pyd
