@@ -24,7 +24,7 @@ USER $NB_UID
 # R packages
 RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
-RUN conda install -n R_geo -c r r-irkernel
+RUN conda install -n R_geo -c r r-irkernel rstudio
 
 RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgdal' \
@@ -36,6 +36,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-maptools' \
   'r-rgeos' \
   'r-irkernel' \
+  'jupyter-rsession-proxy'
   'r-sp'
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
