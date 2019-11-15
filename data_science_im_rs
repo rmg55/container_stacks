@@ -39,7 +39,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'jupyter-rsession-proxy' \
   'r-sp'
 
-RUN jupyter-labextention install jupyterlab_toastify jupyterlab_conda jupyterlab-slurm jupyterlab/server-proxy
+RUN jupyter labextention install jupyterlab_toastify jupyterlab_conda jupyterlab-slurm jupyterlab/server-proxy
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
 #RUN pip install --quiet h5pyd
