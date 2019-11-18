@@ -1,7 +1,7 @@
 FROM rowangaffney/data_science_im_rs_step1
 
 
-#USER root
+USER root
 #RUN apt-get update && \
 #	apt-get install -y --no-install-recommends \
 #		libapparmor1 \
@@ -11,7 +11,8 @@ FROM rowangaffney/data_science_im_rs_step1
 #		libclang-dev \
 #		libssl1.0.0
 
-RUN RSTUDIO_PKG=rstudio-server-1.2.5001-amd64.deb && \
+RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
+  wget -q http://download2.rstudio.org/$
   wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
   dpkg -i ${RSTUDIO_PKG} && \
   rm ${RSTUDIO_PKG} && \
