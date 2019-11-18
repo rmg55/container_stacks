@@ -52,7 +52,7 @@ RUN systemctl disable rstudio-server.service && \
 
 RUN git clone https://github.com/grst/rstudio-server-conda.git
 
-conda activate R_geo && ./start_rstudio_server.sh 6060
+RUN conda activate R_geo && ./start_rstudio_server.sh 6060
 
 USER $NB_UID
 
