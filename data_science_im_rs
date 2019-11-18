@@ -24,7 +24,7 @@ USER $NB_UID
 # R packages
 # RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
-RUN conda install -n R_geo -c r r-irkernel
+RUN conda install -n R_geo -c r r-irkernel r-studio
 
 RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgdal' \
@@ -39,8 +39,22 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'jupyter-rsession-proxy' \
   'r-sp'
 
+
+
+
 #RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
+
+# FROM https://github.com/grst/rstudio-server-conda
+USER root
+RUN systemctl disable rstudio-server.service && \
+  systemctl stop rstudio-server.service
+
+RUN git clone https://github.com/grst/rstudio-server-conda.git
+
+conda activate R_geo && ./start_rstudio_server.sh 6060
+
+USER $NB_UID
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
 #RUN pip install --quiet h5pyd
