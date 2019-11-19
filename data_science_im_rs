@@ -42,7 +42,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
 
 
 
-#RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
+RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 
 # FROM https://github.com/grst/rstudio-server-conda
