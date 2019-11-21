@@ -53,7 +53,7 @@ USER root
 
 RUN git clone https://github.com/grst/rstudio-server-conda.git
 
-RUN conda activate R_geo && ./start_rstudio_server.sh 6060
+RUN conda run -n R_geo ./start_rstudio_server.sh 6060
 
 USER $NB_UID
 
