@@ -1,23 +1,23 @@
 FROM rowangaffney/data_science_im_rs_step1
 
 
-USER root
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends \
-		libapparmor1 \
-		libedit2 \
-		lsb-release \
-		psmisc \
-		libclang-dev \
-		systemd \
-		libssl1.0.0
+#USER root
+#RUN apt-get update && \
+#	apt-get install -y --no-install-recommends \
+#		libapparmor1 \
+#		libedit2 \
+#		lsb-release \
+#		psmisc \
+#		libclang-dev \
+#		systemd \
+#		libssl1.0.0
 
-RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
-  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
-  dpkg -i ${RSTUDIO_PKG} && \
-  rm ${RSTUDIO_PKG} && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+#RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
+#  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
+#  dpkg -i ${RSTUDIO_PKG} && \
+#  rm ${RSTUDIO_PKG} && \
+#  apt-get clean && \
+#  rm -rf /var/lib/apt/lists/*
 #  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
   
 USER $NB_UID
@@ -40,20 +40,22 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'jupyter-rsession-proxy' \
   'r-sp'
 
+conda install -c conda-forge aiohttp
 
 
 
-RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
-RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 
-# FROM https://github.com/grst/rstudio-server-conda
-USER root
+#RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
+#RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
+
+## FROM https://github.com/grst/rstudio-server-conda
+# USER root
 #RUN systemctl disable rstudio-server.service && \
 #  systemctl stop rstudio-server.service
 
-RUN git clone https://github.com/grst/rstudio-server-conda.git
+# RUN git clone https://github.com/grst/rstudio-server-conda.git
 
-RUN conda run -n R_geo ./start_rstudio_server.sh 6060
+# RUN conda run -n R_geo ./start_rstudio_server.sh 6060
 
 USER $NB_UID
 
