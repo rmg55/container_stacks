@@ -38,6 +38,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgeos' \
   'r-irkernel' \
   'jupyter-rsession-proxy' \
+  'r-reticulate' \
   'r-sp'
 
 
