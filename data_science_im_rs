@@ -40,8 +40,6 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'jupyter-rsession-proxy' \
   'r-sp'
 
-RUN conda install -c conda-forge aiohttp
-
 
 
 
