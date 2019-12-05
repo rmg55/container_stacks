@@ -77,7 +77,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'PyDrive' \
 	'dask-jobqueue' \
 	'xgboost' \
-	'earthengine-api' \
+	'earthengine-api=0.1.205' \
 	'r' \
 	'rpy2' \
 	'poppler' \
@@ -115,7 +115,7 @@ RUN conda install -c conda-forge --quiet --yes \
 
 
 
-RUN pip install --quiet envipyengine pymodis
+#RUN pip install --quiet envipyengine pymodis
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
@@ -123,7 +123,7 @@ RUN fix-permissions $CONDA_DIR
 
 
 RUN jupyter labextension install dask-labextension
-RUN jupyter labextension install jupyterlab-server-proxy
+#RUN jupyter labextension install jupyterlab-server-proxy
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
 
