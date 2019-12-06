@@ -1,24 +1,24 @@
 FROM rowangaffney/data_science_im_rs_step1
 
 
-#USER root
-#RUN apt-get update && \
-#	apt-get install -y --no-install-recommends \
-#		libapparmor1 \
-#		libedit2 \
-#		lsb-release \
-#		psmisc \
-#		libclang-dev \
-#		systemd \
-#		libssl1.0.0
+USER root
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		libapparmor1 \
+		libedit2 \
+		lsb-release \
+		psmisc \
+		libclang-dev \
+		systemd \
+		libssl1.0.0
 
-#RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
-#  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
-#  dpkg -i ${RSTUDIO_PKG} && \
-#  rm ${RSTUDIO_PKG} && \
-#  apt-get clean && \
-#  rm -rf /var/lib/apt/lists/*
-#  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
+  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
+  dpkg -i ${RSTUDIO_PKG} && \
+  rm ${RSTUDIO_PKG} && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/*
+  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
   
 USER $NB_UID
 
@@ -70,10 +70,12 @@ USER $NB_UID
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
-RUN conda init bash
+RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
 
-#ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-#ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu:/opt/conda/lib/R/lib"
+#RUN conda init bash
+
+ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
 
 
 #RUN conda activate R_geo
