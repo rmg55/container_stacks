@@ -18,7 +18,7 @@ RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
   rm ${RSTUDIO_PKG} && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
-  /opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+#/opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
   
 USER $NB_UID
 
@@ -42,7 +42,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
 
 #  'jupyter-rsession-proxy' \
 
-
+RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
 #RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 #RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
@@ -70,7 +70,10 @@ USER $NB_UID
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
-RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+  echo "conda activate base" >> ~/.bashrc
+
+#RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
 
 #RUN conda init bash
 
