@@ -108,6 +108,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'rioxarray' \
 	'intake-stac' \
 	'jupyter-server-proxy' \
+	'threddsclient' \
 	'nb_conda_kernels'
 
 #RUN conda install -c informaticslab --quiet --yes \
