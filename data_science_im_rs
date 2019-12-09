@@ -20,8 +20,6 @@ RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 #/opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
-  
-RUN ln -s /bin/tar /bin/gtar
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
