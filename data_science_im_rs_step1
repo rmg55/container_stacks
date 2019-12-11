@@ -109,8 +109,9 @@ RUN conda install -c conda-forge --quiet --yes \
 	'intake-stac' \
 	'jupyter-server-proxy' \
 	'threddsclient' \
-	'pip install git+git://github.com/intake/gdrivefs@master' \
 	'nb_conda_kernels'
+	
+RUN pip install git+https://github.com/intake/gdrivefs'
 
 #RUN conda install -c informaticslab --quiet --yes \
 #	'intake_geopandas'
