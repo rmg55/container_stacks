@@ -50,7 +50,9 @@ RUN conda run -n R_geo pip install git+https://github.com/jupyterhub/jupyter-rse
 
 #  'jupyter-rsession-proxy' \
 
-RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+#RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+RUN pip3 install jupyter-rsession-proxy \
+  && jupyter labextension install jupyterlab-server-proxy
 
 #RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
 #RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
@@ -78,8 +80,8 @@ USER $NB_UID
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
-RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-  echo "conda activate base" >> ~/.bashrc
+#RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+#  echo "conda activate base" >> ~/.bashrc
 
 #RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
 
@@ -92,8 +94,8 @@ ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/
 #RUN conda activate R_geo
 #RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
 
-USER root
-RUN rstudio-server verify-installation
-RUN rstudio-server restart
+#USER root
+#RUN rstudio-server verify-installation
+#RUN rstudio-server restart
 
 USER $NB_UID
