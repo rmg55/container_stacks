@@ -51,7 +51,7 @@ RUN conda run -n R_geo pip install git+https://github.com/jupyterhub/jupyter-rse
 #  'jupyter-rsession-proxy' \
 
 #RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
-RUN pip3 install jupyter-rsession-proxy \
+RUN pip install jupyter-rsession-proxy \
   && jupyter labextension install jupyterlab-server-proxy
 
 #RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
