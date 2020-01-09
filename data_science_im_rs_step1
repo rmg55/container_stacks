@@ -109,6 +109,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'intake-stac' \
 	'jupyter-server-proxy' \
 	'threddsclient' \
+	'jupyter-archive' \
 	'nb_conda_kernels'
 	
 RUN pip install git+https://github.com/intake/gdrivefs
@@ -126,6 +127,7 @@ RUN fix-permissions $CONDA_DIR
 
 
 RUN jupyter labextension install dask-labextension
+RUN jupyter labextension install jupyter-archive
 #RUN jupyter labextension install jupyterlab-server-proxy
 RUN jupyter labextension install @pyviz/jupyterlab_pyviz
 RUN jupyter labextension update --all
