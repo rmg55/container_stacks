@@ -51,7 +51,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'bokeh' \
 	'conda' \
 	'mpi4py' \
-	'gdal' \
+	'gdal=3.*' \
 	'git' \
 	'pip' \
 	'ncurses' \
