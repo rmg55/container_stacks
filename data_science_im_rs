@@ -45,9 +45,12 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-irkernel' \
   'r-reticulate' \
   'r-sp'
-  
+
+USER root
 RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
+
+USER $NB_UID
 
 #  'jupyter-rsession-proxy' \
 
