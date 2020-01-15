@@ -51,7 +51,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'bokeh' \
 	'conda' \
 	'mpi4py' \
-	'gdal=3.*' \
+	'gdal' \
 	'git' \
 	'pip' \
 	'ncurses' \
@@ -77,7 +77,7 @@ RUN conda install -c conda-forge --quiet --yes \
 	'PyDrive' \
 	'dask-jobqueue' \
 	'xgboost' \
-	'earthengine-api=0.1.205' \
+	'earthengine-api' \
 	'r' \
 	'rpy2' \
 	'poppler' \
