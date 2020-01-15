@@ -100,3 +100,5 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/R/lib:/lib:/usr/lib/x86_64-linu
 #RUN rstudio-server restart
 
 USER $NB_UID
+RUN conda init bash
+RUN source ~/.bashrc
