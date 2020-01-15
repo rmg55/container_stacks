@@ -46,7 +46,8 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-reticulate' \
   'r-sp'
   
-RUN conda run -n R_geo pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
 #  'jupyter-rsession-proxy' \
 
@@ -87,8 +88,8 @@ RUN fix-permissions $CONDA_DIR
 
 #RUN conda init bash
 
-#ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-#ENV LD_LIBRARY_PATH="/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
+ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
 
 
 #RUN conda activate R_geo
