@@ -31,9 +31,10 @@ USER $NB_UID
 # R packages
 # RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
-RUN conda install -n R_geo -c r r-irkernel rstudio
+#RUN conda install -n R_geo -c r r-irkernel rstudio
 
 RUN conda install -n R_geo -c conda-forge --quiet --yes \
+  'r-irkernel' \
   'r-rgdal' \
   'r-gdalutils' \
   'r-raster' \
