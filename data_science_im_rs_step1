@@ -46,6 +46,7 @@ RUN conda update conda
 RUN conda install -c conda-forge --quiet --yes \
 	'dask' \
 	'openmpi'\
+	'openmpi-mpicxx' \
 	'dask-ml' \
 	'dask-xgboost' \
 	'bokeh' \
