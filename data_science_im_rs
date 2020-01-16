@@ -46,7 +46,8 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-reticulate' \
   'r-sp'
 
-
+RUN jupyter labextension install @jupyterlab/server-proxy
+RUN conda install -c conda-forge jupyter-server-proxy
 RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
 USER root
