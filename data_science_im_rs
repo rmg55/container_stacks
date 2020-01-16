@@ -46,11 +46,14 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-reticulate' \
   'r-sp'
 
-USER root
-RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
-RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
+RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+
+USER root
+RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 USER $NB_UID
+
+RUN service rstudio-server restart
 
 #  'jupyter-rsession-proxy' \
 
@@ -70,7 +73,7 @@ USER $NB_UID
 
 # RUN conda run -n R_geo ./start_rstudio_server.sh 6060
 
-USER $NB_UID
+#USER $NB_UID
 
 #RUN conda install -c conda-forge --quiet --yes h5netcdf
 #RUN pip install --quiet h5pyd
@@ -104,4 +107,5 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/R/lib:/lib:/usr/lib/x86_64-linu
 
 USER $NB_UID
 RUN conda init bash
-RUN source ~/.bashrc
+RUN exec bash
+#RUN source ~/.bashrc
