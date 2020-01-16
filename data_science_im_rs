@@ -51,9 +51,8 @@ RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-pro
 
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
-USER $NB_UID
-
 RUN service rstudio-server restart
+USER $NB_UID
 
 #  'jupyter-rsession-proxy' \
 
