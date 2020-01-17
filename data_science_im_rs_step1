@@ -41,16 +41,21 @@ USER $NB_UID
 
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
-RUN conda update conda
+RUN conda create -n geo --yes
 
 RUN conda install -c conda-forge --quiet --yes \
+	'jupyter-server-proxy' \
+	'jupyter-archive' \
+	'nb_conda_kernels'
+	
+
+RUN conda install -n geo -c conda-forge --quiet --yes \
 	'dask' \
 	'openmpi'\
 	'openmpi-mpicxx' \
 	'dask-ml' \
 	'dask-xgboost' \
 	'bokeh' \
-	'conda' \
 	'mpi4py' \
 	'gdal' \
 	'git' \
@@ -108,12 +113,10 @@ RUN conda install -c conda-forge --quiet --yes \
 	'pyhdf' \
 	'rioxarray' \
 	'intake-stac' \
-	'jupyter-server-proxy' \
-	'threddsclient' \
-	'jupyter-archive' \
-	'nb_conda_kernels'
+	'threddsclient'
+
 	
-RUN pip install git+https://github.com/intake/gdrivefs
+#RUN pip install git+https://github.com/intake/gdrivefs
 
 #RUN conda install -c informaticslab --quiet --yes \
 #	'intake_geopandas'
