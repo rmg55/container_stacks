@@ -11,6 +11,7 @@ RUN apt-get update && \
 		r-cran-rodbc \
 		libclang-dev \
 		systemd \
+		uuid \
 		libssl1.0.0
 
 RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
@@ -51,10 +52,18 @@ RUN jupyter labextension install @jupyterlab/server-proxy
 RUN conda install -c conda-forge jupyter-server-proxy
 RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
+ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
+
 USER root
-RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
-RUN echo 'rsession-ld-library-path='$LD_LIBRARY_PATH >> /etc/rstudio/rserver.conf
-RUN service rstudio-server restart
+#RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
+#RUN echo 'rsession-ld-library-path='$LD_LIBRARY_PATH >> /etc/rstudio/rserver.conf
+
+RUN service rstudio-server stop
+RUN git clone https://github.com/grst/rstudio-server-conda.git && \
+	conda run -n R_geo ./rstudio-server-conda/start_rstudio_server.sh 8788
+	
+
 USER $NB_UID
 
 #  'jupyter-rsession-proxy' \
@@ -96,8 +105,7 @@ RUN fix-permissions $CONDA_DIR
 
 #RUN conda init bash
 
-ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/lib/R/lib:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
+
 
 
 #RUN conda activate R_geo
