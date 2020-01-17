@@ -53,6 +53,7 @@ RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-pro
 
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
+RUN echo 'rsession-ld-library-path='$LD_LIBRARY_PATH >> /etc/rstudio/rserver.conf
 RUN service rstudio-server restart
 USER $NB_UID
 
