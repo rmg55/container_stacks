@@ -52,7 +52,6 @@ RUN conda install -c conda-forge --quiet --yes \
 RUN conda install -n geo -c conda-forge --quiet --yes \
 	'dask' \
 	'openmpi'\
-	'openmpi-mpicxx' \
 	'dask-ml' \
 	'dask-xgboost' \
 	'bokeh' \
@@ -67,7 +66,7 @@ RUN conda install -n geo -c conda-forge --quiet --yes \
 	'zarr' \
 	'numcodecs' \
 	'xarray' \
-	'h5py>=2.9=mpi*' \
+	'h5py' \
 	'python-graphviz' \
 	'geopandas' \
 	'simplegeneric' \
