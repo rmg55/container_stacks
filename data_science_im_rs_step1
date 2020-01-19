@@ -40,7 +40,7 @@ RUN useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin mun
 USER $NB_UID
 
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
-
+RUN conda config --set channel_priority strict
 RUN conda create -n geo --yes
 
 RUN conda install -c conda-forge --quiet --yes \
