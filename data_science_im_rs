@@ -46,6 +46,7 @@ RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-rgeos' \
   'r-irkernel' \
   'r-reticulate' \
+  'r-shiny' \
   'r-sp'
 
 RUN jupyter labextension install @jupyterlab/server-proxy
