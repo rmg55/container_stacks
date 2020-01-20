@@ -1,5 +1,6 @@
 FROM rowangaffney/data_science_im_rs_step1
 
+SHELL ["/bin/bash", "-c"]
 
 USER root
 RUN apt-get update && \
@@ -65,7 +66,7 @@ RUN service rstudio-server restart
 #RUN conda run -n R_geo rserver --www-port=8895 &
 
 USER $NB_UID
-RUN . ~/.bashrc && conda activate R_geo && rserver --www-port 8221 &
+RUN conda activate R_geo && rserver --www-port 8221 &
 
 #  'jupyter-rsession-proxy' \
 
