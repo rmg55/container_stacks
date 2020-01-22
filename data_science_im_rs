@@ -57,19 +57,19 @@ RUN jupyter labextension install @jupyterlab/server-proxy
 RUN conda install -c conda-forge jupyter-server-proxy
 RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
-ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
+ENV PATH="/opt/conda/envs/R_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
 
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
-RUN service rstudio-server stop
+###RUN service rstudio-server stop
 #RUN git clone https://github.com/grst/rstudio-server-conda.git
 #RUN conda run -n R_geo rserver --www-port=8895 &
 
-RUN git clone https://github.com/grst/rstudio-server-conda.git
+###RUN git clone https://github.com/grst/rstudio-server-conda.git
 
-RUN exec bash && conda activate R_geo && ./start_rstudio_server.sh 8786
+###RUN exec bash && conda activate R_geo && ./start_rstudio_server.sh 8786
 
 USER $NB_UID
 # #RUN rserver --www-port=8221 --rsession-which-r=/opt/conda/envs/R_geo/bin/R &
