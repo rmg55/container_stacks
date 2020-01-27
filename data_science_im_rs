@@ -1,9 +1,7 @@
 FROM rowangaffney/data_science_im_rs_step1
-
 SHELL ["/bin/bash", "-c"]
 
 USER root
-
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && \
@@ -24,19 +22,13 @@ RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
   rm ${RSTUDIO_PKG} && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
-#/opt/conda/bin/python -m pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-    
-
 
 USER $NB_UID
 
-# R packages
-# RUN conda update -n base conda --yes
 RUN conda create -n R_geo --yes
-#RUN conda install -n R_geo -c r r-irkernel rstudio
 
 RUN conda install -n R_geo -c conda-forge --quiet --yes \
   'r-irkernel' \
@@ -63,67 +55,11 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
-###RUN service rstudio-server stop
-#RUN git clone https://github.com/grst/rstudio-server-conda.git
-#RUN conda run -n R_geo rserver --www-port=8895 &
-
-###RUN git clone https://github.com/grst/rstudio-server-conda.git
-
-###RUN exec bash && conda activate R_geo && ./start_rstudio_server.sh 8786
-
 USER $NB_UID
-# #RUN rserver --www-port=8221 --rsession-which-r=/opt/conda/envs/R_geo/bin/R &
-
-#  'jupyter-rsession-proxy' \
-
-#RUN pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
-#RUN pip install jupyter-rsession-proxy \
-#  && jupyter labextension install jupyterlab-server-proxy
-
-#RUN jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
-#RUN conda run -n R_geo jupyter labextension install jupyterlab_toastify @jupyterlab/server-proxy
-
-## FROM https://github.com/grst/rstudio-server-conda
-# USER root
-#RUN systemctl disable rstudio-server.service && \
-#  systemctl stop rstudio-server.service
-
-# RUN git clone https://github.com/grst/rstudio-server-conda.git
-
-# RUN conda run -n R_geo ./start_rstudio_server.sh 6060
-
-#USER $NB_UID
-
-#RUN conda install -c conda-forge --quiet --yes h5netcdf
-#RUN pip install --quiet h5pyd
-  
-#RUN conda install -c conda-forge jupyter-rsession-proxy
-#RUN jupyter labextension install @oriolmirosa/jupyterlab_materialdarker
-
-#RUN conda config --add channels "conda-forge/label/cf201901"
-#RUN conda install -n R_geo -c "conda-forge/label/cf201901" r-rgdal r-gdalutils
 
 RUN fix-permissions /home/$NB_USER
 RUN fix-permissions $CONDA_DIR
 
-#RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-#  echo "conda activate base" >> ~/.bashrc
-
-#RUN echo "source /opt/conda/etc/profile.d/conda.sh" >> $SINGULARITY_ENVIRONMENT
-
-#RUN conda init bash
-
-
-
-
-#RUN conda activate R_geo
-#RUN Rscript -e "install.packages('neonUtilities',repos = 'http://cran.us.r-project.org')"
-
-#USER root
-#RUN rstudio-server verify-installation
-#RUN rstudio-server restart
-
 USER $NB_UID
 RUN conda init bash
 RUN exec bash
-#RUN source ~/.bashrc
