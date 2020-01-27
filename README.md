@@ -51,7 +51,7 @@ The docker files in this repository are designed to run on the USDA ARS Ceres HP
     ```shell
     singularity pull docker://rowangaffney/data_science_im_rs_ucx
 
-## Agent Based Modelling: Netlogo
+## Agent Based Modeling: Netlogo
 
 1. **netlogo_im**
     - Includes the [Netlogo Agent Based Model](https://ccl.northwestern.edu/netlogo/)
