@@ -1,4 +1,4 @@
-The docker files in this repository include:
+The docker files in this repository are designed to run on the USDA ARS Ceres HPC system. Ceres uses Slurm for resource allocation.
 
 ## Remote Sensing
 
@@ -21,7 +21,28 @@ The docker files in this repository include:
     singularity pull docker://rowangaffney/data_science_im_rs_screenshot.png
     
   <img src="/readme_images/data_science_im_rs_screenshot.png" width="600">
-    
+  
+  To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) to interface with the Slurm):
+  ```bash
+  singularity exec --bind /etc/munge \
+                   --bind /var/log/munge \
+                   --bind /var/run/munge \
+                   --bind /usr/bin/squeue \
+                   --bind /usr/bin/scancel \
+                   --bind /usr/bin/sbatch \
+                   --bind /usr/bin/scontrol \
+                   --bind /scinet01/gov/usda/ars/scinet/system/slurm:/etc/slurm \
+                   --bind /run/munge \
+                   --bind /usr/lib64 \
+                   --bind /scinet01 \
+                   --bind $HOME \
+                   -H $HOME:/home/jovyan \
+                   ~/data_science_im_rs_latest.sif /bin/bash -c 'source activate R_geo && \
+                                                                 unset XDG_RUNTIME_DIR && \
+                                                                 start.sh jupyter lab --notebook-dir=$serv_fold \
+                                                                                      --no-browser --ip=$(hostname -i) \
+                                                                                      --port=$o_port'
+```    
 3. **data_science_im_rs_ucx**
     - EXPERIMENTAL - NOT CURRENTLY WORKING
     - Built from data_science_im_rs image but includes the ucx and ucx-py bindings
