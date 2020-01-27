@@ -20,7 +20,7 @@ The docker files in this repository include:
     ```shell
     singularity pull docker://rowangaffney/data_science_im_rs_screenshot.png
     
-  <img src="/readme_images/data_science_im_rs.png" width="600">
+  <img src="/readme_images/data_science_im_rs_screenshot.png" width="600">
     
 3. **data_science_im_rs_ucx**
     - EXPERIMENTAL - NOT CURRENTLY WORKING
