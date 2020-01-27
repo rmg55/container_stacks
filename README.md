@@ -1,4 +1,4 @@
-# Containers for: Remote Sensing
+# Remote Sensing Containers
 
 The docker files in this repo include:
 
