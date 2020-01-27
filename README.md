@@ -13,6 +13,7 @@ The docker files in this repository are designed to run on the USDA ARS Ceres HP
     ```
 2. **data_science_im_rs**
     - Includes the R environment (R_geo) that contains geospatial packages
+    - Includes a conda environment (geo) that contains python geospatial packages
     - Built with a proxy to RStudio (you can launch RStudio from the launcher tab). The Shiny proxy/extension is not functional.
     - Built from data_science_im_rs_step1
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
