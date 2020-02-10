@@ -10,8 +10,6 @@ RUN chmod -R 777 /home/jovyan && \
     chmod -R 777 /usr/share/jupyter/kernels && \
     chmod -R 777 /usr/share/jupyter/kernels/IDL && \
     chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
-    apt-get update -y && \
-    apt-get upgrade -y && \
     ln -s /bin/tar /bin/gtar && \
     groupadd -g 1000 slurm && \
     useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm && \
