@@ -14,40 +14,42 @@ RUN apt-get update && \
 		libclang-dev \
 		systemd \
 		uuid \
-		libssl1.0.0
-
-RUN RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
-  wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
-  dpkg -i ${RSTUDIO_PKG} && \
-  rm ${RSTUDIO_PKG} && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
-
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+		libssl1.0.0 && \
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/* && \
+	RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
+  		wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
+  		dpkg -i ${RSTUDIO_PKG} && \
+  		rm ${RSTUDIO_PKG} && \
+  	apt-get clean && \
+  	rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
-
-RUN conda create -n R_geo --yes
-
-RUN conda install -n R_geo -c conda-forge --quiet --yes \
-  'r-irkernel' \
-  'r-rgdal' \
-  'r-gdalutils' \
-  'r-raster' \
-  'r-snow' \
-  'r-sf' \
-  'r-gstat' \
-  'r-maptools' \
-  'r-rgeos' \
-  'r-irkernel' \
-  'r-reticulate' \
-  'r-shiny' \
-  'r-sp'
-
-RUN jupyter labextension install @jupyterlab/server-proxy
-RUN conda install -c conda-forge jupyter-server-proxy
-RUN conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy
+RUN conda create -n R_geo --yes && \ 
+	conda install -n R_geo -c conda-forge --quiet --yes \
+  		'r-irkernel' \
+  		'r-rgdal' \
+  		'r-gdalutils' \
+		'r-raster' \
+		'r-snow' \
+  		'r-sf' \
+  		'r-gstat' \
+  		'r-maptools' \
+  		'r-rgeos' \
+  		'r-irkernel' \
+  		'r-reticulate' \
+  		'r-shiny' \
+  		'r-sp' && \
+  	jupyter labextension install @jupyterlab/server-proxy && \
+  	conda install -c conda-forge jupyter-server-proxy && \
+  	conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy && \
+  	conda clean --all -f -y && \
+  	npm cache clean --force && \
+  	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+  	rm -rf /home/$NB_USER/.cache/yarn && \
+  	rm -rf /home/$NB_USER/.node-gyp && \
+  	fix-permissions $CONDA_DIR && \
+  	fix-permissions /home/$NB_USER
 
 ENV PATH="/opt/conda/envs/R_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
@@ -56,10 +58,4 @@ USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
 USER $NB_UID
-
-RUN fix-permissions /home/$NB_USER
-RUN fix-permissions $CONDA_DIR
-
-USER $NB_UID
-RUN conda init bash
-RUN exec bash
+RUN conda init bash && exec bash
