@@ -20,7 +20,7 @@ The docker files in this repository are designed to run on the USDA ARS Ceres HP
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
     - To build with singularity:
     ```shell
-    singularity pull docker://rowangaffney/data_science_im_rs_screenshot.png
+    singularity pull docker://rowangaffney/data_science_im_rs
     
   <img src="/readme_images/data_science_im_rs_screenshot.png" width="600">
   
