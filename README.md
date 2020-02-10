@@ -24,7 +24,7 @@ The docker files in this repository are designed to run on the USDA ARS Ceres HP
     
   <img src="/readme_images/data_science_im_rs_screenshot.png" width="600">
   
-  To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) to interface with the Slurm:
+  To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) to interface with the Slurm. Note this assumes that *o_port* and *serv_fold* environmental variables are defined.
   ```bash
   singularity exec --bind /etc/munge \
                    --bind /var/log/munge \
