@@ -84,6 +84,7 @@ RUN conda config --set channel_priority strict && \
 	'rioxarray' \
 	'intake-stac' \
 	'threddsclient' && \
+    conda clean --all -f -y && \
     fix-permissions /home/$NB_USER && \
     fix-permissions $CONDA_DIR
 
