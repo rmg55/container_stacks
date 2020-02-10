@@ -39,8 +39,7 @@ The docker files in this repository are designed to run on the USDA ARS Ceres HP
                    --bind /scinet01 \
                    --bind $HOME \
                    -H $HOME:/home/jovyan \
-                   ~/data_science_im_rs_latest.sif /bin/bash -c 'source activate R_geo && \
-                                                                 unset XDG_RUNTIME_DIR && \
+                   ~/data_science_im_rs_latest.sif /bin/bash -c 'unset XDG_RUNTIME_DIR && \
                                                                  start.sh jupyter lab --notebook-dir=$serv_fold \
                                                                                       --no-browser --ip=$(hostname -i) \
                                                                                       --port=$o_port'
