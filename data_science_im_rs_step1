@@ -1,42 +1,28 @@
 FROM jupyter/scipy-notebook
+LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
 
 USER root
-
-RUN chmod -R 777 /home/jovyan
-RUN mkdir /usr/share/jupyter
-RUN mkdir /usr/share/jupyter/kernels
-RUN mkdir /usr/share/jupyter/kernels/IDL
-RUN chmod -R 777 /usr/share/jupyter
-RUN chmod -R 777 /usr/share/jupyter/kernels
-RUN chmod -R 777 /usr/share/jupyter/kernels/IDL
-RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
-
-RUN apt-get update -y && \
-    apt-get upgrade -y
-
-# Fix for devtools https://github.com/conda-forge/r-devtools-feedstock/issues/4
-RUN ln -s /bin/tar /bin/gtar
-
-RUN export TMPDIR=/local/scratch/$USER
-
-RUN groupadd -g 1000 slurm
-RUN useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm
-RUN groupadd -g 398 munge
-RUN useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge
+RUN chmod -R 777 /home/jovyan && \
+    mkdir /usr/share/jupyter && \
+    mkdir /usr/share/jupyter/kernels && \
+    mkdir /usr/share/jupyter/kernels/IDL && \
+    chmod -R 777 /usr/share/jupyter && \
+    chmod -R 777 /usr/share/jupyter/kernels && \
+    chmod -R 777 /usr/share/jupyter/kernels/IDL && \
+    chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
+    apt-get update -y && \
+    apt-get upgrade -y && \
+    ln -s /bin/tar /bin/gtar && \
+    groupadd -g 1000 slurm && \
+    useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm && \
+    groupadd -g 398 munge && \
+    useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge
 
 USER $NB_UID
-
-LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
-RUN conda config --set channel_priority strict
-RUN conda create -n geo --yes
-
-RUN conda install -c conda-forge --quiet --yes \
-	'jupyter-server-proxy' \
-	'jupyter-archive' \
-	'nb_conda_kernels'
-	
-
-RUN conda install -n geo -c conda-forge --quiet --yes \
+RUN conda config --set channel_priority strict && \
+    conda install -c conda-forge --quiet --yes 'jupyter-server-proxy' 'jupyter-archive' 'nb_conda_kernels' && \
+    conda create -n geo --yes && \
+    conda install -n geo -c conda-forge --quiet --yes \
 	'dask' \
 	'openmpi'\
 	'dask-ml' \
@@ -75,7 +61,7 @@ RUN conda install -n geo -c conda-forge --quiet --yes \
 	'poppler' \
 	'intake' \
 	'pydap' \
-	'holoviews' \
+	'holoviews[all]' \
 	'geoviews' \
 	'panel' \
 	'datashader' \
@@ -99,22 +85,15 @@ RUN conda install -n geo -c conda-forge --quiet --yes \
 	'pyhdf' \
 	'rioxarray' \
 	'intake-stac' \
-	'threddsclient'
+	'threddsclient' && \
+    fix-permissions /home/$NB_USER && \
+    fix-permissions $CONDA_DIR
 
 
-RUN fix-permissions /home/$NB_USER
-RUN fix-permissions $CONDA_DIR
-
-
-RUN jupyter labextension install dask-labextension
-
-RUN jupyter labextension install @pyviz/jupyterlab_pyviz
-RUN jupyter labextension update --all
-
-RUN pip install ipyleaflet \
-  && jupyter nbextension enable --py --sys-prefix ipyleaflet
-
-RUN jupyter labextension install jupyter-leaflet
-
-RUN chmod -R 777 /opt/conda/lib/python3.7/site-packages
-RUN conda init
+RUN jupyter labextension install dask-labextension && \
+    jupyter labextension install @pyviz/jupyterlab_pyviz && \
+    jupyter labextension update --all && \
+    pip install ipyleaflet && \
+    jupyter nbextension enable --py --sys-prefix ipyleaflet && \
+    jupyter labextension install jupyter-leaflet && \
+    chmod -R 777 /opt/conda/lib/python3.7/site-packages
