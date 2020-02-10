@@ -1,5 +1,5 @@
 FROM jupyter/scipy-notebook
-LABEL maintainer="Rowan Gaffney <rowan.gaffney@ars.usda.gov>"
+LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
 
 USER root
 RUN chmod -R 777 /home/jovyan && \
