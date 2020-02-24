@@ -146,10 +146,13 @@ RUN conda config --set channel_priority strict && \
     	fix-permissions $CONDA_DIR
 
 ENV PATH="/opt/conda/envs/R_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
+
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/R_geo/lib/R/lib"
 
 USER root
+
 RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
 USER $NB_UID
+
 RUN conda init bash && exec bash
