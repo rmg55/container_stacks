@@ -2,6 +2,7 @@ FROM jupyter/scipy-notebook
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
 
 USER root
+
 RUN chmod -R 777 /home/jovyan && \
 	mkdir /usr/share/jupyter && \
     	mkdir /usr/share/jupyter/kernels && \
@@ -17,6 +18,7 @@ RUN chmod -R 777 /home/jovyan && \
     	useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge
 
 USER $NB_UID
+
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes 'jupyter-server-proxy' \
 		'jupyter-archive' \
