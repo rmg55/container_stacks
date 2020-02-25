@@ -2,6 +2,9 @@
 
 ## Remote Sensing
 
+[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/)[![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs "rowangaffney/data_science_im_rs image metadata")
+
+
 1. **data_science_im_rs**
     - Includes two geospatial environments, Python (geo) and R (R_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
     - Will include the IDL (with ENVI API) if correct folders are bind-mounted on container execution (not in example below) and the ENVI licensed in active / "checked-out".
@@ -37,9 +40,11 @@
                                                                  start.sh jupyter lab --notebook-dir=$serv_fold \
                                                                                       --no-browser --ip=$(hostname -i) \
                                                                                       --port=$o_port'
-```    
-2. **data_science_im_rs_ucx**
-    - EXPERIMENTAL - NOT CURRENTLY WORKING
+```
+
+[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs_ucx.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs_ucx "rowangaffney/data_science_im_rs_ucx image metadata")
+
+2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT CURRENTLY WORKING)**
     - Built from data_science_im_rs image but includes the ucx and ucx-py bindings
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
     - To build with singularity:
@@ -47,6 +52,8 @@
     singularity pull docker://rowangaffney/data_science_im_rs_ucx
 
 ## Agent Based Modeling: Netlogo
+
+[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im1/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/netlogo_im.svg)](https://microbadger.com/images/rowangaffney/netlogo_im "rowangaffney/netlogo_im image metadata")
 
 1. **netlogo_im**
     - Includes the [Netlogo Agent Based Model](https://ccl.northwestern.edu/netlogo/)
