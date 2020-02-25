@@ -39,7 +39,7 @@
                                                                                       --port=$o_port'
 ```
 
-2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT CURRENTLY WORKING)**&nbsp;&nbsp;&nbsp;&nbsp;[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs_ucx.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs_ucx "rowangaffney/data_science_im_rs_ucx image metadata")
+2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT WORKING)**&nbsp;&nbsp;&nbsp;&nbsp;[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs_ucx.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs_ucx "rowangaffney/data_science_im_rs_ucx image metadata")
     - Built from data_science_im_rs image but includes the ucx and ucx-py bindings
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
     - To build with singularity:
