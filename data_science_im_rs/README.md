@@ -1,13 +1,12 @@
  This repository contains dockerfiles that are built on docker hub at: The are designed to run on the USDA ARS Ceres HPC system. Ceres uses Slurm for resource allocation. A brief overview of each image is below:
 
-### data_science_im_rs
+### data_science_im_rs&nbsp;&nbsp;&nbsp;&nbsp;[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/)[![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs "rowangaffney/data_science_im_rs image metadata")
   - Includes two geospatial environments, Python (geo) and R (R_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
   - Will include the IDL (with ENVI API) if correct folders are bind-mounted on container execution (not in example below) and the ENVI licensed in active / "checked-out".
   - Built with a proxy to RStudio (you can launch RStudio from the launcher tab). The Shiny proxy/extension is not functional.
   - Built from [Jupyter Scipy Stack](https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook)
   - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
   - To build with singularity:
-  
     ```shell
     singularity pull docker://rowangaffney/data_science_im_rs:latest
     ```
@@ -36,4 +35,4 @@
                                                                  start.sh jupyter lab --notebook-dir=$serv_fold \
                                                                                       --no-browser --ip=$(hostname -i) \
                                                                                       --port=$o_port'
-``` 
+```
