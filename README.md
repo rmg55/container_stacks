@@ -1,4 +1,4 @@
- This repository contains dockerfiles that are built on [Docker Hub](https://hub.docker.com/u/rowangaffney). They are designed to run on the USDA ARS Ceres HPC system. Ceres uses Slurm for resource allocation. A brief overview of each image is below:
+ This repository contains dockerfiles that are built on [Docker Hub](https://hub.docker.com/u/rowangaffney). They are designed to run on the USDA ARS Ceres HPC system. At each release, a new image is bult with a _vX.X.X_ tag. At each commit, the _latest_ tag is updated. A brief overview of each image is below:
 
 ## Remote Sensing
 
