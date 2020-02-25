@@ -2,10 +2,8 @@
 
 ## Remote Sensing
 
-[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/)[![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs "rowangaffney/data_science_im_rs image metadata")
-
-
-1. **data_science_im_rs**
+1. **data_science_im_rs**<br>
+    [![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs/)[![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs "rowangaffney/data_science_im_rs image metadata")
     - Includes two geospatial environments, Python (geo) and R (R_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
     - Will include the IDL (with ENVI API) if correct folders are bind-mounted on container execution (not in example below) and the ENVI licensed in active / "checked-out".
     - Built with a proxy to RStudio (you can launch RStudio from the launcher tab). The Shiny proxy/extension is not functional.
@@ -42,9 +40,7 @@
                                                                                       --port=$o_port'
 ```
 
-[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs_ucx.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs_ucx "rowangaffney/data_science_im_rs_ucx image metadata")
-
-2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT CURRENTLY WORKING)**
+2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT CURRENTLY WORKING)**<br>[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/data_science_im_rs_ucx.svg)](https://hub.docker.com/r/rowangaffney/data_science_im_rs_ucx/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/data_science_im_rs_ucx.svg)](https://microbadger.com/images/rowangaffney/data_science_im_rs_ucx "rowangaffney/data_science_im_rs_ucx image metadata")
     - Built from data_science_im_rs image but includes the ucx and ucx-py bindings
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
     - To build with singularity:
@@ -53,9 +49,7 @@
 
 ## Agent Based Modeling: Netlogo
 
-[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im1/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/netlogo_im.svg)](https://microbadger.com/images/rowangaffney/netlogo_im "rowangaffney/netlogo_im image metadata")
-
-1. **netlogo_im**
+1. **netlogo_im**<br>[![docker pulls](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im1/) [![docker stars](https://img.shields.io/docker/stars/rowangaffney/netlogo_im.svg)](https://hub.docker.com/r/rowangaffney/netlogo_im/) [![image metadata](https://images.microbadger.com/badges/image/rowangaffney/netlogo_im.svg)](https://microbadger.com/images/rowangaffney/netlogo_im "rowangaffney/netlogo_im image metadata")
     - Includes the [Netlogo Agent Based Model](https://ccl.northwestern.edu/netlogo/)
     - Built from the [openjdk:8-jdk Stack](https://github.com/docker-library/docs/blob/master/openjdk/README.md#supported-tags-and-respective-dockerfile-links)
     - [Docker Hub Link](https://hub.docker.com/repository/docker/rowangaffney/netlogo_im)
