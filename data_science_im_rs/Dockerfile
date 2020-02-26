@@ -110,6 +110,8 @@ RUN conda config --set channel_priority strict && \
 		'pyhdf' \
 		'rioxarray' \
 		'intake-stac' \
+		'phantomjs' \
+		'xpublish' \
 		'threddsclient' && \
 	jupyter labextension install dask-labextension && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz && \
