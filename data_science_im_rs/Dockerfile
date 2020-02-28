@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook
+FROM jupyter/minimal-notebook
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
 
 SHELL ["/bin/bash", "-c"]
@@ -112,12 +112,9 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
 		'threddsclient' && \
-	jupyter nbextension enable --py --sys-prefix && \
 	jupyter labextension install dask-labextension && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz && \
     	jupyter labextension update --all && \
-    	pip install ipyleaflet && \
-	pip install scikit-gstat && \
    	jupyter labextension install jupyter-leaflet && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
 	conda create -n R_geo --yes && \ 
