@@ -112,6 +112,7 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
 		'threddsclient' && \
+	jupyter nbextension enable --py --sys-prefix && \
 	jupyter labextension install dask-labextension && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz && \
     	jupyter labextension update --all && \
