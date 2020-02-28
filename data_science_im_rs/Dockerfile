@@ -117,7 +117,6 @@ RUN conda config --set channel_priority strict && \
     	jupyter labextension update --all && \
     	pip install ipyleaflet && \
 	pip install scikit-gstat && \
-   	jupyter nbextension enable --py --sys-prefix ipyleaflet && \
    	jupyter labextension install jupyter-leaflet && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
 	conda create -n R_geo --yes && \ 
