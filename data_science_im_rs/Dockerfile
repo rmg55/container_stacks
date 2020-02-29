@@ -111,6 +111,7 @@ RUN conda config --set channel_priority strict && \
 		'rioxarray' \
 		'intake-stac' \
 		'phantomjs' \
+                'ipywidgets' \
 		'threddsclient' && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     	# Also activate ipywidgets extension for JupyterLab
