@@ -112,10 +112,17 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
 		'threddsclient' && \
-	jupyter labextension install dask-labextension && \
-	jupyter labextension install @pyviz/jupyterlab_pyviz && \
+	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    	# Also activate ipywidgets extension for JupyterLab
+    	# Check this URL for most recent compatibilities
+    	# https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
+    	jupyter labextension install @jupyter-widgets/jupyterlab-manager@^1.0.1 --no-build && \
+    	jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
+	jupyter labextension install dask-labextension --no-build && \
+	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
+	jupyter labextension install @jupyterlab/server-proxy --no-build && \
+	jupyter lab build && \
     	jupyter labextension update --all && \
-   	jupyter labextension install jupyter-leaflet && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
 	conda create -n R_geo --yes && \ 
 	conda install -n R_geo -c conda-forge --quiet --yes \
@@ -132,7 +139,6 @@ RUN conda config --set channel_priority strict && \
   		'r-reticulate' \
   		'r-shiny' \
   		'r-sp' && \
-  	jupyter labextension install @jupyterlab/server-proxy && \
   	conda install -c conda-forge jupyter-server-proxy && \
   	conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy && \
 	conda clean --all -f -y && \
