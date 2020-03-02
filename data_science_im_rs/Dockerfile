@@ -49,6 +49,7 @@ RUN conda config --set channel_priority strict && \
 		'nb_conda_kernels' && \
 	conda create -n geo --yes && \
 	conda install -n geo -c conda-forge --quiet --yes \
+		'python==3.7.6'
 		'ipykernel' \
 		'dask' \
 		'openmpi'\
