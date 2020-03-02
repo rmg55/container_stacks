@@ -141,7 +141,6 @@ RUN conda config --set channel_priority strict && \
   		'r-reticulate' \
   		'r-shiny' \
   		'r-sp' && \
-  	conda install -c conda-forge jupyter-server-proxy && \
   	conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy && \
 	conda clean --all -f -y && \
 	npm cache clean --force && \
