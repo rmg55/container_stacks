@@ -153,7 +153,8 @@ RUN conda config --set channel_priority strict && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
   	rm -rf /home/$NB_USER/.node-gyp && \
     	fix-permissions /home/$NB_USER && \
-    	fix-permissions $CONDA_DIR
+    	fix-permissions $CONDA_DIR && \
+	echo 'distributed.dashboard.link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' >> ~/.config/dask/distributed.yaml
 
 ENV PATH="/opt/conda/envs/R_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
 
@@ -161,8 +162,7 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/
 
 USER root
 
-RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf && \
-	echo 'distributed.dashboard.link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' >> ~/.config/dask/distributed.yaml
+RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
 
 USER $NB_UID
 
