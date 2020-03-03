@@ -161,7 +161,8 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/
 
 USER root
 
-RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf
+RUN echo 'rsession-which-r=/opt/conda/envs/R_geo/bin/R' >> /etc/rstudio/rserver.conf && \
+	echo 'distributed.dashboard.link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' >> ~/.config/dask/distributed.yaml
 
 USER $NB_UID
 
