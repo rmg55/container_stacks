@@ -47,6 +47,8 @@ RUN conda config --set channel_priority strict && \
 		'jupyter_client==5.3.4' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
+		'dask-labextension' \
+		'jupyter-panel-proxy' \
 		'nb_conda_kernels' && \
 	conda create -n geo --yes && \
 	conda install -n geo -c conda-forge --quiet --yes \
@@ -115,6 +117,7 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
                 'ipywidgets' \
+		'dask-labextension'
 		'threddsclient' && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     	# Also activate ipywidgets extension for JupyterLab
