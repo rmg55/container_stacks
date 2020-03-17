@@ -117,6 +117,7 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
                 'ipywidgets' \
+		'satsearch' \
 		'dask-labextension' \
 		'threddsclient' && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
