@@ -44,7 +44,7 @@ USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes 'jupyter-server-proxy' \
-		'jupyter_client==5.3.4' \
+		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
 		'dask-labextension' \
@@ -124,7 +124,7 @@ RUN conda config --set channel_priority strict && \
     	# Also activate ipywidgets extension for JupyterLab
     	# Check this URL for most recent compatibilities
     	# https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    	jupyter labextension install @jupyter-widgets/jupyterlab-manager@^1.0.1 --no-build && \
+    	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
     	jupyter labextension install jupyterlab_bokeh@1.0.0 --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
