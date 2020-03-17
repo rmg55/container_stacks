@@ -50,8 +50,8 @@ RUN conda config --set channel_priority strict && \
 		'dask-labextension' \
 		'jupyter-panel-proxy' \
 		'nb_conda_kernels' && \
-	conda create -n geo --yes && \
-	conda install -n geo -c conda-forge --quiet --yes \
+	conda create -n py_geo --yes && \
+	conda install -n py_geo -c conda-forge --quiet --yes \
 		'ipykernel' \
 		'dask' \
 		'openmpi'\
@@ -131,8 +131,8 @@ RUN conda config --set channel_priority strict && \
 	jupyter lab build && \
     	jupyter labextension update --all && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
-	conda create -n R_geo --yes && \ 
-	conda install -n R_geo -c conda-forge --quiet --yes \
+	conda create -n r_geo --yes && \ 
+	conda install -n r_geo -c conda-forge --quiet --yes \
   		'r-irkernel' \
   		'r-rgdal' \
   		'r-gdalutils' \
@@ -145,6 +145,7 @@ RUN conda config --set channel_priority strict && \
   		'r-irkernel' \
   		'r-reticulate' \
   		'r-shiny' \
+		'r-rslurm' \
   		'r-sp' && \
   	conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy && \
 	conda clean --all -f -y && \
