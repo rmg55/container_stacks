@@ -125,7 +125,6 @@ RUN conda config --set channel_priority strict && \
     	# Check this URL for most recent compatibilities
     	# https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-    	jupyter labextension install jupyterlab_bokeh --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
 	jupyter labextension install @jupyterlab/server-proxy --no-build && \
