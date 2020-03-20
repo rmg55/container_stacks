@@ -43,7 +43,7 @@ RUN chmod -R 777 /home/jovyan && \
 USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
-	conda install -c conda-forge --quiet --yes 'jupyter-server-proxy' \
+	conda install -c conda-forge --quiet --yes \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
@@ -54,7 +54,7 @@ RUN conda config --set channel_priority strict && \
 	conda install -n py_geo -c conda-forge --quiet --yes \
 		'ipykernel' \
 		'dask' \
-		'openmpi'\
+		'openmpi' \
 		'dask-ml' \
 		'dask-xgboost' \
 		'bokeh' \
@@ -119,14 +119,12 @@ RUN conda config --set channel_priority strict && \
                 'ipywidgets' \
 		'dask-labextension' \
 		'threddsclient' && \
+	conda run pip install git+git://github.com/jupyterhub/jupyter-server-proxy@master && \
+	conda run pip install git+git://github.com/jupyterhub/jupyter-rsession-proxy@master && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    	# Also activate ipywidgets extension for JupyterLab
-    	# Check this URL for most recent compatibilities
-    	# https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
-	jupyter labextension install @jupyterlab/server-proxy --no-build && \
 	jupyter lab build && \
     	jupyter labextension update --all && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
@@ -146,7 +144,6 @@ RUN conda config --set channel_priority strict && \
   		'r-shiny' \
 		'r-rslurm' \
   		'r-sp' && \
-  	conda run pip install git+https://github.com/jupyterhub/jupyter-rsession-proxy && \
 	conda clean --all -f -y && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
