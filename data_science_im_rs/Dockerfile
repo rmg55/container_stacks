@@ -44,6 +44,7 @@ USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes \
+		'jupyterlab=1.2.*' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
