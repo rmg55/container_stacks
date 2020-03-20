@@ -155,9 +155,11 @@ RUN conda config --set channel_priority strict && \
     	fix-permissions $CONDA_DIR
 	
 
+#Modify Environmental Variables for Rstudio Server, and Singularity
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
-
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
+ENV SINGULARITY_BINDPATH="/etc/munge,/var/log/munge,/var/run/munge,/scinet01/gov/usda/ars/scinet/system/slurm:/etc/slurm,/run/munge,/usr/lib64,/scinet01,$HOME:/home/jovyan,$HOME,/software/7/apps/envi"
+ENV SINGULARITY_BIND="/usr/bin/squeue,/usr/bin/sinfo,/usr/bin/scancel,/usr/bin/sbatch,/usr/bin/scontrol"
 
 USER root
 
