@@ -53,6 +53,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
+	conda clean --all -afy && \
 	conda create -n py_geo --yes && \
 	conda install -n py_geo -c conda-forge --quiet --yes \
 		'ipykernel' \
@@ -122,6 +123,7 @@ RUN conda config --set channel_priority strict && \
                 'ipywidgets' \
 		'dask-labextension' \
 		'threddsclient' && \
+	conda clean --all -afy && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
@@ -146,7 +148,12 @@ RUN conda config --set channel_priority strict && \
   		'r-shiny' \
 		'r-rslurm' \
   		'r-sp' && \
-	conda clean --all -f -y && \
+	conda clean --all -afy && \
+    	find /opt/conda/ -follow -type f -name '*.a' -delete && \
+	find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
+    	find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+	find /opt/conda/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
+	find /opt/conda/env/py_geo/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
