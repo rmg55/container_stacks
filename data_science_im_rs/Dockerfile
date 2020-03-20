@@ -125,6 +125,7 @@ RUN conda config --set channel_priority strict && \
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
+	jupyter labextension install @jupyterlab/server-proxy --no-build && \
 	jupyter lab build && \
     	jupyter labextension update --all && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
