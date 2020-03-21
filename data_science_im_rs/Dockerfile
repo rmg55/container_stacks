@@ -153,7 +153,7 @@ RUN conda config --set channel_priority strict && \
 	find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
     	find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
 	find /opt/conda/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
-	find /opt/conda/env/py_geo/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
+	find /opt/conda/envs/py_geo/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
