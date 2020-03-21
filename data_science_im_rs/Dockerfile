@@ -149,23 +149,16 @@ RUN conda config --set channel_priority strict && \
 		'r-rslurm' \
   		'r-sp' && \
 	conda clean --all -afy && \
-    	find /opt/conda/ -follow -type f -name '*.a' -delete && \
-	find /opt/conda/ -follow -type f -name '*.pyc' -delete && \
-    	find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
-	find /opt/conda/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
-	find /opt/conda/envs/py_geo/lib/python*/site-packages/bokeh/server/static -follow -type f -name '*.js' ! -name '*.min.js' -delete && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
   	rm -rf /home/$NB_USER/.node-gyp && \
     	fix-permissions /home/$NB_USER && \
     	fix-permissions $CONDA_DIR
-	
 
-#Modify Environmental Variables for Rstudio Server, and Singularity
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
-ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 
 USER root
 
