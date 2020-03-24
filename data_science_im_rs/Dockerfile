@@ -44,7 +44,7 @@ USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes \
-		'jupyterlab' \
+		'jupyterlab=1.2.*' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
@@ -61,7 +61,7 @@ RUN conda config --set channel_priority strict && \
 		'openmpi' \
 		'dask-ml' \
 		'dask-xgboost' \
-		'bokeh' \
+		'bokeh=1.4.*' \
 		'mpi4py' \
 		'gdal' \
 		'git' \
