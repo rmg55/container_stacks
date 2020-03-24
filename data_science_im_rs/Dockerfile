@@ -148,7 +148,7 @@ RUN conda config --set channel_priority strict && \
   		'r-shiny' \
 		'r-rslurm' \
   		'r-sp' && \
-	conda clean --all -afy && \
+	conda clean --all -f -y && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
