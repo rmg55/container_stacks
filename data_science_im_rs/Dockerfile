@@ -49,7 +49,6 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-archive' \
 		'widgetsnbextension' \
 		'dask-labextension' \
-		'jupyter-server-proxy' \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
@@ -61,7 +60,7 @@ RUN conda config --set channel_priority strict && \
 		'openmpi' \
 		'dask-ml' \
 		'dask-xgboost' \
-		'bokeh=1.4.0' \
+		'bokeh' \
 		'mpi4py' \
 		'gdal' \
 		'git' \
