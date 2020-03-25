@@ -24,7 +24,7 @@
                    --bind /usr/bin/sinfo \
                    --bind /usr/bin/sbatch \
                    --bind /usr/bin/scontrol \
-                   --bind /scinet01/gov/usda/ars/scinet/system/slurm:/etc/slurm \
+                   --bind /system/slurm:/etc/slurm \
                    --bind /run/munge \
                    --bind /usr/lib64 \
                    --bind /scinet01 \
