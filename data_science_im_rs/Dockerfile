@@ -61,7 +61,7 @@ RUN conda config --set channel_priority strict && \
 		'openmpi' \
 		'dask-ml' \
 		'dask-xgboost' \
-		'bokeh=1.4.*' \
+		'bokeh=1.4.0' \
 		'mpi4py' \
 		'gdal' \
 		'git' \
