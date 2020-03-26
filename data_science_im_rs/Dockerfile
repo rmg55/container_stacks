@@ -44,7 +44,7 @@ USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes \
-		'jupyterlab=2.0.0' \
+		'jupyterlab' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
@@ -121,7 +121,6 @@ RUN conda config --set channel_priority strict && \
 		'intake-stac' \
 		'phantomjs' \
                 'ipywidgets' \
-		'dask-labextension' \
 		'threddsclient' && \
 	conda clean --all -afy && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
