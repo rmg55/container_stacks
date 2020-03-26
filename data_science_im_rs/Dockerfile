@@ -44,11 +44,12 @@ USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --quiet --yes \
-		'jupyterlab' \
+		'jupyterlab=2.0.0' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
 		'dask-labextension' \
+		'jupyter-server-proxy' \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
