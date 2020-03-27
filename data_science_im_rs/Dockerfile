@@ -43,7 +43,7 @@ RUN chmod -R 777 /home/jovyan && \
 USER $NB_UID
 
 RUN conda config --set channel_priority strict && \
-	conda install -c conda-forge --quiet --yes \
+	conda install -c conda-forge --yes \
 		'jupyterlab' \
 		'jupyter_client' \
 		'jupyter-archive' \
@@ -55,7 +55,7 @@ RUN conda config --set channel_priority strict && \
 		'nb_conda_kernels' && \
 	conda clean --all -afy && \
 	conda create -n py_geo --yes && \
-	conda install -n py_geo -c conda-forge --quiet --yes \
+	conda install -n py_geo -c conda-forge --yes \
 		'ipykernel' \
 		'dask' \
 		'openmpi' \
@@ -132,7 +132,7 @@ RUN conda config --set channel_priority strict && \
     	jupyter labextension update --all && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
 	conda create -n r_geo --yes && \ 
-	conda install -n r_geo -c conda-forge --quiet --yes \
+	conda install -n r_geo -c conda-forge --yes \
   		'r-irkernel' \
   		'r-rgdal' \
   		'r-gdalutils' \
