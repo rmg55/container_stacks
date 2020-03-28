@@ -42,7 +42,8 @@ RUN chmod -R 777 /home/jovyan && \
 
 USER $NB_UID
 
-RUN conda config --set channel_priority strict && \
+RUN conda update -n base conda && \
+	conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes \
 		'jupyterlab' \
 		'jupyter_client' \
