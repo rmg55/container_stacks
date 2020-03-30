@@ -60,7 +60,7 @@ RUN conda config --set channel_priority strict && \
 		'scikit-learn=0.22.*' \
 		'dask=2.13.*' \
 		'openmpi' \
-		'dask-ml=1.2.*' \
+		'dask-ml*' \
 		'dask-xgboost' \
 		'bokeh' \
 		'mpi4py' \
@@ -71,14 +71,14 @@ RUN conda config --set channel_priority strict && \
 		'netCDF4' \
 		'tqdm' \
 		'bottleneck' \
-		'zarr=2.4.*' \
+		'zarr' \
 		'numcodecs' \
 		'xarray=0.15.*' \
 		'h5py' \
 		'python-graphviz' \
-		'geopandas=0.7.*' \
+		'geopandas' \
 		'simplegeneric' \
-		'rasterio=1.1.*' \
+		'rasterio' \
 		'fiona' \
 		'spectral' \
 		'shapely' \
@@ -92,14 +92,13 @@ RUN conda config --set channel_priority strict && \
 		'xgboost' \
 		'earthengine-api' \
 		'poppler' \
-		'intake=0.5.*' \
+		'intake' \
 		'pydap' \
-		'holoviews[all]=1.13.*' \
-		'geoviews=1.6.*' \
-		'panel=0.9.*' \
-		'datashader=0.10.*' \
+		'holoviews[all]' \
+		'geoviews' \
+		'panel' \
+		'datashader' \
 		'streamz' \
-		'rasterstats' \
 		'pyarrow' \
 		's3fs' \
 		'gcsfs' \
