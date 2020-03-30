@@ -57,10 +57,10 @@ RUN conda config --set channel_priority strict && \
 	conda create -n py_geo --yes && \
 	conda install -n py_geo -c conda-forge --yes \
 		'ipykernel' \
-		'scikit-learn' \
-		'dask' \
+		'scikit-learn=0.22.*' \
+		'dask=2.13.*' \
 		'openmpi' \
-		'dask-ml' \
+		'dask-ml-1.2.*' \
 		'dask-xgboost' \
 		'bokeh' \
 		'mpi4py' \
@@ -71,14 +71,14 @@ RUN conda config --set channel_priority strict && \
 		'netCDF4' \
 		'tqdm' \
 		'bottleneck' \
-		'zarr' \
+		'zarr=2.4.*' \
 		'numcodecs' \
-		'xarray' \
+		'xarray=0.15.*' \
 		'h5py' \
 		'python-graphviz' \
-		'geopandas' \
+		'geopandas=0.7.*' \
 		'simplegeneric' \
-		'rasterio[s3]' \
+		'rasterio=1.1.*' \
 		'fiona' \
 		'spectral' \
 		'shapely' \
@@ -91,15 +91,13 @@ RUN conda config --set channel_priority strict && \
 		'dask-jobqueue' \
 		'xgboost' \
 		'earthengine-api' \
-		'r' \
-		'rpy2' \
 		'poppler' \
-		'intake' \
+		'intake=0.5.*' \
 		'pydap' \
-		'holoviews[all]' \
-		'geoviews' \
-		'panel' \
-		'datashader' \
+		'holoviews[all]=1.13.*' \
+		'geoviews=1.6.*' \
+		'panel=0.9.*' \
+		'datashader=0.10.*' \
 		'streamz' \
 		'rasterstats' \
 		'pyarrow' \
@@ -109,6 +107,7 @@ RUN conda config --set channel_priority strict && \
 		'intake-esm' \
 		'intake-parquet' \
 		'intake-sql' \
+		'intake-stac' \
 		'streamz' \
 		'hvplot' \
 		'selenium ' \
@@ -118,8 +117,6 @@ RUN conda config --set channel_priority strict && \
 		'xrviz' \
 		'pysal' \
 		'pyhdf' \
-		'rioxarray' \
-		'intake-stac' \
 		'phantomjs' \
                 'ipywidgets' \
 		'threddsclient' && \
