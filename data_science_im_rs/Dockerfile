@@ -92,7 +92,8 @@ RUN conda config --set channel_priority strict && \
 		'xgboost' \
 		'earthengine-api' \
 		'poppler' \
-		'intake' \
+		'intake' && \
+	conda install -n py_geo -c conda-forge --yes \
 		'pydap' \
 		'holoviews[all]' \
 		'geoviews' \
