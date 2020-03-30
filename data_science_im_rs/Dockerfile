@@ -60,7 +60,7 @@ RUN conda config --set channel_priority strict && \
 		'scikit-learn=0.22.*' \
 		'dask=2.13.*' \
 		'openmpi' \
-		'dask-ml-1.2.*' \
+		'dask-ml=1.2.*' \
 		'dask-xgboost' \
 		'bokeh' \
 		'mpi4py' \
