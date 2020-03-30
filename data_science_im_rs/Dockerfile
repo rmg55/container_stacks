@@ -42,8 +42,7 @@ RUN chmod -R 777 /home/jovyan && \
 
 USER $NB_UID
 
-RUN conda update -n base conda && \
-	conda config --set channel_priority strict && \
+RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes \
 		'jupyterlab' \
 		'jupyter_client' \
@@ -142,7 +141,14 @@ RUN conda update -n base conda && \
   		'r-shiny' \
 		'r-rslurm' \
   		'r-sp' && \
-	conda clean --all -f -y && \
+	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+	jupyter labextension install dask-labextension --no-build && \
+	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
+	jupyter labextension install @jupyterlab/server-proxy --no-build && \
+	jupyter lab build && \
+    	jupyter labextension update --all && \
+	conda clean --all -afy && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
   	rm -rf /home/$NB_USER/.cache/yarn && \
