@@ -42,6 +42,8 @@ RUN chmod -R 777 /home/jovyan && \
 
 USER $NB_UID
 
+COPY py_geo.yml .
+
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes \
 		'jupyterlab' \
@@ -55,71 +57,72 @@ RUN conda config --set channel_priority strict && \
 		'nb_conda_kernels' && \
 	conda clean --all -afy && \
 	conda create -n py_geo --yes && \
-	conda install -n py_geo -c conda-forge --yes \
-		'ipykernel' \
-		'scikit-learn=0.22.*' \
-		'dask=2.13.*' \
-		'openmpi' \
-		'dask-ml*' \
-		'dask-xgboost' \
-		'bokeh' \
-		'mpi4py' \
-		'gdal' \
-		'git' \
-		'pip' \
-		'ncurses' \
-		'netCDF4' \
-		'tqdm' \
-		'bottleneck' \
-		'zarr' \
-		'numcodecs' \
-		'xarray=0.15.*' \
-		'h5py' \
-		'python-graphviz' \
-		'geopandas' \
-		'simplegeneric' \
-		'rasterio' \
-		'fiona' \
-		'spectral' \
-		'shapely' \
-		'pyshp' \
-		'joblib' \
-		'psycopg2' \
-		'openpyxl' \
-		'oauth2client' \
-		'PyDrive' \
-		'dask-jobqueue' \
-		'xgboost' \
-		'earthengine-api' \
-		'poppler' \
-		'intake' && \
-	conda install -n py_geo -c conda-forge --yes \
-		'pydap' \
-		'holoviews[all]' \
-		'geoviews' \
-		'panel' \
-		'datashader' \
-		'streamz' \
-		'pyarrow' \
-		's3fs' \
-		'gcsfs' \
-		'intake-xarray' \
-		'intake-esm' \
-		'intake-parquet' \
-		'intake-sql' \
-		'intake-stac' \
-		'streamz' \
-		'hvplot' \
-		'selenium ' \
-		'h5netcdf' \
-		'rioxarray' \
-		'xgeo' \
-		'xrviz' \
-		'pysal' \
-		'pyhdf' \
-		'phantomjs' \
-                'ipywidgets' \
-		'threddsclient' && \
+	conda env create -f environment.yml
+# 	conda install -n py_geo -c conda-forge --yes \
+# 		'ipykernel' \
+# 		'scikit-learn=0.22.*' \
+# 		'dask=2.13.*' \
+# 		'openmpi' \
+# 		'dask-ml*' \
+# 		'dask-xgboost' \
+# 		'bokeh' \
+# 		'mpi4py' \
+# 		'gdal' \
+# 		'git' \
+# 		'pip' \
+# 		'ncurses' \
+# 		'netCDF4' \
+# 		'tqdm' \
+# 		'bottleneck' \
+# 		'zarr' \
+# 		'numcodecs' \
+# 		'xarray=0.15.*' \
+# 		'h5py' \
+# 		'python-graphviz' \
+# 		'geopandas' \
+# 		'simplegeneric' \
+# 		'rasterio' \
+# 		'fiona' \
+# 		'spectral' \
+# 		'shapely' \
+# 		'pyshp' \
+# 		'joblib' \
+# 		'psycopg2' \
+# 		'openpyxl' \
+# 		'oauth2client' \
+# 		'PyDrive' \
+# 		'dask-jobqueue' \
+# 		'xgboost' \
+# 		'earthengine-api' \
+# 		'poppler' \
+# 		'intake' && \
+# 	conda install -n py_geo -c conda-forge --yes \
+# 		'pydap' \
+# 		'holoviews[all]' \
+# 		'geoviews' \
+# 		'panel' \
+# 		'datashader' \
+# 		'streamz' \
+# 		'pyarrow' \
+# 		's3fs' \
+# 		'gcsfs' \
+# 		'intake-xarray' \
+# 		'intake-esm' \
+# 		'intake-parquet' \
+# 		'intake-sql' \
+# 		'intake-stac' \
+# 		'streamz' \
+# 		'hvplot' \
+# 		'selenium ' \
+# 		'h5netcdf' \
+# 		'rioxarray' \
+# 		'xgeo' \
+# 		'xrviz' \
+# 		'pysal' \
+# 		'pyhdf' \
+# 		'phantomjs' \
+#                 'ipywidgets' \
+# 		'threddsclient' && \
 	conda clean --all -afy && \
 	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
 	conda create -n r_geo --yes && \ 
