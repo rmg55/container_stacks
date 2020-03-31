@@ -56,13 +56,12 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
-	conda env create -f py_geo.yml && \
-	conda env create -f r_geo.yml && \
+	conda env create -f py_geo.yml --quiet && \
+	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
-	jupyter labextension install @jupyterlab/server-proxy --no-build && \
 	jupyter lab build && \
     	jupyter labextension update --all && \
 	conda clean --all -afy && \
@@ -72,6 +71,9 @@ RUN conda config --set channel_priority strict && \
   	rm -rf /home/$NB_USER/.node-gyp && \
     	fix-permissions /home/$NB_USER && \
     	fix-permissions $CONDA_DIR
+
+#	jupyter labextension install @jupyterlab/server-proxy --no-build && \
+
 # 	conda create -n py_geo --yes && \
 # 	conda install -n py_geo -c conda-forge --yes \
 # 		'ipykernel' \
