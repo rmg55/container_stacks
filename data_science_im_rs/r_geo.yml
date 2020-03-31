@@ -1,0 +1,18 @@
+name: r_geo
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-gstat>=2.0_4
+  - r-irkernel>=1.1
+  - r-maptools>=0.9_9
+  - r-raster>=3.0_12
+  - r-reticulate>=1.14
+  - r-rgdal>=1.4_7
+  - r-gdalutils>=2.0.3.2
+  - r-rgeos>=0.5_2
+  - r-rslurm>=0.5.0
+  - r-sf>=0.8_0
+  - r-shiny>=1.4.0.2
+  - r-snow>=0.4_3
+  - r-sp>=1.4_1
