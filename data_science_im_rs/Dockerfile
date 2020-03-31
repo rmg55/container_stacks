@@ -56,8 +56,6 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
-	conda clean --all -afy && \
-	conda create -n py_geo --yes && \
 	conda env create -f py_geo.yml && \
 	conda env create -f r_geo.yml && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
@@ -74,6 +72,7 @@ RUN conda config --set channel_priority strict && \
   	rm -rf /home/$NB_USER/.node-gyp && \
     	fix-permissions /home/$NB_USER && \
     	fix-permissions $CONDA_DIR
+# 	conda create -n py_geo --yes && \
 # 	conda install -n py_geo -c conda-forge --yes \
 # 		'ipykernel' \
 # 		'scikit-learn=0.22.*' \
