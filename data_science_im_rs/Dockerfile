@@ -43,6 +43,7 @@ RUN chmod -R 777 /home/jovyan && \
 USER $NB_UID
 
 COPY py_geo.yml .
+COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes \
@@ -57,7 +58,22 @@ RUN conda config --set channel_priority strict && \
 		'nb_conda_kernels' && \
 	conda clean --all -afy && \
 	conda create -n py_geo --yes && \
-	conda env create -f environment.yml
+	conda env create -f py_geo.yml && \
+	conda env create -f r_geo.yml && \
+	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+    	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+	jupyter labextension install dask-labextension --no-build && \
+	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
+	jupyter labextension install @jupyterlab/server-proxy --no-build && \
+	jupyter lab build && \
+    	jupyter labextension update --all && \
+	conda clean --all -afy && \
+	npm cache clean --force && \
+  	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+  	rm -rf /home/$NB_USER/.cache/yarn && \
+  	rm -rf /home/$NB_USER/.node-gyp && \
+    	fix-permissions /home/$NB_USER && \
+    	fix-permissions $CONDA_DIR
 # 	conda install -n py_geo -c conda-forge --yes \
 # 		'ipykernel' \
 # 		'scikit-learn=0.22.*' \
@@ -123,38 +139,25 @@ RUN conda config --set channel_priority strict && \
 # 		'phantomjs' \
 #                 'ipywidgets' \
 # 		'threddsclient' && \
-	conda clean --all -afy && \
-	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
-	conda create -n r_geo --yes && \ 
-	conda install -n r_geo -c conda-forge --yes \
-  		'r-irkernel' \
-  		'r-rgdal' \
-  		'r-gdalutils' \
-		'r-raster' \
-		'r-snow' \
-  		'r-sf' \
-  		'r-gstat' \
-  		'r-maptools' \
-  		'r-rgeos' \
-  		'r-irkernel' \
-  		'r-reticulate' \
-  		'r-shiny' \
-		'r-rslurm' \
-  		'r-sp' && \
-	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-    	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-	jupyter labextension install dask-labextension --no-build && \
-	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
-	jupyter labextension install @jupyterlab/server-proxy --no-build && \
-	jupyter lab build && \
-    	jupyter labextension update --all && \
-	conda clean --all -afy && \
-	npm cache clean --force && \
-  	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-  	rm -rf /home/$NB_USER/.cache/yarn && \
-  	rm -rf /home/$NB_USER/.node-gyp && \
-    	fix-permissions /home/$NB_USER && \
-    	fix-permissions $CONDA_DIR
+#	conda clean --all -afy && \
+#	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
+#	conda create -n r_geo --yes && \ 
+#	conda install -n r_geo -c conda-forge --yes \
+#   		'r-irkernel' \
+#   		'r-rgdal' \
+#   		'r-gdalutils' \
+# 		'r-raster' \
+# 		'r-snow' \
+#   		'r-sf' \
+#   		'r-gstat' \
+#   		'r-maptools' \
+#   		'r-rgeos' \
+#   		'r-irkernel' \
+#   		'r-reticulate' \
+#   		'r-shiny' \
+# 		'r-rslurm' \
+#   		'r-sp' && \
+
 
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
 
