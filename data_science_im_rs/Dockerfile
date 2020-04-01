@@ -46,7 +46,7 @@ COPY py_geo.yml .
 COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
-	conda install -c conda-forge --yes \
+	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
 		'jupyter_client' \
 		'jupyter-archive' \
