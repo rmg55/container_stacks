@@ -5,7 +5,7 @@ LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
 ARG BUILD_DATE
 ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.vcs-url="https://github.com/rmg55/container_stacks/tree/master/data_science_im_rs" \
+      org.label-schema.vcs-url="https://github.com/rmg55/container_stacks.git" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a proxy to RStudio Server. Software packages are focused on spatial data analysis and remote sensing."
 
