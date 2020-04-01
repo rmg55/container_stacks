@@ -1,12 +1,19 @@
 FROM jupyter/minimal-notebook
+
+#Add Additional Image Labels
 LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/rmg55/container_stacks/tree/master/data_science_im_rs" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a proxy to RStudio Server. Software packages are focused on spatial data analysis and remote sensing."
 
 SHELL ["/bin/bash", "-c"]
-
 USER root
-
 SHELL ["/bin/bash", "-c"]
 
+#Prepare image to work on SLURM and be able to bind mount the IDL kernel
 RUN chmod -R 777 /home/jovyan && \
 	mkdir /usr/share/jupyter && \
     	mkdir /usr/share/jupyter/kernels && \
@@ -42,9 +49,9 @@ RUN chmod -R 777 /home/jovyan && \
 
 USER $NB_UID
 
+#Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY r_geo.yml .
-
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
@@ -73,102 +80,14 @@ RUN conda config --set channel_priority strict && \
     	fix-permissions /home/$NB_USER && \
     	fix-permissions $CONDA_DIR
 
-# 	conda create -n py_geo --yes && \
-# 	conda install -n py_geo -c conda-forge --yes \
-# 		'ipykernel' \
-# 		'scikit-learn=0.22.*' \
-# 		'dask=2.13.*' \
-# 		'openmpi' \
-# 		'dask-ml*' \
-# 		'dask-xgboost' \
-# 		'bokeh' \
-# 		'mpi4py' \
-# 		'gdal' \
-# 		'git' \
-# 		'pip' \
-# 		'ncurses' \
-# 		'netCDF4' \
-# 		'tqdm' \
-# 		'bottleneck' \
-# 		'zarr' \
-# 		'numcodecs' \
-# 		'xarray=0.15.*' \
-# 		'h5py' \
-# 		'python-graphviz' \
-# 		'geopandas' \
-# 		'simplegeneric' \
-# 		'rasterio' \
-# 		'fiona' \
-# 		'spectral' \
-# 		'shapely' \
-# 		'pyshp' \
-# 		'joblib' \
-# 		'psycopg2' \
-# 		'openpyxl' \
-# 		'oauth2client' \
-# 		'PyDrive' \
-# 		'dask-jobqueue' \
-# 		'xgboost' \
-# 		'earthengine-api' \
-# 		'poppler' \
-# 		'intake' && \
-# 	conda install -n py_geo -c conda-forge --yes \
-# 		'pydap' \
-# 		'holoviews[all]' \
-# 		'geoviews' \
-# 		'panel' \
-# 		'datashader' \
-# 		'streamz' \
-# 		'pyarrow' \
-# 		's3fs' \
-# 		'gcsfs' \
-# 		'intake-xarray' \
-# 		'intake-esm' \
-# 		'intake-parquet' \
-# 		'intake-sql' \
-# 		'intake-stac' \
-# 		'streamz' \
-# 		'hvplot' \
-# 		'selenium ' \
-# 		'h5netcdf' \
-# 		'rioxarray' \
-# 		'xgeo' \
-# 		'xrviz' \
-# 		'pysal' \
-# 		'pyhdf' \
-# 		'phantomjs' \
-#                 'ipywidgets' \
-# 		'threddsclient' && \
-#	conda clean --all -afy && \
-#	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
-#	conda create -n r_geo --yes && \ 
-#	conda install -n r_geo -c conda-forge --yes \
-#   		'r-irkernel' \
-#   		'r-rgdal' \
-#   		'r-gdalutils' \
-# 		'r-raster' \
-# 		'r-snow' \
-#   		'r-sf' \
-#   		'r-gstat' \
-#   		'r-maptools' \
-#   		'r-rgeos' \
-#   		'r-irkernel' \
-#   		'r-reticulate' \
-#   		'r-shiny' \
-# 		'r-rslurm' \
-#   		'r-sp' && \
-
-
+#Setup and install RStudio Server to work with Proxy from Jupyter
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
-
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
-
 USER root
-
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
 	mkdir ~/.config/dask && \
 	echo 'distributed.dashboard.link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
 
+#Initialize Conda
 USER $NB_UID
-
 RUN conda init bash && exec bash
