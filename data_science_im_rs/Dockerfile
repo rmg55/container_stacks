@@ -40,7 +40,7 @@ RUN chmod -R 777 /home/jovyan && \
 		libssl1.0.0 && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
-	RSTUDIO_PKG=rstudio-server-1.2.5019-amd64.deb && \
+	RSTUDIO_PKG=rstudio-server-1.2.5033-amd64.deb && \
   		wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
   		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
@@ -53,19 +53,20 @@ USER $NB_UID
 COPY py_geo.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
+	conda run -n base pip install jupyter-server-proxy>=1.3.1 && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
 		'dask-labextension' \
-		'jupyter-server-proxy' \
 		'jupyter-panel-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+	jupyter labextension install @jupyterlab/server-proxy --no-build && \
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
@@ -78,9 +79,6 @@ RUN conda config --set channel_priority strict && \
   	rm -rf /home/$NB_USER/.node-gyp && \
     	fix-permissions /home/$NB_USER && \
     	fix-permissions $CONDA_DIR
-
-#jupyter labextension install @jupyterlab/server-proxy --no-build && \
-
 
 #Setup and install RStudio Server to work with Proxy from Jupyter
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
