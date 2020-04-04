@@ -53,14 +53,14 @@ USER $NB_UID
 COPY py_geo.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
-	conda run -n base pip install jupyter-server-proxy>=1.3.1 && \
 	conda install -c conda-forge --yes --quiet \
-		'jupyterlab' \
+		'jupyterlab==1.2.*' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
 		'dask-labextension' \
 		'jupyter-panel-proxy' \
+		'jupyter-server-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda env create -f py_geo.yml --quiet && \
