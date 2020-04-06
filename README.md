@@ -41,7 +41,9 @@
                                                                                  --port=$o_port'
 ```
 
-2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT WORKING)**&nbsp;&nbsp;&nbsp;&nbsp;![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs_ucx/latest)![Docker Image Size (latest by date)](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx)
+2. **data_science_im_rs_ucx (EXPERIMENTAL - NOT WORKING)**&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs_ucx/latest)
+![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_ucx)
     - Built from data_science_im_rs image but includes the ucx and ucx-py bindings
     - [Docker Hub Link](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
     - To build with singularity:
@@ -50,7 +52,9 @@
 
 ## Agent Based Modeling: Netlogo
 
-1. **netlogo_im**&nbsp;&nbsp;&nbsp;&nbsp;![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/rowangaffney/netlogo_im/latest)![](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im)
+1. **netlogo_im**&nbsp;&nbsp;&nbsp;&nbsp;
+![](https://img.shields.io/docker/image-size/rowangaffney/netlogo_im/latest)
+![](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im)
     - Includes the [Netlogo Agent Based Model](https://ccl.northwestern.edu/netlogo/)
     - Built from the [openjdk:8-jdk Stack](https://github.com/docker-library/docs/blob/master/openjdk/README.md#supported-tags-and-respective-dockerfile-links)
     - [Docker Hub Link](https://hub.docker.com/repository/docker/rowangaffney/netlogo_im)
