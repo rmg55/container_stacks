@@ -2,7 +2,8 @@
 
 ## Remote Sensing
 
-1. **data_science_im_rs**&nbsp;&nbsp;&nbsp;&nbsp;![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)![Docker Image Size (latest by date)](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
+1. **data_science_im_rs**&nbsp;&nbsp;&nbsp;&nbsp;![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)
+![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
     - Includes two geospatial environments, Python (py_geo) and R (r_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
     - Will include the IDL (with ENVI API) if correct folders are bind-mounted on container execution (not in example below) and the ENVI licensed in active / "checked-out".
     - Built with a proxy to RStudio (you can launch RStudio from the launcher tab). The Shiny proxy/extension is not functional.
