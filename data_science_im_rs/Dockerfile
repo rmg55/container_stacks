@@ -54,7 +54,7 @@ COPY py_geo.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'jupyterlab==1.2.*' \
+		'jupyterlab' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
