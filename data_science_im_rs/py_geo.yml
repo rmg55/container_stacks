@@ -79,4 +79,4 @@ dependencies:
   - tiledb>=1.7.7
   - tiledb-py>=0.5.9
   - pip:
-   - -e git://github.com/informatics-lab/tiledb_netcdf.git
+    - -e git://github.com/informatics-lab/tiledb_netcdf.git
