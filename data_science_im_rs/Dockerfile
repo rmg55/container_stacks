@@ -44,6 +44,13 @@ RUN chmod -R 777 /home/jovyan && \
   		wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
   		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
+	cd && wget -q -O code-server.tar.gz https://github.com/cdr/code-server/archive/3.2.0.tar.gz && \
+    		mkdir -p ~/.local/bin && \
+    		tar -xvf code-server.tar.gz -C ~/.local/bin --strip-components=1 && \
+    		rm -rf code-server.tar.gz
+	
+	
+	https://github.com/cdr/code-server/archive/3.2.0.tar.gz
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -61,6 +68,7 @@ RUN conda config --set channel_priority strict && \
 		'dask-labextension' \
 		'jupyter-panel-proxy' \
 		'jupyter-server-proxy' \
+		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda env create -f py_geo.yml --quiet && \
