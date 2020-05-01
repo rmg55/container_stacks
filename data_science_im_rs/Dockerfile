@@ -47,10 +47,7 @@ RUN chmod -R 777 /home/jovyan && \
 	cd && wget -q -O code-server.tar.gz https://github.com/cdr/code-server/archive/3.2.0.tar.gz && \
     		mkdir -p ~/.local/bin && \
     		tar -xvf code-server.tar.gz -C ~/.local/bin --strip-components=1 && \
-    		rm -rf code-server.tar.gz
-	
-	
-	https://github.com/cdr/code-server/archive/3.2.0.tar.gz
+    		rm -rf code-server.tar.gz && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
