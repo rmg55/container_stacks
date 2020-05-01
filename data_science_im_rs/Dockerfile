@@ -53,7 +53,7 @@ USER $NB_UID
 COPY py_geo.yml .
 COPY r_geo.yml .
 RUN cd && wget -q -O code-server.tar.gz https://github.com/cdr/code-server/archive/3.2.0.tar.gz && \
-    		mkdir -p /.local/bin && \
+    		mkdir -p ~/.local/bin && \
     		tar -xvf code-server.tar.gz -C ~/.local/bin --strip-components=1 && \
     		rm -rf code-server.tar.gz && \
 	conda config --set channel_priority strict && \
