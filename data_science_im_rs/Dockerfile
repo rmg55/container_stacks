@@ -44,6 +44,10 @@ RUN chmod -R 777 /home/jovyan && \
   		wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
   		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
+	cd /opt && \
+        	mkdir /opt/code-server && \
+        	cd /opt/code-server && \
+        	wget -qO- https://github.com/cdr/code-server/releases/download/2.1698/code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz | tar zxvf - --strip-components=1 && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -52,11 +56,7 @@ USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY r_geo.yml .
-RUN cd /opt && \
-        	mkdir /opt/code-server && \
-        	cd /opt/code-server && \
-        	wget -qO- https://github.com/cdr/code-server/releases/download/2.1698/code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz | tar zxvf - --strip-components=1 && \
-	conda config --set channel_priority strict && \
+RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
 		'jupyter_client' \
