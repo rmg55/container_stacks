@@ -52,10 +52,10 @@ USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY r_geo.yml .
-RUN cd && wget -q -O code-server.tar.gz https://github.com/cdr/code-server/archive/3.2.0.tar.gz && \
-    		mkdir -p ~/.local/bin && \
-    		tar -xvf code-server.tar.gz -C ~/.local/bin --strip-components=1 && \
-    		rm -rf code-server.tar.gz && \
+RUN cd /opt && \
+        	mkdir /opt/code-server && \
+        	cd /opt/code-server && \
+        	wget -qO- https://github.com/cdr/code-server/releases/download/2.1698/code-server2.1698-vsc1.41.1-linux-x86_64.tar.gz | tar zxvf - --strip-components=1 && \
 	conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
@@ -87,6 +87,7 @@ RUN cd && wget -q -O code-server.tar.gz https://github.com/cdr/code-server/archi
 
 #Setup and install RStudio Server to work with Proxy from Jupyter
 ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
+ENV PATH="/opt/code-server:${PATH}"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
