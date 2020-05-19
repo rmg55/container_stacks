@@ -40,8 +40,8 @@ RUN chmod -R 777 /home/jovyan && \
 		libssl1.0.0 && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
-	RSTUDIO_PKG=rstudio-server-1.2.5033-amd64.deb && \
-  		wget -q https://download2.rstudio.org/server/trusty/amd64/${RSTUDIO_PKG} && \
+	RSTUDIO_PKG=rstudio-server-1.2.5042-amd64.deb && \
+  		wget -q https://download2.rstudio.org/server/bionic/amd64/${RSTUDIO_PKG} && \
   		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
 	cd /opt && \
