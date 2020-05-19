@@ -37,12 +37,13 @@ RUN chmod -R 777 /home/jovyan && \
 		libclang-dev \
 		systemd \
 		uuid \
+		gdebi-core \
 		libssl1.0.0 && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
 	RSTUDIO_PKG=rstudio-server-1.2.5042-amd64.deb && \
-  		wget -q https://download2.rstudio.org/server/bionic/amd64/${RSTUDIO_PKG} && \
-  		dpkg -i ${RSTUDIO_PKG} && \
+  		wget -q https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5042-amd64.deb && \
+		gdebi ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
 	cd /opt && \
         	mkdir /opt/code-server && \
