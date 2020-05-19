@@ -47,7 +47,7 @@ RUN chmod -R 777 /home/jovyan && \
 	cd /opt && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
-        	wget -qO- https://github.com/cdr/code-server/releases/download/3.3.1/code-server-3.3.1-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
+        	wget -qO- https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
 	/opt/code-server/code-server --install-extension ms-python.python && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
