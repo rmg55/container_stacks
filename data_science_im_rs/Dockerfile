@@ -60,6 +60,7 @@ COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
+		'tornado==5.1.1' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
