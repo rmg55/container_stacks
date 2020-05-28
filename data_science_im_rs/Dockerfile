@@ -60,6 +60,7 @@ COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
+		'bokeh' \
 		'tornado==5.1.1' \
 		'jupyter_client' \
 		'jupyter-archive' \
@@ -88,7 +89,7 @@ RUN conda config --set channel_priority strict && \
     	fix-permissions $CONDA_DIR
 
 #Setup and install RStudio Server to work with Proxy from Jupyter
-ENV PATH="/opt/conda/envs/r_geo/bin:${PATH}:/usr/lib/rstudio-server/bin"
+ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
 ENV PATH="/opt/code-server:${PATH}"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
