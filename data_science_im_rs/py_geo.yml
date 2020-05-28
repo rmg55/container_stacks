@@ -22,6 +22,7 @@ dependencies:
   - geopandas>=0.7.0
   - geoviews>=1.6.6
   - graphviz>=2.42.3
+  - gtk3>=3.24.0
   - h5netcdf>=0.8.0
   - h5py>=2.10.0
   - holoviews>=1.13.0
