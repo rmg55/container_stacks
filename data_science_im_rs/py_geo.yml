@@ -77,10 +77,11 @@ dependencies:
   - tqdm>=4.43.0
   - widgetsnbextension>=3.5.1
   - xarray>=0.15.1
-  - xgboost>=1.0.2
   - xgeo>=1.0
   - xrviz>=0.1.4
   - zarr>=2.4.0
+  - pip:
+    -xgboost>=1.1.1
 #  - tiledb>=1.7.7
 #  - tiledb-py>=0.5.9
 #  - pip:
