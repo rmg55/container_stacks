@@ -100,4 +100,7 @@ RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.
 
 #Initialize Conda
 USER $NB_UID
+# Dask Scheduler & Bokeh ports
+EXPOSE 8787
+EXPOSE 8786
 RUN conda init bash && exec bash
