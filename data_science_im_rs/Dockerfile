@@ -36,8 +36,7 @@ RUN chmod -R 777 /home/jovyan && \
 		r-cran-rodbc \
 		libclang-dev \
 		systemd \
-		uuid \
-		libssl1.0.0 && \
+		uuid && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
 	RSTUDIO_PKG=rstudio-server-1.2.5042-amd64.deb && \
@@ -61,7 +60,7 @@ RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'jupyterlab' \
 		'bokeh' \
-		'tornado==5.1.1' \
+		'tornado' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
