@@ -71,7 +71,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'code-server' \
 		'nb_conda_kernels' && \
-	conda activate base && code-server --install-extension ms-python.python && \
+	/opt/conda/code-server --install-extension ms-python.python && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
