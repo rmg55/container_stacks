@@ -94,4 +94,4 @@ RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.
 #Initialize Conda
 USER $NB_UID
 RUN conda init bash && source activate
-ENTRYPOINT ["/bin/bash", "-c", "exec bash"]
+#ENTRYPOINT ["/bin/bash", "-c", "exec bash"]
