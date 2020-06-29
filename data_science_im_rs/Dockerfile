@@ -88,7 +88,6 @@ RUN conda config --set channel_priority strict && \
 
 #Setup and install RStudio Server to work with Proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-#ENV CONDA_PREFIX="/opt/conda"
 ENV PATH="/opt/code-server:${PATH}"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
@@ -98,4 +97,3 @@ RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.
 #Initialize Conda
 USER $NB_UID
 RUN conda init bash && source activate && exec bash
-#ENTRYPOINT ["/bin/bash", "-c", "exec bash"]
