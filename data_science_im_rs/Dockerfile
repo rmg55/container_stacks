@@ -43,6 +43,11 @@ RUN chmod -R 777 /home/jovyan && \
   		wget -q https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5042-amd64.deb && \
 		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
+	cd /opt && \
+        	mkdir /opt/code-server && \
+        	cd /opt/code-server && \
+        	wget -qO- https://github.com/cdr/code-server/releases/download/v3.4.1/code-server-3.4.1-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
+	/opt/code-server/code-server --install-extension ms-python.python && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -63,9 +68,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-server-proxy' \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
-		'code-server' \
 		'nb_conda_kernels' && \
-	env CONDA_PREFIX="/opt/conda" code-server --install-extension ms-python.python && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
@@ -85,7 +88,8 @@ RUN conda config --set channel_priority strict && \
 
 #Setup and install RStudio Server to work with Proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
-ENV CONDA_PREFIX="/opt/conda"
+#ENV CONDA_PREFIX="/opt/conda"
+ENV PATH="/opt/code-server:${PATH}"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
@@ -93,5 +97,5 @@ RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.
 
 #Initialize Conda
 USER $NB_UID
-RUN conda init bash && source activate
+RUN conda init bash && source activate && exec bash
 #ENTRYPOINT ["/bin/bash", "-c", "exec bash"]
