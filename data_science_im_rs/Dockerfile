@@ -95,11 +95,7 @@ ENV CONDA_PREFIX="/opt/conda"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
-	mkdir ~/.config/dask && \
-	echo \
-'distributed:
-  dashboard:
-    link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
+	mkdir ~/.config/dask && echo 'distributed:\n  dashboard:\n    link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
 
 #Initialize Conda
 USER $NB_UID
