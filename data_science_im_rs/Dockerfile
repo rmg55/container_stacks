@@ -43,11 +43,6 @@ RUN chmod -R 777 /home/jovyan && \
   		wget -q https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5042-amd64.deb && \
 		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
-	#cd /opt && \
-        #	mkdir /opt/code-server && \
-        #	cd /opt/code-server && \
-        #	wget -qO- https://github.com/cdr/code-server/releases/download/3.2.0/code-server-3.2.0-linux-x86_64.tar.gz | tar zxvf - --strip-components=1 && \
-	#/opt/code-server/code-server --install-extension ms-python.python && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -95,11 +90,9 @@ ENV CONDA_PREFIX="/opt/conda"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server:/opt/conda/envs/r_geo/lib/R/lib"
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
-	mkdir ~/.config/dask && echo 'distributed:\n  dashboard:\n    link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
+	mkdir ~/.config/dask && echo -e 'distributed:\n  dashboard:\n    link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
 
 #Initialize Conda
 USER $NB_UID
-# Dask Scheduler & Bokeh ports
-#EXPOSE 8787
-#EXPOSE 8786
-RUN conda init bash && exec bash
+RUN conda init bash
+ENTRYPOINT ["exec bash"]
