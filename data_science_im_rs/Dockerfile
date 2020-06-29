@@ -52,7 +52,7 @@ RUN chmod -R 777 /home/jovyan && \
   	rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
-
+#code-server --install-extension ms-python.python && \
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY r_geo.yml .
@@ -71,7 +71,6 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'code-server' \
 		'nb_conda_kernels' && \
-	conda init bash && exec bash && code-server --install-extension ms-python.python && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
