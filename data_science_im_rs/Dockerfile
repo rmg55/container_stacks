@@ -7,7 +7,7 @@ ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/rmg55/container_stacks.git" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a proxy to RStudio server, VSCode server, and Panel. Includes kernels for Python, R, and possible IDL (if present in the host machine in specific folders). Software packages/modules are focused on spatial data analytics, remote sensing, and machine learning."
+      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a server-proxy to RStudio server, VSCode server, and Panel. Includes kernels for Python, R, and possible IDL (if present in the host machine in specific folders). Software packages/modules are focused on spatial data analytics, remote sensing, and machine learning."
 
 SHELL ["/bin/bash", "-c"]
 USER root
