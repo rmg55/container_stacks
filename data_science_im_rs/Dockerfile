@@ -57,7 +57,7 @@ COPY py_geo.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'jupyterlab>-2.0' \
+		'jupyterlab>=2.0' \
 		'bokeh>=2.0' \
 		'tornado' \
 		'jupyter_client' \
