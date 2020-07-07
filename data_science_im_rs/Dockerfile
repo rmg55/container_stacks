@@ -7,13 +7,13 @@ ARG VCS_REF
 LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/rmg55/container_stacks.git" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a proxy to RStudio Server. Software packages are focused on spatial data analysis and remote sensing."
+      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a proxy to RStudio server, VSCode server, and Panel. Includes kernels for Python, R, and possible IDL (if present in the host machine in specific folders). Software packages/modules are focused on spatial data analytics, remote sensing, and machine learning."
 
 SHELL ["/bin/bash", "-c"]
 USER root
 SHELL ["/bin/bash", "-c"]
 
-#Prepare image to work on SLURM and be able to bind mount the IDL kernel
+#Prepare image to work on SLURM, build folder structure to be able to bind mount the IDL kernel, install Rstudio server and install VSCode server.
 RUN chmod -R 777 /home/jovyan && \
 	mkdir /usr/share/jupyter && \
     	mkdir /usr/share/jupyter/kernels && \
@@ -21,7 +21,7 @@ RUN chmod -R 777 /home/jovyan && \
     	chmod -R 777 /usr/share/jupyter && \
     	chmod -R 777 /usr/share/jupyter/kernels && \
     	chmod -R 777 /usr/share/jupyter/kernels/IDL && \
-    	chmod -R 777 /opt/conda/lib/python3.7/site-packages && \
+    	chmod -R 777 /opt/conda/lib/python3.8/site-packages && \
     	ln -s /bin/tar /bin/gtar && \
     	groupadd -g 1000 slurm && \
     	useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm && \
@@ -57,8 +57,8 @@ COPY py_geo.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'jupyterlab' \
-		'bokeh' \
+		'jupyterlab>-2.0' \
+		'bokeh>=2.0' \
 		'tornado' \
 		'jupyter_client' \
 		'jupyter-archive' \
