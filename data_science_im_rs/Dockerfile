@@ -47,7 +47,7 @@ RUN chmod -R 777 /home/jovyan && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
         	wget -qO- https://github.com/cdr/code-server/releases/download/v3.4.1/code-server-3.4.1-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
-	/opt/code-server/code-server --install-extension ms-python.python && \
+	/opt/code-server/code-server --install-extension ms-python.vscode-pylance && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
