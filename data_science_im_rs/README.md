@@ -18,7 +18,7 @@
     ```
   <img src="/readme_images/data_science_im_rs.png" width="600">
   
-  To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) to interface with the Slurm. Note this assumes that *o_port* and *serv_fold* environmental variables are defined.
+  To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) and interface with an HPC system using Slurm, see below. Note this assumes that *o_port* and *serv_fold* environmental variables are defined.
   ```bash
   singularity exec --bind /etc/munge \
                    --bind /var/log/munge \
@@ -38,3 +38,8 @@
                                                                                  --no-browser --ip=$(hostname -i) \
                                                                                  --port=$o_port'
 ```
+  To Launch on the USDA ARS JupyterHub, use:
+  
+  * Enter the full path to the container image: ```docker://rowangaffney/data_science_im_rs:latest```
+  * Container Exec Args: ```--bind /etc/munge --bind /var/log/munge --bind /var/run/munge --bind /usr/bin/squeue --bind /usr/bin/scancel --bind /usr/bin/sbatch --bind /usr/bin/scontrol --bind /usr/bin/sinfo --bind /system/slurm:/etc/slurm --bind /run/munge --bind /usr/lib64/libslurm.so --bind /usr/lib64/libmunge.so.2 --bind /usr/lib64/slurm --bind  /project --bind /lustre --bind $HOME --bind /software/7/apps/envi```
+  
