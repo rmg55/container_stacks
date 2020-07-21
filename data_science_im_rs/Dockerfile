@@ -13,6 +13,8 @@ SHELL ["/bin/bash", "-c"]
 USER root
 SHELL ["/bin/bash", "-c"]
 
+ADD settings.json /home/coder/.local/share/code-server/User/settings.json
+
 #Prepare image to work on SLURM, build folder structure to be able to bind mount the IDL kernel, install Rstudio server and install VSCode server.
 RUN chmod -R 777 /home/jovyan && \
 	mkdir /usr/share/jupyter && \
@@ -51,6 +53,7 @@ RUN chmod -R 777 /home/jovyan && \
 	/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
+
 
 USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
