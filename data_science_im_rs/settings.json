@@ -1,6 +1,6 @@
 {
     "workbench.colorTheme": "Solarized Dark",
     "terminal.integrated.inheritEnv": false,
-    "python.dataScience.askForKernelRestart": false
+    "python.dataScience.askForKernelRestart": false,
     "extensions.autoUpdate": false
 }
