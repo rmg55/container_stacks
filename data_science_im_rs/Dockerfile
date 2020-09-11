@@ -41,15 +41,15 @@ RUN chmod -R 777 /home/jovyan && \
 		uuid && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
-	RSTUDIO_PKG=rstudio-server-1.2.5042-amd64.deb && \
-  		wget -q https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5042-amd64.deb && \
+	RSTUDIO_PKG=rstudio-server-1.3.1073-amd64.deb && \
+  		wget -q https://download2.rstudio.org/server/xenial/amd64/rstudio-server-1.3.1073-amd64.deb && \
 		dpkg -i ${RSTUDIO_PKG} && \
   		rm ${RSTUDIO_PKG} && \
 	cd /opt && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
-        	wget -qO- https://github.com/cdr/code-server/releases/download/v3.4.1/code-server-3.4.1-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
-	/opt/code-server/code-server --install-extension ms-python.python@2020.5.86806 && \
+        	wget -qO- https://github.com/cdr/code-server/releases/download/v3.5.0/code-server-3.5.0-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
+	/opt/code-server/code-server --install-extension ms-python.python@2020.7.1 && \
 	/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
