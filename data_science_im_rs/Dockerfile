@@ -49,8 +49,8 @@ RUN chmod -R 777 /home/jovyan && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
         	wget -qO- https://github.com/cdr/code-server/releases/download/v3.5.0/code-server-3.5.0-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
-	/opt/code-server/code-server --install-extension ms-python.python && \
-	/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
+		/opt/code-server/code-server --install-extension ms-python.python && \
+		/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -100,4 +100,4 @@ RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.
 
 #Initialize Conda
 USER $NB_UID
-RUN conda init bash && source activate && exec bash
+#RUN conda init bash && source activate && exec bash
