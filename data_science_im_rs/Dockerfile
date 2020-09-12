@@ -38,13 +38,12 @@ RUN chmod -R 777 /home/jovyan && \
 		r-cran-rodbc \
 		libclang-dev \
 		systemd \
+		gdebi-core \
 		uuid && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
-	RSTUDIO_PKG=rstudio-server-1.3.1073-amd64.deb && \
-  		wget -q https://download2.rstudio.org/server/xenial/amd64/rstudio-server-1.3.1073-amd64.deb && \
-		dpkg -i ${RSTUDIO_PKG} && \
-  		rm ${RSTUDIO_PKG} && \
+  	wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1073-amd64.deb && \
+		sudo gdebi rstudio-server-1.3.1073-amd64.deb && \
 	cd /opt && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
