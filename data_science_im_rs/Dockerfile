@@ -43,7 +43,7 @@ RUN chmod -R 777 /home/jovyan && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
   	wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1073-amd64.deb && \
-		sudo gdebi rstudio-server-1.3.1073-amd64.deb && \
+		gdebi -n rstudio-server-1.3.1073-amd64.deb && \
 	cd /opt && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
