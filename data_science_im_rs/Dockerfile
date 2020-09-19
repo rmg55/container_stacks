@@ -53,7 +53,6 @@ RUN chmod -R 777 /home/jovyan && \
 		/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
 		/opt/code-server/code-server --install-extension redhat.vscode-yaml && \
 		/opt/code-server/code-server --install-extension Equinusocio.vsc-material-theme && \
-		/opt/code-server/code-server --install-extension redhat-developer/vscode-xml && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
