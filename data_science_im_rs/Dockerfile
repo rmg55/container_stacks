@@ -42,14 +42,18 @@ RUN chmod -R 777 /home/jovyan && \
 		uuid && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
-  	wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.3.1093-amd64.deb && \
-		gdebi -n rstudio-server-1.3.1093-amd64.deb && \
+  	wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5042-amd64.deb && \
+		gdebi -n rstudio-server-1.2.5042-amd64.deb && \
+		rm rstudio-server-1.2.5042-amd64.deb && \
 	cd /opt && \
         	mkdir /opt/code-server && \
         	cd /opt/code-server && \
         	wget -qO- https://github.com/cdr/code-server/releases/download/v3.5.0/code-server-3.5.0-linux-amd64.tar.gz | tar zxvf - --strip-components=1 && \
 		/opt/code-server/code-server --install-extension ms-python.python && \
 		/opt/code-server/code-server --install-extension github.vscode-pull-request-github && \
+		/opt/code-server/code-server --install-extension redhat.vscode-yaml && \
+		/opt/code-server/code-server --install-extension Equinusocio.vsc-material-theme && \
+		/opt/code-server/code-server --install-extension redhat-developer/vscode-xml && \
   	apt-get clean && \
   	rm -rf /var/lib/apt/lists/*
 
@@ -96,7 +100,4 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lib:/usr/lib/x86_64-linux-gnu:/usr/lib/
 USER root
 RUN echo 'rsession-which-r=/opt/conda/envs/r_geo/bin/R' >> /etc/rstudio/rserver.conf && \
 	mkdir ~/.config/dask && echo -e 'distributed:\n  dashboard:\n    link: "/user/{JUPYTERHUB_USER}/proxy/{port}/status"' > ~/.config/dask/distributed.yaml
-
-#Initialize Conda
 USER $NB_UID
-#RUN conda init bash && source activate && exec bash
