@@ -74,7 +74,8 @@ dependencies:
   - tornado>=5.1.1
   - tqdm>=4.43.0
   - widgetsnbextension>=3.5.1
-  - xarray>=0.15.1
+  - xarray>=0.16.0
+  - xarray-spatial>=0.1.0
   - xgeo>=1.0
   - xrviz>=0.1.4
   - zarr>=2.4.0
