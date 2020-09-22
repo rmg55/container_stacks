@@ -82,6 +82,7 @@ dependencies:
   - pip:
     - xgboost>=1.1.1
     - git+git://github.com/slundberg/shap.git
+    - git+git://github.com/intake/gdrivefs.git
 #  - tiledb>=1.7.7
 #  - tiledb-py>=0.5.9
 #  - pip:
