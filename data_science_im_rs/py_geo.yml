@@ -1,6 +1,8 @@
 name: py_geo
 channels:
   - conda-forge
+  - rapidsai
+  - nvidia
   - defaults
 dependencies:
   - bokeh>=2.1
@@ -80,6 +82,9 @@ dependencies:
   - xlrd>=1.1.0
   - xrviz>=0.1.4
   - zarr>=2.4.0
+# RAPIDS GPU
+  - cudatoolkit=11.0
+  - rapids=0.15
   - pip:
     - xgboost>=1.1.1
     - git+git://github.com/slundberg/shap.git
