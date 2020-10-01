@@ -1,0 +1,12 @@
+name: py_gpu
+channels:
+  - rapidsai
+  - nvidia
+  - conda-forge
+dependencies:
+  - rapids=0.15
+  - cudatoolkit=11.0
+  - ipykernel>=5.2.0
+  - ipywidgets>=7.5.1
+  - jupyter-server-proxy>=1.5.0
+  - python>=3.7.6
