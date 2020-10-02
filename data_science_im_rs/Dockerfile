@@ -76,6 +76,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
+	conda env create -f py_gpu.yml --quiet && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
@@ -85,15 +86,6 @@ RUN conda config --set channel_priority strict && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
 	jupyter lab build && \
     	jupyter labextension update --all && \
-	conda clean --all -afy && \
-	npm cache clean --force && \
-  	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-  	rm -rf /home/$NB_USER/.cache/yarn && \
-  	rm -rf /home/$NB_USER/.node-gyp && \
-    	fix-permissions /home/$NB_USER && \
-    	fix-permissions $CONDA_DIR
-
-RUN conda env create -f py_gpu.yml --quiet && \
 	conda clean --all -afy && \
 	npm cache clean --force && \
   	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
