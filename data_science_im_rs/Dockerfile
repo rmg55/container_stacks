@@ -61,6 +61,7 @@ USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY py_geo_gpu.yml .
+COPY py_geo_gpu-pinned.yml .
 COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
@@ -76,7 +77,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
-	conda env create -f py_geo_gpu.yml --quiet && \
+	conda env create -f py_geo_gpu-pinned.yml --quiet && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
