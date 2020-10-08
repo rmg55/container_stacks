@@ -6,5 +6,6 @@ channels:
   - defaults
 dependencies:
   - rapids=0.15
-  - cudatoolkit=11.0
-  - ipykernel==5.3.4
+  - cudatoolkit=10.1
+  - python=3.7
+  - ipykernel=5.3.4
