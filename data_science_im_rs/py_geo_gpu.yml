@@ -2,11 +2,17 @@ name: py_geo_gpu
 channels:
   - rapidsai
   - nvidia
-  - numba
   - conda-forge
   - defaults
 dependencies:
-  - rapids=0.15
-  - cudatoolkit=11.0
+  - cuDF=0.15
+  - cuML=0.15
+  - cuGraph=0.15
+  - cuSignal=0.15
+  - cuSpatial=0.15
+  - cuxfilter=0.15
+  - dask=0.15
+  - distributed=0.15
+  - cudatoolkit=10.2
   - python=3.8
   - ipykernel=5.3.4
