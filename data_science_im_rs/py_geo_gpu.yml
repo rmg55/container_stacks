@@ -11,8 +11,8 @@ dependencies:
   - cuSignal=0.15
   - cuSpatial=0.15
   - cuxfilter=0.15
-  - dask=0.15
-  - distributed=0.15
+  - dask=2.3
+  - distributed=2.3
   - cudatoolkit=10.2
   - python=3.8
   - ipykernel=5.3.4
