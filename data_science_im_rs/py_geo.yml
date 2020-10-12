@@ -67,6 +67,7 @@ dependencies:
   - selenium>=3.141.0
   - shapely>=1.7.0
 #   - shap>=0.35
+  - spatialpandas>=0.3.6
   - spectral>=0.20
   - streamz>=0.5.2
   - threddsclient>=0.4.2
