@@ -78,6 +78,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
+	conda config --set channel_priority false && \ 
 	conda env create -f py_geo_gpu.yml --quiet && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
