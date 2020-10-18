@@ -31,7 +31,7 @@ dependencies:
   - intake-esm>=2020.3.16.1
   - intake-parquet>=0.2.3
   - intake-sql>=0.2.0
-  - intake-stac>=0.2.3
+  - intake-stac>=0.3.0
   - intake-xarray>=0.3.1
   - ipykernel>=5.2.0
   - ipywidgets>=7.5.1

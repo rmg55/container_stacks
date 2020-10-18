@@ -81,6 +81,7 @@ RUN conda config --set channel_priority strict && \
 	conda config --set channel_priority false && \ 
 	conda env create -f py_geo_gpu.yml --quiet && \
 	echo 'completed py_geo_gpu' && \
+	conda config --set channel_priority strict && \
 	conda env create -f py_geo.yml --quiet && \
 	conda env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
