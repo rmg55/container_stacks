@@ -84,6 +84,7 @@ dependencies:
   - zarr>=2.4.0
   - pip:
     - xgboost>=1.1.1
+    - sat-search>=0.3.0
     - git+git://github.com/slundberg/shap.git
     - git+git://github.com/intake/gdrivefs.git
 #  - tiledb>=1.7.7
