@@ -66,15 +66,15 @@ COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'jupyterlab>=2.0' \
-		'bokeh>=2.0' \
+		'jupyterlab>=2.2' \
+		'bokeh>=2.2.3' \
 		'tornado' \
 		'jupyter_client' \
 		'jupyter-archive' \
 		'widgetsnbextension' \
-		'dask-labextension' \
+		'dask-labextension>=3.0.0' \
 		'jupyter-panel-proxy' \
-		'jupyter-server-proxy' \
+		'jupyter-server-proxy>=1.5.0' \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
