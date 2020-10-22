@@ -61,7 +61,7 @@ USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY py_geo_gpu.yml .
-COPY py_geo_gpu-pinned.yml .
+#COPY py_geo_gpu-pinned.yml .
 COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
