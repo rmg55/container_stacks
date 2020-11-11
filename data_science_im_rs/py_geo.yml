@@ -26,6 +26,7 @@ dependencies:
   - gtk3>=3.24.0
   - h5netcdf>=0.8.0
   - h5py>=2.10.0
+  - hdbscan>=hdbscan>=0.8.26
   - holoviews>=1.13.0
   - hvplot>=0.5.2
   - intake>=0.5.4
