@@ -66,6 +66,7 @@ COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
+		'mamba>=0.7.6'
 		'jupyterlab>=2.0' \
 		'bokeh=2.1.1' \
 		'tornado' \
@@ -79,11 +80,11 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
-	conda env create -f py_geo_gpu.yml --quiet && \
+	mamba env create -f py_geo_gpu.yml --quiet && \
 	echo 'completed py_geo_gpu' && \
 	conda config --set channel_priority strict && \
-	conda env create -f py_geo.yml --quiet && \
-	conda env create -f r_geo.yml --quiet && \
+	mamba env create -f py_geo.yml --quiet && \
+	mamba env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 	jupyter labextension install @jupyterlab/server-proxy --no-build && \
     	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
