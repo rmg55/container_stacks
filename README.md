@@ -22,22 +22,26 @@
   
   To launch this container (and allow [Dask](https://distributed.dask.org/en/latest/) via [Dask-Jobque](https://jobqueue.dask.org/en/latest/)) to interface with the Slurm. Note this assumes that *o_port* and *serv_fold* environmental variables are defined.
   ```bash
+
   singularity exec --bind /etc/munge \
-                   --bind /var/log/munge \
-                   --bind /var/run/munge \
-                   --bind /usr/bin/squeue \
-                   --bind /usr/bin/scancel \
-                   --bind /usr/bin/sbatch \
-                   --bind /usr/bin/scontrol \
-                   --bind /system/slurm:/etc/slurm \
-                   --bind /run/munge \
-                   --bind /usr/lib64 \
-                   --bind /scinet01 \
-                   --bind $HOME \
-                   -H $HOME:/home/jovyan \
+		   --bind /var/log/munge \
+		   --bind /var/run/munge \
+		   --bind /usr/bin/squeue \
+		   --bind /usr/bin/scancel \
+		   --bind /usr/bin/sbatch \
+		   --bind /usr/bin/scontrol \
+		   --bind /usr/bin/sinfo \
+		   --bind /system/slurm:/etc/slurm \
+		   --bind /run/munge \
+		   --bind /usr/lib64/libslurm.so \
+		   --bind /usr/lib64/libmunge.so.2 \
+		   --bind /usr/lib64/slurm \
+		   --bind /project \
+		   --bind /lustre--bind /etc/munge \
                    docker://rowangaffney/data_science_im_rs:latest /bin/bash -c 'unset XDG_RUNTIME_DIR && \
-                                                                                 start.sh jupyter lab --notebook-dir=$serv_fold \
-                                                                                 --no-browser --ip=$(hostname -i) \
+                                                                                 start.sh jupyter lab \
+                                                                                 --no-browser \
+									  	 --ip=$(hostname -i) \
                                                                                  --port=$o_port'
 ```
 

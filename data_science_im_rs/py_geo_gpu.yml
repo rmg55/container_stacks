@@ -5,7 +5,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - rapids=0.14
-  - cudatoolkit=10.2
-  - python=3.7
+  - rapids
+  - cudatoolkit
+  - python>=3.7
   - ipykernel>=5.3.4
