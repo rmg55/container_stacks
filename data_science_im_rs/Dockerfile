@@ -66,7 +66,7 @@ COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'mamba>=0.7.6'
+		'mamba>=0.7.6' \
 		'jupyterlab>=2.0' \
 		'bokeh=2.1.1' \
 		'tornado' \
