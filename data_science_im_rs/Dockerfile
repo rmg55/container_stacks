@@ -87,18 +87,19 @@ RUN conda config --set channel_priority strict && \
 	mamba env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 	jupyter labextension install @jupyterlab/server-proxy --no-build && \
-    	jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+        jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
 	jupyter labextension install dask-labextension --no-build && \
 	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
 	jupyter lab build && \
-    	jupyter labextension update --all && \
+        jupyter labextension update --all && \
 	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	npm cache clean --force && \
-  	rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-  	rm -rf /home/$NB_USER/.cache/yarn && \
-  	rm -rf /home/$NB_USER/.node-gyp && \
-    	fix-permissions /home/$NB_USER && \
-    	fix-permissions $CONDA_DIR
+        rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+        rm -rf /home/$NB_USER/.cache/yarn && \
+        rm -rf /home/$NB_USER/.node-gyp && \
+        fix-permissions /home/$NB_USER && \
+        fix-permissions $CONDA_DIR
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
