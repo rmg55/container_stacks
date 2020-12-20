@@ -91,6 +91,7 @@ dependencies:
     - git+git://github.com/slundberg/shap.git
     - git+git://github.com/intake/gdrivefs.git
     - git+git://github.com/intake/intake-xarray.git
+    - git+git://github.com/intake/fsspec-reference-maker.git
 #  - tiledb>=1.7.7
 #  - tiledb-py>=0.5.9
 #  - pip:
