@@ -67,7 +67,7 @@ RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'mamba>=0.7.6' \
 		'jupyterlab>=2.0' \
-		'bokeh=2.1.1' \
+		'bokeh>=2.1.1' \
 		'tornado' \
 		'jupyter_client' \
 		'jupyter-archive' \
@@ -92,7 +92,6 @@ RUN conda config --set channel_priority strict && \
 	jupyter lab build && \
         jupyter labextension update --all && \
 	conda clean --all -afy && \
-	mamba clean --all -afy && \
 	npm cache clean --force && \
         rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
         rm -rf /home/$NB_USER/.cache/yarn && \
