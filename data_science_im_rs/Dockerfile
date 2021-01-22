@@ -60,7 +60,6 @@ USER $NB_UID
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY py_geo_gpu.yml .
-#COPY py_geo_gpu-pinned.yml .
 COPY r_geo.yml .
 
 RUN conda config --set channel_priority strict && \
@@ -79,8 +78,8 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
-	#mamba env create -f py_geo_gpu.yml --quiet && \
-	#echo 'completed py_geo_gpu' && \
+	mamba env create -f py_geo_gpu.yml --quiet && \
+	echo 'completed py_geo_gpu' && \
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
 	mamba env create -f r_geo.yml --quiet && \
