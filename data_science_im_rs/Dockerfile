@@ -79,8 +79,8 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
-	mamba env create -f py_geo_gpu.yml --quiet && \
-	echo 'completed py_geo_gpu' && \
+	#mamba env create -f py_geo_gpu.yml --quiet && \
+	#echo 'completed py_geo_gpu' && \
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
 	mamba env create -f r_geo.yml --quiet && \
