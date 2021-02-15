@@ -103,15 +103,15 @@ RUN conda create -n py_geo_gpu -y && \
 	python=3.8 \
 	cudatoolkit=11.0 && \
 	conda clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 && \
 	conda clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 && \
 	conda clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 && \
 	conda clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 && \
 	conda clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
 	conda clean --all -afy
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
