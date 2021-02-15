@@ -31,5 +31,5 @@ jobs:
         with:
           push: true
           tags: rowangaffney/data_science_im_rs:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
+#          cache-from: type=local,src=/tmp/.buildx-cache
+#          cache-to: type=local,dest=/tmp/.buildx-cache
