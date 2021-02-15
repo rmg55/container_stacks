@@ -96,8 +96,22 @@ RUN conda config --set channel_priority strict && \
         fix-permissions /home/$NB_USER && \
         fix-permissions $CONDA_DIR
 
-RUN mamba env create -f py_geo_gpu.yml --quiet && \
-	echo 'completed py_geo_gpu' && \
+#RUN mamba env create -f py_geo_gpu.yml --quiet && \
+#	echo 'completed py_geo_gpu' && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 \
+	python=3.8 \
+	cudatoolkit=11.0 && \
+	conda clean --all -afy && \
+	mamba install -n py_geo_gpu  -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 \
+	conda clean --all -afy && \
+	mamba install -n py_geo_gpu  -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 \
+	conda clean --all -afy && \
+	mamba install -n py_geo_gpu  -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 \
+	conda clean --all -afy && \
+	mamba install -n py_geo_gpu  -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 \
+	conda clean --all -afy && \
+	mamba install -n py_geo_gpu  -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 \
+	conda clean --all -afy && \
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
