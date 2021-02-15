@@ -89,6 +89,7 @@ RUN conda config --set channel_priority strict && \
 	jupyter lab build && \
         jupyter labextension update --all && \
 	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	npm cache clean --force && \
         rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
         rm -rf /home/$NB_USER/.cache/yarn && \
@@ -102,17 +103,17 @@ RUN conda create -n py_geo_gpu -y && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 \
 	python=3.8 \
 	cudatoolkit=11.0 && \
-	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 && \
-	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 && \
-	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 && \
-	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 && \
-	conda clean --all -afy && \
+	mamba clean --all -afy && \
 	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
-	conda clean --all -afy
+	mamba clean --all -afy
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
