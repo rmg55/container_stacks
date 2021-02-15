@@ -78,8 +78,6 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
-	mamba env create -f py_geo_gpu.yml --quiet && \
-	echo 'completed py_geo_gpu' && \
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
 	mamba env create -f r_geo.yml --quiet && \
@@ -97,6 +95,9 @@ RUN conda config --set channel_priority strict && \
         rm -rf /home/$NB_USER/.node-gyp && \
         fix-permissions /home/$NB_USER && \
         fix-permissions $CONDA_DIR
+
+RUN mamba env create -f py_geo_gpu.yml --quiet && \
+	echo 'completed py_geo_gpu' && \
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
 ENV PATH="${PATH}:/usr/lib/rstudio-server/bin"
