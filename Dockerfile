@@ -98,7 +98,8 @@ RUN conda config --set channel_priority strict && \
 
 #RUN mamba env create -f py_geo_gpu.yml --quiet && \
 #	echo 'completed py_geo_gpu' && \
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 \
+RUN conda create -n py_geo_gpu -y && \
+	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 \
 	python=3.8 \
 	cudatoolkit=11.0 && \
 	conda clean --all -afy && \
