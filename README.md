@@ -5,14 +5,16 @@
  1. **data_science_im_rs**: JupyterLab with geospatial packages in three environments, py_geo (python), py_geo_gpu (python-gpu), and r_geo (R). It also includes proxies RStudio, VSCode (via code-server), and Panel.<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
- ![](https://github.com/rmg55/container_stacks/workflows/ci/badge.svg?branch=data_science_im_rs)
+ ![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_latest/badge.svg?branch=data_science_im_rs)
+ ![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_tag/badge.svg?branch=data_science_im_rs)
  
  <br>
 
  2. **netlogo**: Coming soon<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/netlogo_im/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im)
- ![ci](https://github.com/rmg55/container_stacks/workflows/ci/badge.svg?branch=netlogo)
+ ![](https://github.com/rmg55/container_stacks/workflows/netlogo_latest/badge.svg?branch=netlogo)
+ ![](https://github.com/rmg55/container_stacks/workflows/netlogo_tag/badge.svg?branch=netlogo)
 
  <br>
 
@@ -20,10 +22,12 @@
  ![](https://img.shields.io/docker/image-size/rowangaffney/hls_grazing_dash/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/hls_grazing_dash)
  ![](https://github.com/rmg55/container_stacks/workflows/data_science_im:latest/badge.svg?branch=hls_grazing_dash)
+ ![](https://github.com/rmg55/container_stacks/workflows/hls_grazing_dash_latest/badge.svg?branch=hls_grazing_dash)
+ ![](https://github.com/rmg55/container_stacks/workflows/hls_grazing_dash_tag/badge.svg?branch=hls_grazing_dash)
 
  <br>
 
-4. **master**: Depreciated. This is the old branch where all the containers were in the same branch.
+4. **master (Depreciated)**:This is the original branch where all the containers were located before they were split by branch. This will be kept around for an indefinite time.
  
 <br>
 
