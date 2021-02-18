@@ -3,6 +3,9 @@ name: data_science_im_rs_latest
 on:
   push:
     branches: data_science_im_rs
+  release:
+    types: [published]
+    branches: data_science_im_rs
 
 jobs:
   github-build_data_science_im_rs___latest:
