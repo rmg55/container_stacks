@@ -5,7 +5,7 @@
  1. **data_science_im_rs**: JupyterLab with geospatial packages in three environments, py_geo (python), py_geo_gpu (python-gpu), and r_geo (R). It also includes proxies RStudio, VSCode (via code-server), and Panel.<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
- ![ci](https://github.com/rmg55/container_stacks/workflows/ci/badge.svg?branch=data_science_im_rs)
+ ![](https://github.com/rmg55/container_stacks/workflows/ci/badge.svg?branch=data_science_im_rs)
  
  <br>
 
@@ -19,7 +19,7 @@
  3. **hls_grazing_dash**: Coming soon<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/hls_grazing_dash/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/hls_grazing_dash)
- ![ci](https://github.com/rmg55/container_stacks/workflows/ci/badge.svg?branch=hls_grazing_dash)
+ ![](https://github.com/rmg55/container_stacks/workflows/data_science_im:latest/badge.svg?branch=hls_grazing_dash)
 
  <br>
 
