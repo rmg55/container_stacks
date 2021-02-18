@@ -1,4 +1,4 @@
-name: ci
+name: data_science_im_rs_tag
 
 on:
   release:

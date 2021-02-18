@@ -94,6 +94,7 @@ dependencies:
     - git+git://github.com/intake/gdrivefs.git
     - git+git://github.com/intake/intake-xarray.git
     - git+git://github.com/intake/fsspec-reference-maker.git
+    - git+git://github.com/pangeo-data/xbatcher.git
 #  - tiledb>=1.7.7
 #  - tiledb-py>=0.5.9
 #  - pip:

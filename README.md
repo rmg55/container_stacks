@@ -2,6 +2,8 @@
 
 ![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)
 ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
+![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_latest/badge.svg?branch=data_science_im_rs)
+![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_tag/badge.svg?branch=data_science_im_rs)
 
   - Includes three geospatial environments, Python (py_geo and py_geo_gpu) and R (r_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
   - Will include the IDL (with ENVI API) if correct folders are bind-mounted on container execution (not in example below) and the ENVI licensed in active / "checked-out".
