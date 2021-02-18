@@ -2,6 +2,7 @@ name: data_science_im_rs_tag
 
 on:
   release:
+    types: [published]
     branches: data_science_im_rs
 
 jobs:
