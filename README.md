@@ -20,7 +20,7 @@ To facilitate reproducible research, a set of containerized computational enviro
 
  3. **hls_grazing_dash**: Coming soon<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/hls_grazing_dash/latest)
- ![](https://img.shields.io/docker/pulls/rowangaffney/hls_grazing_dash)
+ ![](https://img.shields.io/docker/pulls/rowangaffney/hls_grazing_dash)<br>
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_latest?label=build%3A%20hls_grazing_dash%3Alatest)<br>
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_tag?label=build%3A%20hls_grazing_dash%3A%3Ctag%3E)
 
