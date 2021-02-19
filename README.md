@@ -1,29 +1,28 @@
- 
- 
- This repository contains a set of branches that build docker containers/images that are pushed to [Docker Hub](https://hub.docker.com/u/rowangaffney). More details about each container can be found within each branch, but a gneral descriptions are below:
+## Data science containers for geospatial analytics
+
+To facilitate reproducible research, a set of containerized computational environments are defined in this repository. Within each branch, are the scripts and definition files for building the pushing Docker images to [DockerHub]((https://hub.docker.com/u/rowangaffney)). When a branch is modified, a Github Action workflow is triggered to rebuild the image with the ":latest" tag, and is pushed to DockerHub (https://hub.docker.com/u/rowangaffney). When a new release in the Github repository is created, the Github Action workflow is triggered and a new image with the "v<release_tagname>" is built and pushed to DockerHub. More details about each container can be found within each branch, but a gneral descriptions are below:
  
  1. **data_science_im_rs**: JupyterLab with geospatial packages in three environments, py_geo (python), py_geo_gpu (python-gpu), and r_geo (R). It also includes proxies RStudio, VSCode (via code-server), and Panel.<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs/latest)
- ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)
- ![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_latest/badge.svg?branch=data_science_im_rs)
- ![](https://github.com/rmg55/container_stacks/workflows/data_science_im_rs_tag/badge.svg?branch=data_science_im_rs)
+ ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_latest?label=build%3A%20data_science_im_rs%3Alatest)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_tag?label=build%3A%20data_science_im_rs%3A%3Ctag%3E)
  
  <br>
 
- 2. **netlogo**: Coming soon<br>
+ 2. **netlogo_im**: Coming soon<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/netlogo_im/latest)
- ![](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im)
- ![](https://github.com/rmg55/container_stacks/workflows/netlogo_latest/badge.svg?branch=netlogo)
- ![](https://github.com/rmg55/container_stacks/workflows/netlogo_tag/badge.svg?branch=netlogo)
+ ![](https://img.shields.io/docker/pulls/rowangaffney/netlogo_im)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_latest?label=build%3A%20netlogo_im%3Alatest)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_tag?label=build%3A%20netlogo_im%3A%3Ctag%3E)
 
  <br>
 
  3. **hls_grazing_dash**: Coming soon<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/hls_grazing_dash/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/hls_grazing_dash)
- ![](https://github.com/rmg55/container_stacks/workflows/data_science_im:latest/badge.svg?branch=hls_grazing_dash)
- ![](https://github.com/rmg55/container_stacks/workflows/hls_grazing_dash_latest/badge.svg?branch=hls_grazing_dash)
- ![](https://github.com/rmg55/container_stacks/workflows/hls_grazing_dash_tag/badge.svg?branch=hls_grazing_dash)
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_latest?label=build%3A%20hls_grazing_dash%3Alatest)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/netlogo_im_tag?label=build%3A%20hls_grazing_dash%3A%3Ctag%3E)
 
  <br>
 
