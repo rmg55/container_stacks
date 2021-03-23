@@ -107,14 +107,14 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 && \
-	mamba clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 && \
-	mamba clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 && \
-	mamba clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 && \
-	mamba clean --all -afy && \
-	mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
+	mamba clean --all -afy
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 && \
+	mamba clean --all -afy
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 && \
+	mamba clean --all -afy
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 && \
+	mamba clean --all -afy
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
 	mamba clean --all -afy
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
