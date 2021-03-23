@@ -114,7 +114,7 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.18 && \
 	mamba clean --all -afy
 
 #Setup and install RStudio Server to work with jupyter-server-proxy from Jupyter
