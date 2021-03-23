@@ -104,15 +104,15 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudatoolkit=11.0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.17 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.18 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.17 && \
 	mamba clean --all -afy
