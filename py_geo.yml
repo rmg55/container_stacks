@@ -86,6 +86,7 @@ dependencies:
   - xrviz>=0.1.4
   - zarr>=2.4.0
   - pip:
+    - stackstac==0.1.0
     - xgboost>=1.1.1
     - sat-search>=0.3.0
     - aiocogeo>=0.3.0
