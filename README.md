@@ -7,7 +7,7 @@
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_latest?label=build%3A%20data_science_im_rs%3Alatest)<br>
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_tag?label=build%3A%20data_science_im_rs%3A%3Ctag%3E)
 
-  - Includes three geospatial environments, Python (py_geo and py_geo_gpu) and R (r_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
+  - Includes three geospatial environments, Python (py_geo) and R (r_geo). Each contain a set of geospatial packages and parallel/distributed computing packages
   - Includes proxies to **[RStudio](https://rstudio.com/products/rstudio/)**, **[VSCode](https://code.visualstudio.com/)**, and **[Panel](https://panel.holoviz.org/)** (will launch in seperate tabs).
   - Built from [Jupyter minimal-notebook](https://github.com/jupyter/docker-stacks/tree/master/minimal-notebook) stack.
   - Docker Hub Link: [https://hub.docker.com/r/rowangaffney/data_science_im_rs](https://hub.docker.com/r/rowangaffney/data_science_im_rs)
