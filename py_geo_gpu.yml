@@ -11,8 +11,8 @@ dependencies:
   - cusignal=0.18
   - cuspatial=0.18
   - cuxfilter=0.18
-  - cudatoolkit=11.0
+  - cudatoolkit
   - python>=3.8
   - ipykernel>=5.3.4
-#  - pkgs/main/linux-64::tensorflow-gpu>=2
-#  - keras>=2.4.0
+  - pkgs/main/linux-64::tensorflow-gpu>=2
+  - keras>=2.4.0
