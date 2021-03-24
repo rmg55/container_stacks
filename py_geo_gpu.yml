@@ -5,7 +5,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - rapids-blazing=0.17
+  - rapids-blazing=0.18
   - cudatoolkit=11.0
-  - python>=3.7
+  - python>=3.8
   - ipykernel>=5.3.4
+  - pkgs/main/linux-64::tensorflow-gpu>=2
+  - keras>=2.4.0
