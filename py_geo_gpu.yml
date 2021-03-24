@@ -5,7 +5,12 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - rapids=0.18
+  - cudf=0.18
+  - cuml=0.18
+  - cugraph=0.18
+  - cusignal=0.18
+  - cuspatial=0.18
+  - cuxfilter=0.18
   - cudatoolkit=11.0
   - python>=3.8
   - ipykernel>=5.3.4
