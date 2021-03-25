@@ -16,8 +16,8 @@
  2. **data_science_im_rs_gpu**: Built from data_science_im_rs (see above), but also includes a py_gpu environment.<br>
  ![](https://img.shields.io/docker/image-size/rowangaffney/data_science_im_rs_gpu/latest)
  ![](https://img.shields.io/docker/pulls/rowangaffney/data_science_im_rs_gpu)<br>
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_latest?label=build%3A%20data_science_im_rs_gpu%3Alatest)<br>
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_tag?label=build%3A%20data_science_im_rs_gpu%3Av%3Ctag%3E)
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_gpu_latest?label=build%3A%20data_science_im_rs_gpu%3Alatest)<br>
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rmg55/container_stacks/data_science_im_rs_gpu_tag?label=build%3A%20data_science_im_rs_gpu%3Av%3Ctag%3E)
  <br>
 
  3. **netlogo_im**: In Progress/Coming soon<br>
