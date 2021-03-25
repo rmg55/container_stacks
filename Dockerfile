@@ -22,6 +22,7 @@ COPY spec-file.txt .
 #        fix-permissions /home/$NB_USER && \
 #        fix-permissions $CONDA_DIR
 
+RUN conda create -n py_geo_gpu -y
 RUN mamba install --name py_geo_gpu --file spec-file.txt
 
 #RUN conda create -n py_geo_gpu -y
