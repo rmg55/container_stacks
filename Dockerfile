@@ -28,19 +28,19 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN conda create -n py_geo_gpu -y
 RUN mamba install -n py_geo_gpu -c conda-forge python=3.7.10=hffdb5ce_100_cpython && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c nvidia cudatoolkit=11.0.221=h6bb024c_0 && \
+RUN mamba install -n py_geo_gpu -c nvidia -c conda-forge cudatoolkit=11.0.221=h6bb024c_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cudf=0.18.1=cuda_11.0_py37_g999be56c80_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cudf=0.18.1=cuda_11.0_py37_g999be56c80_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cuml=0.18.0=cuda11.0_py37_gb5f59e005_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuml=0.18.0=cuda11.0_py37_gb5f59e005_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cugraph=0.18.0=py37_g65ec965f_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cugraph=0.18.0=py37_g65ec965f_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cusignal=0.18.0=py38_g42899d2_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cusignal=0.18.0=py38_g42899d2_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cuspatial=0.18.0=py37_gf4da460_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuspatial=0.18.0=py37_gf4da460_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai cuxfilter=0.18.0=py37_gac6f488_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37_gac6f488_0 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c defaults tensorflow-gpu=1.14.0=h0d30ee6_0 && \
 	mamba clean --all -afy
