@@ -6,7 +6,7 @@ on:
     branches: data_science_im_rs_gpu
 
 jobs:
-  github-build_data_science_im_rs___tag:
+  github-build_data_science_im_rs_gpu___tag:
     runs-on: ubuntu-latest
     steps:
 #      -
