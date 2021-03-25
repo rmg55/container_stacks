@@ -22,9 +22,9 @@ COPY py_geo_gpu.yml .
 #        fix-permissions $CONDA_DIR
 
 RUN conda create -n py_geo_gpu -y
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults python=3.7 pip && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults python=3.7 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudatoolkit=11.0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudatoolkit=10.1 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.18 && \
 	mamba clean --all -afy
@@ -38,7 +38,9 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.18 && \
 	mamba clean --all -afy
-RUN /opt/conda/envs/py_geo_gpu/bin/pip install tensorflow keras && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults tensorflow-gpu && \
+	mamba clean --all -afy
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults keras && \
 	mamba clean --all -afy && \
 	npm cache clean --force && \
             rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
