@@ -44,7 +44,7 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c defaults tensorflow-gpu=1.14.0=h0d30ee6_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c conda-forge keras && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia -c defaults keras && \
 	mamba clean --all -afy && \
 	npm cache clean --force && \
             rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
