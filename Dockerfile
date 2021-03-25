@@ -38,7 +38,7 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.18 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults tensorflow-gpu>=2 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults tensorflow-gpu && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults keras && \
 	mamba clean --all -afy && \
