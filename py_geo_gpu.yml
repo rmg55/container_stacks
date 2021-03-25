@@ -5,14 +5,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - cudf=0.18
-  - cuml=0.18
-  - cugraph=0.18
-  - cusignal=0.18
-  - cuspatial=0.18
-  - cuxfilter=0.18
-  - cudatoolkit
-  - python>=3.8
+  - rapids=0.18
+  - cudatoolkit=11.0
+  - python=3.7
   - ipykernel>=5.3.4
-  - pkgs/main/linux-64::tensorflow-gpu>=2
-  - keras>=2.4.0
+  - tensorflow-gpu
+  - keras

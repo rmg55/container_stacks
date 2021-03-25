@@ -1,33 +1,22 @@
 FROM rowangaffney/data_science_im_rs
 
-USER $NB_UID
+#Add Additional Image Labels
+LABEL maintainer="Rowan Gaffney <rowan.gaffney@usda.gov>"
+ARG BUILD_DATE
+ARG VCS_REF
+LABEL org.label-schema.build-date=$BUILD_DATE \
+      org.label-schema.vcs-url="https://github.com/rmg55/container_stacks.git" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.description="Data science image built from the jupyter stacks minimal-notebook image. Includes JupyterLab with a server-proxy to RStudio server, VSCode server, and Panel. Includes kernels for Python, R, and possible IDL (if present in the host machine in specific folders). Software packages/modules are focused on spatial data analytics, remote sensing, and machine learning."
+
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo_gpu.yml .
 
-#RUN mamba env create -f py_geo_gpu.yml --quiet && \
-#	mamba clean --all -afy && \
-#	npm cache clean --force && \
-#        rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-#        rm -rf /home/$NB_USER/.cache/yarn && \
-#        rm -rf /home/$NB_USER/.node-gyp && \
-#        fix-permissions /home/$NB_USER && \
-#        fix-permissions $CONDA_DIR
-RUN conda create -n py_geo_gpu -y
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults python=3.8 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudatoolkit=11.0 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cudf=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuml=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cugraph=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cusignal=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuspatial=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults cuxfilter=0.18 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c nvidia -c conda-forge -c defaults tensorflow-gpu keras && \
-	mamba clean --all -afy
+RUN mamba env create -f py_geo_gpu.yml --quiet && \
+	mamba clean --all -afy && \
+	npm cache clean --force && \
+        rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+        rm -rf /home/$NB_USER/.cache/yarn && \
+        rm -rf /home/$NB_USER/.node-gyp && \
+        fix-permissions /home/$NB_USER && \
+        fix-permissions $CONDA_DIR
