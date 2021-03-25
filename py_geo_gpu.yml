@@ -9,5 +9,6 @@ dependencies:
   - cudatoolkit=11.0
   - python=3.7
   - ipykernel
-  - tensorflow-gpu
-  - keras
+  - pip:
+    - tensorflow
+    - keras
