@@ -32,7 +32,7 @@ RUN mamba install -n py_geo_gpu -c nvidia -c conda-forge cudatoolkit=11.0.221=h6
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cudf=0.18.1=cuda_11.0_py37_g999be56c80_0 && \
 	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuml=0.18.0=cuda11.0_py37_gb5f59e005_0 && \
+RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia cuml=0.18.0=cuda11.0_py37_gb5f59e005_0 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cugraph=0.18.0=py37_g65ec965f_0 && \
 	mamba clean --all -afy
