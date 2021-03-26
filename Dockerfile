@@ -29,10 +29,6 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nb_conda_kernels' && \
-	conda config --set channel_priority false && \ 
-	conda config --set channel_priority strict && \
-	mamba env create -f py_geo.yml --quiet && \
-	mamba env create -f r_geo.yml --quiet && \
 	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
 	jupyter labextension install @jupyterlab/server-proxy --no-build && \
         jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
@@ -117,3 +113,4 @@ RUN chmod -R 777 /home/jovyan && \
 		uuid && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+USER $NB_UID
