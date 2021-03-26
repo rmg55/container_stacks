@@ -11,18 +11,6 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 SHELL ["/bin/bash", "-c"]
 
-#Install Python GPU environmet
-#COPY py_geo_gpu.yml .
-
-# RUN mamba env create -f py_geo_gpu.yml --quiet && \
-# 	mamba clean --all -afy && \
-# 	npm cache clean --force && \
-#         rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-#         rm -rf /home/$NB_USER/.cache/yarn && \
-#         rm -rf /home/$NB_USER/.node-gyp && \
-#         fix-permissions /home/$NB_USER && \
-#         fix-permissions $CONDA_DIR
-
 RUN conda create -n py_geo_gpu -y && \
       conda install -c conda-forge --yes --quiet mamba>=0.7.6
 RUN conda create -n py_geo_gpu -y
@@ -44,7 +32,7 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cusignal=0.18.0=py38_
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuspatial=0.18.0=py37_gf4da460_0 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37_gac6f488_0 && \
-	mamba clean --all -afy \
+	mamba clean --all -afy && \
 	npm cache clean --force && \
       rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
       rm -rf /home/$NB_USER/.cache/yarn && \
@@ -54,7 +42,6 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37
 
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
-		'mamba>=0.7.6' \
 		'jupyterlab<3.0' \
 		'bokeh>=2.1.1' \
 		'tornado' \
