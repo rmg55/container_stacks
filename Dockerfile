@@ -26,7 +26,7 @@ SHELL ["/bin/bash", "-c"]
 RUN conda create -n py_geo_gpu -y && \
       conda install -c conda-forge --yes --quiet mamba>=0.7.6
 RUN conda create -n py_geo_gpu -y
-RUN conda install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia -c defaults keras && \
+RUN conda install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia -c defaults keras python=3.7.10=hffdb5ce_100_cpython tensorflow-gpu=1.14.0=h0d30ee6_0 && \
 	mamba clean --all -afy && \
       conda clean --all -afy
 RUN mamba install -n py_geo_gpu -c conda-forge python=3.7.10=hffdb5ce_100_cpython && \
@@ -44,9 +44,7 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cusignal=0.18.0=py38_
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuspatial=0.18.0=py37_gf4da460_0 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37_gac6f488_0 && \
-	mamba clean --all -afy
-RUN mamba install -n py_geo_gpu -c defaults tensorflow-gpu=1.14.0=h0d30ee6_0 && \
-	mamba clean --all -afy && \
+	mamba clean --all -afy \
 	npm cache clean --force && \
       rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
       rm -rf /home/$NB_USER/.cache/yarn && \
