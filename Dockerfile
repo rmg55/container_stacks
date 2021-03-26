@@ -26,6 +26,9 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 #RUN mamba install --name py_geo_gpu --file spec-file.txt
 
 RUN conda create -n py_geo_gpu -y
+RUN conda install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia -c defaults keras && \
+	mamba clean --all -afy && \
+      conda clean --all -afy
 RUN mamba install -n py_geo_gpu -c conda-forge python=3.7.10=hffdb5ce_100_cpython && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c nvidia -c conda-forge cudatoolkit=11.0.221=h6bb024c_0 && \
@@ -43,13 +46,10 @@ RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuspatial=0.18.0=py37
 RUN mamba install -n py_geo_gpu -c rapidsai -c conda-forge cuxfilter=0.18.0=py37_gac6f488_0 && \
 	mamba clean --all -afy
 RUN mamba install -n py_geo_gpu -c defaults tensorflow-gpu=1.14.0=h0d30ee6_0 && \
-	mamba clean --all -afy
-RUN conda install -n py_geo_gpu -c rapidsai -c conda-forge -c nvidia -c defaults keras && \
 	mamba clean --all -afy && \
-      conda clean --all -afy && \
 	npm cache clean --force && \
-            rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-            rm -rf /home/$NB_USER/.cache/yarn && \
-            rm -rf /home/$NB_USER/.node-gyp && \
-            fix-permissions /home/$NB_USER && \
-            fix-permissions $CONDA_DIR
+      rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+      rm -rf /home/$NB_USER/.cache/yarn && \
+      rm -rf /home/$NB_USER/.node-gyp && \
+      fix-permissions /home/$NB_USER && \
+      fix-permissions $CONDA_DIR
