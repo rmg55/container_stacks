@@ -75,7 +75,7 @@ RUN conda config --set channel_priority strict && \
 		'jupyter-server-proxy' \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
-		'nbgitpuller>=0.9.0'
+		'nbgitpuller>=0.9.0' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
 	conda config --set channel_priority strict && \
