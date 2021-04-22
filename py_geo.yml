@@ -5,6 +5,7 @@ channels:
 dependencies:
   - adlfs>=0.6.0
   - bokeh>=2.1.1
+  - boto3>=1.17.55
   - bottleneck>=1.3.0
   - dask>=2021.4.0
   - distributed>=2.20.0
@@ -88,7 +89,8 @@ dependencies:
   - xrviz>=0.1.4
   - zarr>=2.7.0
   - pip:
-    - stackstac
+    - stackstac>=0.1.1
+    - pystac-client>=0.1.1
     - xgboost>=1.1.1
     - sat-search>=0.3.0
     - aiocogeo>=0.3.0
