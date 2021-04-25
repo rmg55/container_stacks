@@ -64,30 +64,31 @@ COPY r_geo.yml .
 RUN conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'mamba>=0.7.6' \
-		'jupyterlab<3.0' \
+		'jupyterlab>=3.0' \
 		'bokeh>=2.1.1' \
 		'tornado' \
 		'jupyter_client' \
 		'jupyter-archive' \
-		'widgetsnbextension' \
+		'jupyterlab_widgets' \
 		'dask-labextension' \
 		'jupyter-panel-proxy' \
 		'jupyter-server-proxy' \
 		'jupyter-vscode-proxy' \
 		'jupyter-rsession-proxy' \
 		'nbgitpuller>=0.9.0' \
+		'pyviz_comms>=2.0.0' \
 		'nb_conda_kernels' && \
 	conda config --set channel_priority false && \ 
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
 	mamba env create -f r_geo.yml --quiet && \
-	jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-	jupyter labextension install @jupyterlab/server-proxy --no-build && \
-        jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-	jupyter labextension install dask-labextension --no-build && \
-	jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
-	jupyter lab build && \
-        jupyter labextension update --all && \
+	#jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
+	#jupyter labextension install @jupyterlab/server-proxy --no-build && \
+    #jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
+	#jupyter labextension install dask-labextension --no-build && \
+	#jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
+	#jupyter lab build && \
+    #jupyter labextension update --all && \
 	conda clean --all -afy && \
 	mamba clean --all -afy && \
 	npm cache clean --force && \
