@@ -93,7 +93,7 @@ dependencies:
   - zarr>=2.7.0
   - pip:
     - hy-tools>=1.1.2
-    - ray>-1.4.0
+    - ray>=1.4.0
     - stackstac>=0.1.1
     - pystac-client>=0.1.1
     - xgboost>=1.1.1
