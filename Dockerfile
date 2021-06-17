@@ -23,7 +23,7 @@ RUN chmod -R 777 /home/jovyan && \
     	chmod -R 777 /usr/share/jupyter && \
     	chmod -R 777 /usr/share/jupyter/kernels && \
     	chmod -R 777 /usr/share/jupyter/kernels/IDL && \
-    	chmod -R 777 /opt/conda/lib/python3.8/site-packages && \
+    	chmod -R 777 /opt/conda/lib/python3.9/site-packages && \
     	ln -s /bin/tar /bin/gtar && \
     	groupadd -g 1000 slurm && \
     	useradd  -m -c "Slurm" -d /var/lib/slurm -u 401 -g slurm  -s /bin/bash slurm && \
