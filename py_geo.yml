@@ -74,7 +74,7 @@ dependencies:
   - scipy>=1.4.1
   - selenium>=3.141.0
   - shapely>=1.7.0
-#   - shap>=0.35
+  - shap>=0.37
   - spatialpandas>=0.3.6
   - spectral>=0.20
   - stac-vrt>=1.0.3
@@ -100,7 +100,6 @@ dependencies:
     - sat-search>=0.3.0
     - aiocogeo>=0.3.0
     - aiocogeo[s3]>=0.3.0
-    - git+git://github.com/slundberg/shap.git
     - git+git://github.com/intake/gdrivefs.git
     - git+git://github.com/intake/intake-xarray.git
     - git+git://github.com/intake/fsspec-reference-maker.git
