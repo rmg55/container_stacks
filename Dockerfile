@@ -78,17 +78,11 @@ RUN conda config --set channel_priority strict && \
 		'nbgitpuller>=0.9.0' \
 		'pyviz_comms>=2.0.0' \
 		'nb_conda_kernels' && \
+	/opt/conda/bin/pip install batchspawner && \
 	conda config --set channel_priority false && \ 
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
 	mamba env create -f r_geo.yml --quiet && \
-	#jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
-	#jupyter labextension install @jupyterlab/server-proxy --no-build && \
-    #jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
-	#jupyter labextension install dask-labextension --no-build && \
-	#jupyter labextension install @pyviz/jupyterlab_pyviz --no-build && \
-	#jupyter lab build && \
-    #jupyter labextension update --all && \
 	conda clean --all -afy && \
 	mamba clean --all -afy && \
 	npm cache clean --force && \
