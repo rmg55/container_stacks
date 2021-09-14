@@ -3,5 +3,6 @@ channels:
   - conda-forge
 dependencies:
   - psycopg2>=0.6.0
+  - pip
   - pip:
-    - git+https://www.unavco.org/gitlab/GDS-Platform-Developers/backend/unavpyutils.git
+    - git+ssh://git@huddle.int.unavco.org/GDS-Platform-Developers/backend/unavpyutils.git
