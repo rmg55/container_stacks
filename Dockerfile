@@ -16,6 +16,4 @@ RUN conda config --set channel_priority strict && \
 	mamba env create -f dev_env.yml --quiet && \
 	conda clean --all -afy && \
 	mamba clean --all -afy && \
-	npm cache clean --force && \
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
     fix-permissions $CONDA_DIR
