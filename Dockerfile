@@ -15,5 +15,4 @@ RUN conda config --set channel_priority strict && \
     conda install -c conda-forge --yes --quiet mamba>=0.15.3 && \
 	mamba env create -f dev_env.yml --quiet && \
 	conda clean --all -afy && \
-	mamba clean --all -afy && \
-    fix-permissions $CONDA_DIR
+	mamba clean --all -afy
