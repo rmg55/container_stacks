@@ -8,7 +8,7 @@ on:
     branches: unav_gpsflow_dev
 
 jobs:
-  github-build_data_science_im_rs___latest:
+  github-build_unav_gpsflow_dev___latest:
     runs-on: ubuntu-latest
     steps:
      -

@@ -4,3 +4,5 @@ channels:
 dependencies:
   - psycopg2>=0.6.0
   - pip
+  - fsspec>=2021.8.1
+  - prefect[all]
