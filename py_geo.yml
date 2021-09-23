@@ -92,7 +92,7 @@ dependencies:
   - xrviz>=0.1.4
   - zarr>=2.7.0
   - pip:
-    - hy-tools>=1.1.2
+    - hy-tools>=1.2.0
     - ray>=1.4.0
     - stackstac>=0.1.1
     - pystac-client>=0.1.1
