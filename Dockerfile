@@ -57,6 +57,7 @@ RUN chmod -R 777 /home/jovyan && \
 
 
 USER $NB_UID
+ENV PIP_NO_CACHE_DIR=1
 #Install Python and R packages in the py_geo and r_geo environmets, respectively.
 COPY py_geo.yml .
 COPY r_geo.yml .
@@ -79,7 +80,7 @@ RUN pip install --upgrade pip && \
 		'nbgitpuller>=0.9.0' \
 		'pyviz_comms>=2.0.0' \
 		'nb_conda_kernels' && \
-	/opt/conda/bin/pip install batchspawner && \
+	/opt/conda/bin/pip install --no-cache-dir batchspawner && \
 	conda config --set channel_priority false && \ 
 	conda config --set channel_priority strict && \
 	mamba env create -f py_geo.yml --quiet && \
