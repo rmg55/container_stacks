@@ -31,6 +31,7 @@ RUN chmod -R 777 /home/jovyan && \
     	useradd -m -c "Munge" -d /var/lib/munge -u 398 -g munge -s /sbin/nologin munge && \
         apt-get update && \
 	apt-get install -y --no-install-recommends \
+		build-essential \
 		libapparmor1 \
 		libedit2 \
 		lsb-release \
