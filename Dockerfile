@@ -61,7 +61,8 @@ USER $NB_UID
 COPY py_geo.yml .
 COPY r_geo.yml .
 
-RUN conda config --set channel_priority strict && \
+RUN pip install --upgrade pip && \
+	conda config --set channel_priority strict && \
 	conda install -c conda-forge --yes --quiet \
 		'mamba>=0.7.6' \
 		'jupyterlab>=3.0' \

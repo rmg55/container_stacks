@@ -51,7 +51,7 @@ dependencies:
   - panel>=0.9.3
   - param>=1.9.3
   - phantomjs>=2.1.1
-  - pip>=20.0.2
+  - pip>=21.2.0
   - poppler>=0.67.0
   - prefect>=0.14.21
   - proj>=6.3.1
