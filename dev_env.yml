@@ -7,4 +7,4 @@ dependencies:
   - pip
   - fsspec>=2021.8.1
   - prefect[all]
-  - stracey
+  - strace
